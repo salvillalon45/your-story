@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> index.js
-// Desc: Home Page
+// Pages -> view.js
+// Desc: View Timeline Page
 //
 // -----------------------------------------------
 
@@ -17,19 +17,19 @@ import { Link } from 'gatsby';
 // Components
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
-import IndexPageContent from '../components/IndexPageContent';
+import ViewPageContent from '../components/ViewPageContent';
 // -----------------------------------------------
 
-function IndexPage() {
-	const id = 'indexPageContainer';
+function ViewPage() {
+	const id = 'viewPageContainer';
 
 	return (
 		<Layout id={id}>
 			<SEO title='Your Story' />
-			<Link to='/'>Dashboard</Link>
-			{/* <IndexPageContent /> */}
+			<p>VIEW PAGE</p>
+			{/* <ViewPageContent /> */}
 		</Layout>
 	);
 }
 
-export default IndexPage;
+export default ViewPage;

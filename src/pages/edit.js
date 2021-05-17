@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> index.js
-// Desc: Home Page
+// Pages -> edit.js
+// Desc: Edit Years Page
 //
 // -----------------------------------------------
 
@@ -17,19 +17,19 @@ import { Link } from 'gatsby';
 // Components
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
-import IndexPageContent from '../components/IndexPageContent';
+// import EditPageContent from '../components/EditPageContent';
 // -----------------------------------------------
 
-function IndexPage() {
-	const id = 'indexPageContainer';
+function EditPage() {
+	const id = 'editPageContainer';
 
 	return (
 		<Layout id={id}>
 			<SEO title='Your Story' />
-			<Link to='/'>Dashboard</Link>
-			{/* <IndexPageContent /> */}
+			<p>EDIT PAGE</p>
+			{/* <EditPageContent /> */}
 		</Layout>
 	);
 }
 
-export default IndexPage;
+export default EditPage;

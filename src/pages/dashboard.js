@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> index.js
-// Desc: Home Page
+// Pages -> dashboard.js
+// Desc: Main Navigation Page
 //
 // -----------------------------------------------
 
@@ -17,19 +17,21 @@ import { Link } from 'gatsby';
 // Components
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
-import IndexPageContent from '../components/IndexPageContent';
+import DashboardPageContent from '../components/DashboardPageContent';
 // -----------------------------------------------
 
-function IndexPage() {
-	const id = 'indexPageContainer';
+function DashboardPage() {
+	const id = 'dashboardPageContainer';
 
 	return (
 		<Layout id={id}>
-			<SEO title='Your Story' />
-			<Link to='/'>Dashboard</Link>
-			{/* <IndexPageContent /> */}
+			<section>
+				<SEO title='Your Story' />
+
+				<DashboardPageContent />
+			</section>
 		</Layout>
 	);
 }
 
-export default IndexPage;
+export default DashboardPage;

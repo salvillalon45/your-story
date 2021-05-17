@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> index.js
-// Desc: Home Page
+// Pages -> add.js
+// Desc: Add Year Page
 //
 // -----------------------------------------------
 
@@ -17,19 +17,19 @@ import { Link } from 'gatsby';
 // Components
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
-import IndexPageContent from '../components/IndexPageContent';
+// import AddPageContent from '../components/AddPageContent';
 // -----------------------------------------------
 
-function IndexPage() {
-	const id = 'indexPageContainer';
+function AddPage() {
+	const id = 'addPageContainer';
 
 	return (
 		<Layout id={id}>
 			<SEO title='Your Story' />
-			<Link to='/'>Dashboard</Link>
-			{/* <IndexPageContent /> */}
+			<p>ADD PAGE</p>
+			{/* <AddPageContent /> */}
 		</Layout>
 	);
 }
 
-export default IndexPage;
+export default AddPage;
