@@ -6,8 +6,6 @@
 
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import TextField from '@material-ui/core/TextField';
 
 const GameButton = styled.button`
 	background: var(--babyBlue);
@@ -31,19 +29,16 @@ const DashboardButton = styled(Button)`
 	${'' /* } */}
 `;
 
-const FormContentContainer = styled.div``;
+const ButtonContainer = styled.div``;
 
-const FormLabel = styled.p``;
+const GreenButton = styled(Button)``;
 
-const FormTextArea = styled(TextareaAutosize)``;
-
-const FormTextField = styled(TextField)``;
+const RedButton = styled(Button)``;
 
 export {
-	FormTextField,
-	FormTextArea,
-	FormContentContainer,
-	FormLabel,
 	DashboardButtonContainer,
-	DashboardButton
+	DashboardButton,
+	GreenButton,
+	ButtonContainer,
+	RedButton
 };

@@ -17,7 +17,7 @@ import { Link } from 'gatsby';
 // Components
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
-// import AddPageContent from '../components/AddPageContent';
+import AddPageContent from '../components/AddPageContent';
 // -----------------------------------------------
 
 function AddPage() {
@@ -25,9 +25,11 @@ function AddPage() {
 
 	return (
 		<Layout id={id}>
-			<SEO title='Your Story' />
-			<p>ADD PAGE</p>
-			{/* <AddPageContent /> */}
+			<section>
+				<SEO title='Your Story' />
+
+				<AddPageContent />
+			</section>
 		</Layout>
 	);
 }

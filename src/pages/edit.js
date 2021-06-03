@@ -17,7 +17,7 @@ import { Link } from 'gatsby';
 // Components
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
-// import EditPageContent from '../components/EditPageContent';
+import EditPageContent from '../components/EditPageContent';
 // -----------------------------------------------
 
 function EditPage() {
@@ -26,8 +26,8 @@ function EditPage() {
 	return (
 		<Layout id={id}>
 			<SEO title='Your Story' />
-			<p>EDIT PAGE</p>
-			{/* <EditPageContent /> */}
+
+			<EditPageContent />
 		</Layout>
 	);
 }

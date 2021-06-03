@@ -6,31 +6,31 @@
 // -----------------------------------------------
 
 import firebase from 'gatsby-plugin-firebase';
-import { orderUserResults } from './gameUtil';
 
-async function getCoordsFromDB(level) {
+async function getYearDataFromDB() {
 	const snapshot = await firebase
 		.database()
-		.ref('/level/' + level)
+		.ref('yearsData/' + 1)
 		.once('value');
 
 	return snapshot.val();
 }
 
-function pushToDatabase(userName, timer) {
-	const reference = firebase.database().ref('userResults');
+function pushToDatabase(yearData, userId) {
+	console.log('Inside pushToDatabase');
+	const reference = firebase.database().ref('yearsData/' + userId);
+	console.log(reference);
 	const newReference = reference.push();
 
 	newReference.set({
-		userName: userName,
-		time: timer
+		yearData
 	});
 }
 
-async function getUserResultsFromDB() {
-	const snapshot = await firebase.database().ref('userResults').once('value');
+// async function getUserResultsFromDB() {
+// 	const snapshot = await firebase.database().ref('userResults').once('value');
 
-	return orderUserResults(Object.values(snapshot.val()));
-}
+// 	return orderUserResults(Object.values(snapshot.val()));
+// }
 
-export { getCoordsFromDB, pushToDatabase, getUserResultsFromDB };
+export { pushToDatabase, getYearDataFromDB };

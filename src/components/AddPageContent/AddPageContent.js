@@ -20,62 +20,74 @@ import Paper from '@material-ui/core/Paper';
 
 // Styling
 import {
+	GreenButton,
+	ButtonContainer
+} from '../../styles/globalStyledComponents';
+import {
 	FormTextField,
 	FormTextArea,
 	FormContentContainer,
 	FormLabel
-} from '../../styles/globalStyledComponents';
+} from './AddPageContentStyledComponents';
+
+// Util
+import { pushToDatabase, getYearDataFromDB } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 function AddPageContent() {
+	const [yearData, setYearData] = React.useState({
+		year: '',
+		events: ''
+	});
+
+	function handleOnChange(event) {
+		setYearData(prevValues => {
+			return { ...prevValues, [event.target.name]: event.target.value };
+		});
+	}
+
+	function handleOnSubmit(event) {
+		event.preventDefault();
+		pushToDatabase(yearData, 1);
+	}
+
+	React.useEffect(async () => {
+		const result = await getYearDataFromDB();
+		console.log('What is result');
+
+		console.log(result);
+	});
+
 	return (
 		<>
 			<Grid container spacing={3}>
 				<Grid item xs>
-					<DashboardButtonContainer>
-						<DashboardButton>
-							<Link to='/add'>Add To Your Story</Link>
-						</DashboardButton>
-					</DashboardButtonContainer>
-				</Grid>
+					<form onSubmit={event => handleOnSubmit(event)}>
+						<FormContentContainer>
+							<FormLabel>Year</FormLabel>
 
-				<Grid item xs>
-					<DashboardButtonContainer>
-						<DashboardButton>
-							<Link to='/edit'>Edit Your Story</Link>
-						</DashboardButton>
-					</DashboardButtonContainer>
-				</Grid>
-			</Grid>
+							<FormTextField
+								name='year'
+								onChange={event => {
+									handleOnChange(event);
+								}}
+							/>
 
-			<Grid container spacing={3}>
-				<Grid item xs>
-					<DashboardButtonContainer>
-						<DashboardButton>
-							<Link to='/view'>View You Story</Link>
-						</DashboardButton>
-					</DashboardButtonContainer>
-				</Grid>
+							<FormLabel>What Happened This Year?</FormLabel>
 
-				<Grid item xs>
-					<DashboardButtonContainer>
-						<DashboardButton>
-							<Link to='/'>Share Your Story</Link>
-						</DashboardButton>
-					</DashboardButtonContainer>
-				</Grid>
-			</Grid>
+							<FormTextArea
+								name='events'
+								onChange={event => {
+									handleOnChange(event);
+								}}
+							/>
 
-			<Grid container spacing={3}>
-				<Grid item xs>
-					<Paper>xs</Paper>
+							<ButtonContainer>
+								<GreenButton type='submit'>Submit</GreenButton>
+							</ButtonContainer>
+						</FormContentContainer>
+					</form>
 				</Grid>
-				<Grid item xs>
-					<Paper>xs</Paper>
-				</Grid>
-				{/* <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid> */}
 			</Grid>
 		</>
 	);

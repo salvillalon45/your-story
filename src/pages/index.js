@@ -26,7 +26,9 @@ function IndexPage() {
 	return (
 		<Layout id={id}>
 			<SEO title='Your Story' />
-			<Link to='/'>Dashboard</Link>
+
+			<Link to='/dashboard'>Dashboard</Link>
+
 			{/* <IndexPageContent /> */}
 		</Layout>
 	);
