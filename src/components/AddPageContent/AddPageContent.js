@@ -31,32 +31,25 @@ import {
 } from './AddPageContentStyledComponents';
 
 // Util
-import { pushToDatabase, getYearDataFromDB } from '../../util/firebaseUtil';
+import { pushToDatabase } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 function AddPageContent() {
-	const [yearData, setYearData] = React.useState({
+	const [yearsData, setYearsData] = React.useState({
 		year: '',
 		events: ''
 	});
 
 	function handleOnChange(event) {
-		setYearData(prevValues => {
+		setYearsData(prevValues => {
 			return { ...prevValues, [event.target.name]: event.target.value };
 		});
 	}
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
-		pushToDatabase(yearData, 1);
+		pushToDatabase(yearsData, 1);
 	}
-
-	React.useEffect(async () => {
-		const result = await getYearDataFromDB();
-		console.log('What is result');
-
-		console.log(result);
-	});
 
 	return (
 		<>

@@ -17,9 +17,15 @@ import Footer from './Footer';
 
 // Styling
 import '../../styles/global.scss';
+
+// Util
+import { getYearsDataFromDB } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
+export const YearsDataContext = React.createContext(null);
+
 function Layout(props) {
+	const [yearsData, setYearsData] = React.useState('');
 	const { id, children } = props;
 
 	// 	const data = useStaticQuery(graphql`
@@ -32,22 +38,22 @@ function Layout(props) {
 	//     }
 	//   `)
 
-	React.useEffect(() => {
+	React.useEffect(async () => {
 		console.log('Inside Use Effect in Layout');
-		// children.props = { 1: 2 };
-		console.log(window);
-		console.log(children);
+		const userId = 1;
+		const yearsData = await getYearsDataFromDB(userId);
+		setYearsData(yearsData);
 	});
 
 	return (
-		<>
+		<YearsDataContext.Provider value={yearsData}>
 			{/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
 			<Header />
 
 			<main id={id}>{children}</main>
 
 			<Footer />
-		</>
+		</YearsDataContext.Provider>
 	);
 }
 

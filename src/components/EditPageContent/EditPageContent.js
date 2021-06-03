@@ -34,7 +34,9 @@ import {
 
 function EditPageContent() {
 	return (
-		<>
+		<YearsDataContext.Consumer>
+			{/* {console.log('Inside EditPageContent')}
+			{console.log(yearsData)} */}
 			<Grid container spacing={3}>
 				<Grid item xs>
 					<YearContainer>
@@ -51,7 +53,6 @@ function EditPageContent() {
 					</ActionsContainer>
 				</Grid>
 			</Grid>
-
 			<Grid container spacing={3}>
 				<Grid item xs>
 					<EventsContainer>
@@ -78,7 +79,7 @@ function EditPageContent() {
 					</EventsContainer>
 				</Grid>
 			</Grid>
-		</>
+		</YearsDataContext.Consumer>
 	);
 }
 
