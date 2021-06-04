@@ -7,4 +7,14 @@
 // You can delete this file if you're not using it
 
 // Firebase
-import "firebase/database"
+import 'firebase/database';
+
+// To use useContext API
+import * as React from 'react';
+import { ThemeProvider } from './src/context/ThemeContext';
+
+// highlight-start
+export const wrapRootElement = ({ element }) => (
+	<ThemeProvider>{element}</ThemeProvider>
+);
+// highlight-end

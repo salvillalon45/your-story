@@ -17,15 +17,13 @@ import Footer from './Footer';
 
 // Styling
 import '../../styles/global.scss';
-
-// Util
-import { getYearsDataFromDB } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
-export const YearsDataContext = React.createContext(null);
+import ThemeContext from '../../context/ThemeContext';
+
+// export const YearsDataContext = React.createContext('');
 
 function Layout(props) {
-	const [yearsData, setYearsData] = React.useState('');
 	const { id, children } = props;
 
 	// 	const data = useStaticQuery(graphql`
@@ -38,22 +36,28 @@ function Layout(props) {
 	//     }
 	//   `)
 
-	React.useEffect(async () => {
-		console.log('Inside Use Effect in Layout');
-		const userId = 1;
-		const yearsData = await getYearsDataFromDB(userId);
-		setYearsData(yearsData);
-	});
-
+	{
+		/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */
+	}
 	return (
-		<YearsDataContext.Provider value={yearsData}>
-			{/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-			<Header />
+		<>
+			{/* <YearsDataContext.Provider value={yearsData}> */}
+			<ThemeContext.Consumer>
+				{({ HOLA }) => {
+					return (
+						<>
+							{/* {console.log(HOLA)} */}
 
-			<main id={id}>{children}</main>
+							<Header />
 
-			<Footer />
-		</YearsDataContext.Provider>
+							<main id={id}>{children}</main>
+
+							<Footer />
+						</>
+					);
+				}}
+			</ThemeContext.Consumer>
+		</>
 	);
 }
 

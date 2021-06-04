@@ -30,56 +30,81 @@ import {
 	ActionsContainer,
 	EventsContainer
 } from './EditPageContentStyledComponents';
+
+// React Context
+import ThemeContext from '../../context/ThemeContext';
 // -----------------------------------------------
 
 function EditPageContent() {
-	return (
-		<YearsDataContext.Consumer>
-			{/* {console.log('Inside EditPageContent')}
-			{console.log(yearsData)} */}
-			<Grid container spacing={3}>
-				<Grid item xs>
-					<YearContainer>
-						<YearTitle>In the year 2021...</YearTitle>
-					</YearContainer>
-				</Grid>
+	const contextValue = React.useContext(ThemeContext);
+	console.group('Check UseContext Hook');
+	console.log(contextValue);
+	console.groupEnd('Check UseContext Hook');
 
-				<Grid item xs>
-					<ActionsContainer>
-						<ButtonContainer>
-							<GreenButton>Edit</GreenButton>
-							<RedButton>Delete</RedButton>
-						</ButtonContainer>
-					</ActionsContainer>
-				</Grid>
-			</Grid>
-			<Grid container spacing={3}>
-				<Grid item xs>
-					<EventsContainer>
-						<ul>
-							<li>
-								Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit.
-							</li>
-							<li>
-								Integer sit amet eros eu elit mattis tincidunt.
-							</li>
-							<li>
-								Fusce vitae sapien et ante lacinia aliquam in
-								eget risus.
-							</li>
-							<li>
-								Integer venenatis felis tristique hendrerit
-								hendrerit.
-							</li>
-							<li>
-								Vestibulum ornare turpis in facilisis fermentum.
-							</li>
-						</ul>
-					</EventsContainer>
-				</Grid>
-			</Grid>
-		</YearsDataContext.Consumer>
+	React.useEffect();
+
+	return (
+		<>
+			<ThemeContext.Consumer>
+				{({ yearsData }) => {
+					{
+						/* console.log('In EDIT PAGE CONTENT');
+					console.log(yearsData); */
+					}
+					return (
+						<>
+							<Grid container spacing={3}>
+								<Grid item xs>
+									<YearContainer>
+										<YearTitle>
+											In the year 2021...
+										</YearTitle>
+									</YearContainer>
+								</Grid>
+
+								<Grid item xs>
+									<ActionsContainer>
+										<ButtonContainer>
+											<GreenButton>Edit</GreenButton>
+											<RedButton>Delete</RedButton>
+										</ButtonContainer>
+									</ActionsContainer>
+								</Grid>
+							</Grid>
+
+							<Grid container spacing={3}>
+								<Grid item xs>
+									<EventsContainer>
+										<ul>
+											<li>
+												Lorem ipsum dolor sit amet,
+												consectetur adipiscing elit.
+											</li>
+											<li>
+												Integer sit amet eros eu elit
+												mattis tincidunt.
+											</li>
+											<li>
+												Fusce vitae sapien et ante
+												lacinia aliquam in eget risus.
+											</li>
+											<li>
+												Integer venenatis felis
+												tristique hendrerit hendrerit.
+											</li>
+											<li>
+												Vestibulum ornare turpis in
+												facilisis fermentum.
+											</li>
+										</ul>
+									</EventsContainer>
+								</Grid>
+							</Grid>
+						</>
+					);
+				}}
+			</ThemeContext.Consumer>
+		</>
 	);
 }
 
