@@ -20,9 +20,7 @@ function pushToDatabase(yearsData, userId) {
 	const reference = firebase.database().ref('yearsData/' + userId);
 	const newReference = reference.push();
 
-	newReference.set({
-		yearsData
-	});
+	newReference.set(yearsData);
 }
 
 // async function getUserResultsFromDB() {

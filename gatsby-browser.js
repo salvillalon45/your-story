@@ -14,7 +14,11 @@ import * as React from 'react';
 import { ThemeProvider } from './src/context/ThemeContext';
 
 // highlight-start
-export const wrapRootElement = ({ element }) => (
-	<ThemeProvider>{element}</ThemeProvider>
-);
+// export const wrapRootElement = ({ element }) => (
+// 	<ThemeProvider>{element}</ThemeProvider>
+// );
+
+export function wrapRootElement({ element }) {
+	return <ThemeProvider>{element}</ThemeProvider>;
+}
 // highlight-end

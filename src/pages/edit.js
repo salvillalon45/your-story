@@ -20,14 +20,21 @@ import SEO from '../components/seo';
 import EditPageContent from '../components/EditPageContent';
 // -----------------------------------------------
 
-function EditPage() {
+function EditPage(props) {
+	const { state } = props.location;
 	const id = 'editPageContainer';
+
+	let result = {};
+
+	if (state) {
+		result = state.yearsData;
+	}
 
 	return (
 		<Layout id={id}>
 			<SEO title='Your Story' />
 
-			<EditPageContent />
+			<EditPageContent yearsData={result} />
 		</Layout>
 	);
 }

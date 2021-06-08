@@ -17,11 +17,10 @@ import Footer from './Footer';
 
 // Styling
 import '../../styles/global.scss';
-// -----------------------------------------------
 
+// React Context
 import ThemeContext from '../../context/ThemeContext';
-
-// export const YearsDataContext = React.createContext('');
+// -----------------------------------------------
 
 function Layout(props) {
 	const { id, children } = props;
@@ -41,22 +40,21 @@ function Layout(props) {
 	}
 	return (
 		<>
-			{/* <YearsDataContext.Provider value={yearsData}> */}
-			<ThemeContext.Consumer>
-				{({ HOLA }) => {
+			{/* <ThemeContext.Consumer> */}
+			{/* {({ HOLA }) => {
 					return (
-						<>
-							{/* {console.log(HOLA)} */}
+						<> */}
+			{/* {console.log(HOLA)} */}
 
-							<Header />
+			<Header />
 
-							<main id={id}>{children}</main>
+			<main id={id}>{children}</main>
 
-							<Footer />
-						</>
+			<Footer />
+			{/* </>
 					);
-				}}
-			</ThemeContext.Consumer>
+				}} */}
+			{/* </ThemeContext.Consumer> */}
 		</>
 	);
 }

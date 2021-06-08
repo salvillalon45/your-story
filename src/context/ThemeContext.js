@@ -23,10 +23,11 @@ function ThemeProvider(props) {
 	const { children } = props;
 
 	React.useEffect(async () => {
+		console.log('Inside UseEffect in ThemeProvider');
 		const userId = 1;
 		const yearsData = await getYearsDataFromDB(userId);
 		setYearsData(yearsData);
-	});
+	}, []);
 
 	return (
 		<ThemeContext.Provider

@@ -23,9 +23,19 @@ import {
 	DashboardButtonContainer,
 	DashboardButton
 } from '../../styles/globalStyledComponents';
+
+// React Context
+import ThemeContext from '../../context/ThemeContext';
 // -----------------------------------------------
 
 function DashboardPageContent() {
+	const contextValue = React.useContext(ThemeContext);
+	// console.group('DASHBOARD PAGE CONTENT');
+	// // if (contextValue.yearsData) {
+	// console.log(contextValue.yearsData);
+	// console.log(contextValue.yearsData);
+	// console.groupEnd('DASHBOARD PAGE CONTENT');
+	// }
 	return (
 		<>
 			<Grid container spacing={3}>
@@ -40,7 +50,12 @@ function DashboardPageContent() {
 				<Grid item xs>
 					<DashboardButtonContainer>
 						<DashboardButton>
-							<Link to='/edit'>Edit Your Story</Link>
+							<Link
+								to='/edit'
+								state={{ yearsData: contextValue.yearsData }}
+							>
+								Edit Your Story
+							</Link>
 						</DashboardButton>
 					</DashboardButtonContainer>
 				</Grid>

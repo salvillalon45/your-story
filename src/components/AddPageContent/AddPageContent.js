@@ -35,6 +35,7 @@ import { pushToDatabase } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 function AddPageContent() {
+	console.log('ADD PAGE CONTENT');
 	const [yearsData, setYearsData] = React.useState({
 		year: '',
 		events: ''
