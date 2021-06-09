@@ -17,9 +17,6 @@ import Footer from './Footer';
 
 // Styling
 import '../../styles/global.scss';
-
-// React Context
-import ThemeContext from '../../context/ThemeContext';
 // -----------------------------------------------
 
 function Layout(props) {
@@ -40,21 +37,11 @@ function Layout(props) {
 	}
 	return (
 		<>
-			{/* <ThemeContext.Consumer> */}
-			{/* {({ HOLA }) => {
-					return (
-						<> */}
-			{/* {console.log(HOLA)} */}
-
 			<Header />
 
 			<main id={id}>{children}</main>
 
 			<Footer />
-			{/* </>
-					);
-				}} */}
-			{/* </ThemeContext.Consumer> */}
 		</>
 	);
 }

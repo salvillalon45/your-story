@@ -11,90 +11,86 @@
 // React
 import * as React from 'react';
 
-// Gatsby
-import { Link } from 'gatsby';
+// Components
+import EditYear from './EditYear';
+import Events from './Events';
+import EditActions from './EditActions';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-
-// Styling
-import {
-	GreenButton,
-	RedButton,
-	ButtonContainer
-} from '../../styles/globalStyledComponents';
-import {
-	YearContainer,
-	YearTitle,
-	ActionsContainer,
-	EventsContainer
-} from './EditPageContentStyledComponents';
+import Modal from '@material-ui/core/Modal';
 
 // React Context
 import ThemeContext from '../../context/ThemeContext';
+
+// Util
+import { deleteFromDatabase } from '../../util/firebaseUtil';
+import { pp } from '../../util/mainUtil';
 // -----------------------------------------------
 
 function EditPageContent(props) {
+	const [isOpen, setIsOpen] = React.useState(false);
+
 	const contextValue = React.useContext(ThemeContext);
-	console.log();
-	console.group('EDIT PAGE CONTENT');
-	// if (contextValue.yearsData) {
-	console.log(contextValue.yearsData);
-	console.log(contextValue.yearsData);
 
-	console.log('LINK STATE CHECK');
-	console.log(props);
-	console.log(props.yearsData);
-	// }
+	function handleModalOpen() {
+		setIsOpen(!isOpen);
+	}
 
-	console.groupEnd('EDIT PAGE CONTENT');
+	function handleModalClose() {
+		setIsOpen(!isOpen);
+	}
+
+	async function handleOnDelete(reflectionId) {
+		const userId = 1;
+		await deleteFromDatabase(userId, reflectionId);
+		contextValue.handleIsChanged();
+	}
+
+	function createEditPageContent() {
+		if (!contextValue.reflections) {
+			return null;
+		} else {
+			return Object.entries(contextValue.reflections).map(
+				reflectionArray => {
+					const events = reflectionArray[1].events;
+					const year = reflectionArray[1].year;
+					const reflectionId = reflectionArray[0];
+					return (
+						<>
+							<Grid container spacing={3}>
+								<EditYear year={year} />
+								<EditActions
+									reflectionId={reflectionId}
+									handleOnDelete={handleOnDelete}
+									handleModalOpen={handleModalOpen}
+								/>
+							</Grid>
+							<Grid container spacing={3}>
+								<Events events={events} />
+							</Grid>
+						</>
+					);
+				}
+			);
+		}
+	}
+
 	return (
-		<>
-			<Grid container spacing={3}>
-				<Grid item xs>
-					<YearContainer>
-						<YearTitle>In the year 2021...</YearTitle>
-					</YearContainer>
-				</Grid>
-
-				<Grid item xs>
-					<ActionsContainer>
-						<ButtonContainer>
-							<GreenButton>Edit</GreenButton>
-							<RedButton>Delete</RedButton>
-						</ButtonContainer>
-					</ActionsContainer>
-				</Grid>
-			</Grid>
-
-			<Grid container spacing={3}>
-				<Grid item xs>
-					<EventsContainer>
-						<ul>
-							<li>
-								Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit.
-							</li>
-							<li>
-								Integer sit amet eros eu elit mattis tincidunt.
-							</li>
-							<li>
-								Fusce vitae sapien et ante lacinia aliquam in
-								eget risus.
-							</li>
-							<li>
-								Integer venenatis felis tristique hendrerit
-								hendrerit.
-							</li>
-							<li>
-								Vestibulum ornare turpis in facilisis fermentum.
-							</li>
-						</ul>
-					</EventsContainer>
-				</Grid>
-			</Grid>
-		</>
+		<div className='editPageContentContainer'>
+			{isOpen && (
+				<Modal
+					open={isOpen}
+					// onClose={handleClose}
+					aria-labelledby='simple-modal-title'
+					aria-describedby='simple-modal-description'
+				>
+					<button onClick={() => handleModalClose()}>Close</button>
+				</Modal>
+			)}
+			{createEditPageContent()}
+		</div>
 	);
 }
 

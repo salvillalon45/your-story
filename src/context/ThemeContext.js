@@ -11,7 +11,7 @@
 import * as React from 'react';
 
 // Util
-import { getYearsDataFromDB } from '../util/firebaseUtil';
+import { getReflectionsFromDB } from '../util/firebaseUtil';
 
 // Set Up
 const defaultState = {};
@@ -19,20 +19,27 @@ const ThemeContext = React.createContext(defaultState);
 // -----------------------------------------------
 
 function ThemeProvider(props) {
-	const [yearsData, setYearsData] = React.useState('');
 	const { children } = props;
+	const [reflections, setReflections] = React.useState('');
+	const [isChanged, setIsChanged] = React.useState(false);
+
+	function handleIsChanged() {
+		setIsChanged(!isChanged);
+	}
 
 	React.useEffect(async () => {
 		console.log('Inside UseEffect in ThemeProvider');
 		const userId = 1;
-		const yearsData = await getYearsDataFromDB(userId);
-		setYearsData(yearsData);
-	}, []);
+		const reflections = await getReflectionsFromDB(userId);
+		setReflections(reflections);
+		console.table(reflections);
+	}, [isChanged]);
 
 	return (
 		<ThemeContext.Provider
 			value={{
-				yearsData
+				reflections,
+				handleIsChanged: handleIsChanged
 			}}
 		>
 			{children}

@@ -35,21 +35,20 @@ import { pushToDatabase } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 function AddPageContent() {
-	console.log('ADD PAGE CONTENT');
-	const [yearsData, setYearsData] = React.useState({
+	const [reflection, setReflection] = React.useState({
 		year: '',
 		events: ''
 	});
 
 	function handleOnChange(event) {
-		setYearsData(prevValues => {
+		setReflection(prevValues => {
 			return { ...prevValues, [event.target.name]: event.target.value };
 		});
 	}
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
-		pushToDatabase(yearsData, 1);
+		pushToDatabase(reflection, 1);
 	}
 
 	return (

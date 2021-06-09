@@ -7,20 +7,33 @@
 
 import firebase from 'gatsby-plugin-firebase';
 
-async function getYearsDataFromDB(userId) {
+import { orderYears } from './mainUtil';
+
+async function getReflectionsFromDB(userId) {
 	const snapshot = await firebase
 		.database()
-		.ref('yearsData/' + userId)
+		.ref(`reflections/${userId}`)
 		.once('value');
 
+	console.log('What is snapshot val');
+	console.log(snapshot.val());
 	return snapshot.val();
+	// return orderYears(snapshot.val());
 }
 
-function pushToDatabase(yearsData, userId) {
-	const reference = firebase.database().ref('yearsData/' + userId);
+function pushToDatabase(reflections, userId) {
+	const reference = firebase.database().ref(`reflections/${userId}`);
 	const newReference = reference.push();
 
-	newReference.set(yearsData);
+	newReference.set(reflections);
+}
+
+async function deleteFromDatabase(userId, yearId) {
+	const reference = firebase
+		.database()
+		.ref(`reflections/${userId}/${yearId}`);
+
+	await reference.remove();
 }
 
 // async function getUserResultsFromDB() {
@@ -29,4 +42,4 @@ function pushToDatabase(yearsData, userId) {
 // 	return orderUserResults(Object.values(snapshot.val()));
 // }
 
-export { pushToDatabase, getYearsDataFromDB };
+export { pushToDatabase, getReflectionsFromDB, deleteFromDatabase };

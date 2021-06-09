@@ -30,12 +30,7 @@ import ThemeContext from '../../context/ThemeContext';
 
 function DashboardPageContent() {
 	const contextValue = React.useContext(ThemeContext);
-	// console.group('DASHBOARD PAGE CONTENT');
-	// // if (contextValue.yearsData) {
-	// console.log(contextValue.yearsData);
-	// console.log(contextValue.yearsData);
-	// console.groupEnd('DASHBOARD PAGE CONTENT');
-	// }
+
 	return (
 		<>
 			<Grid container spacing={3}>
@@ -52,7 +47,9 @@ function DashboardPageContent() {
 						<DashboardButton>
 							<Link
 								to='/edit'
-								state={{ yearsData: contextValue.yearsData }}
+								state={{
+									reflections: contextValue.reflections
+								}}
 							>
 								Edit Your Story
 							</Link>

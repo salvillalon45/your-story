@@ -27,14 +27,16 @@ function EditPage(props) {
 	let result = {};
 
 	if (state) {
-		result = state.yearsData;
+		result = state.reflections;
 	}
 
 	return (
 		<Layout id={id}>
-			<SEO title='Your Story' />
+			<section>
+				<SEO title='Your Story' />
 
-			<EditPageContent yearsData={result} />
+				<EditPageContent reflections={result} />
+			</section>
 		</Layout>
 	);
 }
