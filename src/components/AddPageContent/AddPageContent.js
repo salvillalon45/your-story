@@ -11,12 +11,8 @@
 // React
 import * as React from 'react';
 
-// Gatsby
-import { Link } from 'gatsby';
-
 // Material UI
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 // Styling
 import {

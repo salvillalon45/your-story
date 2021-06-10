@@ -15,11 +15,10 @@ import * as React from 'react';
 import EditYear from './EditYear';
 import Events from './Events';
 import EditActions from './EditActions';
+import EditModal from './EditModal';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Modal from '@material-ui/core/Modal';
 
 // React Context
 import ThemeContext from '../../context/ThemeContext';
@@ -40,6 +39,17 @@ function EditPageContent(props) {
 
 	function handleModalClose() {
 		setIsOpen(!isOpen);
+	}
+
+	function handleEditChange() {
+		// setReflection(prevValues => {
+		// 	return { ...prevValues, [event.target.name]: event.target.value };
+		// });
+	}
+
+	function handleEditSubmit(event) {
+		event.preventDefault();
+		// pushToDatabase(reflection, 1);
 	}
 
 	async function handleOnDelete(reflectionId) {
@@ -80,14 +90,12 @@ function EditPageContent(props) {
 	return (
 		<div className='editPageContentContainer'>
 			{isOpen && (
-				<Modal
-					open={isOpen}
-					// onClose={handleClose}
-					aria-labelledby='simple-modal-title'
-					aria-describedby='simple-modal-description'
-				>
-					<button onClick={() => handleModalClose()}>Close</button>
-				</Modal>
+				<EditModal
+					handleModalClose={handleModalClose}
+					// handleEditSubmit={handleEditSubmit}
+					// handleEditChange={handleEditChange}
+					isOpen={isOpen}
+				/>
 			)}
 			{createEditPageContent()}
 		</div>
