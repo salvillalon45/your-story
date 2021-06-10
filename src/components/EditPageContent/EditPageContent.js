@@ -24,37 +24,53 @@ import Grid from '@material-ui/core/Grid';
 import ThemeContext from '../../context/ThemeContext';
 
 // Util
-import { deleteFromDatabase } from '../../util/firebaseUtil';
+import { deleteReflection, updateReflection } from '../../util/firebaseUtil';
 import { pp } from '../../util/mainUtil';
 // -----------------------------------------------
 
 function EditPageContent(props) {
 	const [isOpen, setIsOpen] = React.useState(false);
-
+	const [currentReflection, setCurrentReflection] = React.useState({
+		year: '',
+		events: '',
+		reflectionId: ''
+	});
 	const contextValue = React.useContext(ThemeContext);
 
-	function handleModalOpen() {
+	function handleModalOpen(reflectionId) {
 		setIsOpen(!isOpen);
+		const reflection = contextValue.reflections[reflectionId];
+
+		setCurrentReflection(prevValues => {
+			return {
+				...prevValues,
+				year: reflection.year,
+				events: reflection.events,
+				reflectionId: reflectionId
+			};
+		});
 	}
 
 	function handleModalClose() {
 		setIsOpen(!isOpen);
 	}
 
-	function handleEditChange() {
-		// setReflection(prevValues => {
-		// 	return { ...prevValues, [event.target.name]: event.target.value };
-		// });
+	function handleEditChange(event) {
+		setCurrentReflection(prevValues => {
+			return { ...prevValues, [event.target.name]: event.target.value };
+		});
 	}
 
 	function handleEditSubmit(event) {
 		event.preventDefault();
-		// pushToDatabase(reflection, 1);
+		updateReflection(currentReflection.reflectionId, 1, currentReflection);
+		contextValue.handleIsChanged();
+		handleModalClose();
 	}
 
 	async function handleOnDelete(reflectionId) {
 		const userId = 1;
-		await deleteFromDatabase(userId, reflectionId);
+		await deleteReflection(userId, reflectionId);
 		contextValue.handleIsChanged();
 	}
 
@@ -67,18 +83,27 @@ function EditPageContent(props) {
 					const events = reflectionArray[1].events;
 					const year = reflectionArray[1].year;
 					const reflectionId = reflectionArray[0];
+
 					return (
 						<>
 							<Grid container spacing={3}>
-								<EditYear year={year} />
-								<EditActions
-									reflectionId={reflectionId}
-									handleOnDelete={handleOnDelete}
-									handleModalOpen={handleModalOpen}
-								/>
+								<Grid item xs>
+									<EditYear year={year} />
+								</Grid>
+
+								<Grid item xs>
+									<EditActions
+										reflectionId={reflectionId}
+										handleOnDelete={handleOnDelete}
+										handleModalOpen={handleModalOpen}
+									/>
+								</Grid>
 							</Grid>
+
 							<Grid container spacing={3}>
-								<Events events={events} />
+								<Grid item xs>
+									<Events events={events} />
+								</Grid>
 							</Grid>
 						</>
 					);
@@ -92,11 +117,14 @@ function EditPageContent(props) {
 			{isOpen && (
 				<EditModal
 					handleModalClose={handleModalClose}
-					// handleEditSubmit={handleEditSubmit}
-					// handleEditChange={handleEditChange}
+					handleEditSubmit={handleEditSubmit}
+					handleEditChange={handleEditChange}
 					isOpen={isOpen}
+					events={currentReflection.events}
+					year={currentReflection.year}
 				/>
 			)}
+
 			{createEditPageContent()}
 		</div>
 	);

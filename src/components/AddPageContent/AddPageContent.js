@@ -27,7 +27,7 @@ import {
 } from './AddPageContentStyledComponents';
 
 // Util
-import { pushToDatabase } from '../../util/firebaseUtil';
+import { insertNewReflection } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 function AddPageContent() {
@@ -44,7 +44,7 @@ function AddPageContent() {
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
-		pushToDatabase(reflection, 1);
+		insertNewReflection(reflection, 1);
 	}
 
 	return (

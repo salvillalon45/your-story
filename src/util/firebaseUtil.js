@@ -21,19 +21,30 @@ async function getReflectionsFromDB(userId) {
 	// return orderYears(snapshot.val());
 }
 
-function pushToDatabase(reflections, userId) {
+function insertNewReflection(reflections, userId) {
 	const reference = firebase.database().ref(`reflections/${userId}`);
 	const newReference = reference.push();
 
 	newReference.set(reflections);
 }
 
-async function deleteFromDatabase(userId, yearId) {
+async function deleteReflection(userId, reflectionId) {
 	const reference = firebase
 		.database()
-		.ref(`reflections/${userId}/${yearId}`);
+		.ref(`reflections/${userId}/${reflectionId}`);
 
 	await reference.remove();
+}
+
+function updateReflection(reflectionId, userId, updatedReflection) {
+	const reference = firebase
+		.database()
+		.ref(`reflections/${userId}/${reflectionId}`);
+
+	reference.update({
+		year: updatedReflection['year'],
+		events: updatedReflection['events']
+	});
 }
 
 // async function getUserResultsFromDB() {
@@ -42,4 +53,9 @@ async function deleteFromDatabase(userId, yearId) {
 // 	return orderUserResults(Object.values(snapshot.val()));
 // }
 
-export { pushToDatabase, getReflectionsFromDB, deleteFromDatabase };
+export {
+	updateReflection,
+	insertNewReflection,
+	getReflectionsFromDB,
+	deleteReflection
+};

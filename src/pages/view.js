@@ -25,9 +25,11 @@ function ViewPage() {
 
 	return (
 		<Layout id={id}>
-			<SEO title='Your Story' />
-			<p>VIEW PAGE</p>
-			{/* <ViewPageContent /> */}
+			<section>
+				<SEO title='Your Story' />
+
+				<ViewPageContent />
+			</section>
 		</Layout>
 	);
 }

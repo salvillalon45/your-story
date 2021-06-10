@@ -31,9 +31,12 @@ function EditActions(props) {
 		<Grid item xs>
 			<ActionsContainer>
 				<ButtonContainer>
-					<GreenButton onClick={() => props.handleModalOpen()}>
+					<GreenButton
+						onClick={() => props.handleModalOpen(reflectionId)}
+					>
 						Edit
 					</GreenButton>
+
 					<RedButton
 						onClick={() => props.handleOnDelete(reflectionId)}
 					>

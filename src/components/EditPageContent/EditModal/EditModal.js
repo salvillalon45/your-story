@@ -20,6 +20,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // Styling
 import {
 	GreenButton,
+	RedButton,
 	ButtonContainer
 } from '../../../styles/globalStyledComponents';
 import {
@@ -45,7 +46,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function EditModal(props) {
-	const { isOpen } = props;
+	const { year, events, isOpen } = props;
 	const classes = useStyles();
 
 	return (
@@ -59,15 +60,15 @@ function EditModal(props) {
 			<Paper>
 				<Grid container spacing={3}>
 					<Grid item xs>
-						{/* <form onSubmit={event => handleOnSubmit(event)}> */}
-						<form>
+						<form onSubmit={event => props.handleEditSubmit(event)}>
 							<FormContentContainer>
 								<FormLabel>Edit Year</FormLabel>
 
 								<FormTextField
 									name='year'
+									defaultValue={year}
 									onChange={event => {
-										handleEditChange(event);
+										props.handleEditChange(event);
 									}}
 								/>
 
@@ -75,18 +76,22 @@ function EditModal(props) {
 
 								<FormTextArea
 									name='events'
-									// onChange={event => {
-									// 	handleOnChange(event);
-									// }}
+									defaultValue={events}
+									onChange={event => {
+										props.handleEditChange(event);
+									}}
 								/>
 
 								<ButtonContainer>
-									{/* <GreenButton type='submit'>Submit</GreenButton> */}
-									<button
+									<GreenButton type='submit'>
+										Submit
+									</GreenButton>
+
+									<RedButton
 										onClick={() => props.handleModalClose()}
 									>
 										Close
-									</button>
+									</RedButton>
 								</ButtonContainer>
 							</FormContentContainer>
 						</form>
