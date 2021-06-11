@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> index.js
-// Desc: Home Page
+// Pages -> share.js
+// Desc: Share Page
 //
 // -----------------------------------------------
 
@@ -17,23 +17,21 @@ import { Link } from 'gatsby';
 // Components
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
-import IndexPageContent from '../components/IndexPageContent';
+import SharePageContent from '../components/SharePageContent';
 // -----------------------------------------------
 
-function IndexPage() {
-	const id = 'indexPageContainer';
+function SharePage() {
+	const id = 'sharePageContainer';
 
 	return (
 		<Layout id={id}>
 			<section>
 				<SEO title='Your Story' />
 
-				<Link to='/dashboard'>Dashboard</Link>
-
-				{/* <IndexPageContent /> */}
+				<SharePageContent />
 			</section>
 		</Layout>
 	);
 }
 
-export default IndexPage;
+export default SharePage;

@@ -68,11 +68,13 @@ function DashboardPageContent() {
 				</Grid>
 
 				<Grid item xs>
-					<DashboardButtonContainer>
-						<DashboardButton>
-							<Link to='/'>Share Your Story</Link>
-						</DashboardButton>
-					</DashboardButtonContainer>
+					{/* <DashboardButtonContainer> */}
+					{/* <DashboardButton> */}
+					<Paper>
+						<Link to='/share'>Share Your Story</Link>
+						{/* </DashboardButton> */}
+					</Paper>
+					{/* </DashboardButtonContainer> */}
 				</Grid>
 			</Grid>
 
