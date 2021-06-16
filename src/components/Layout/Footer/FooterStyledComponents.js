@@ -17,4 +17,14 @@ const FooterLink = styled.p`
 	}
 `;
 
-export { FooterLink };
+const FooterContainer = styled.footer`
+	flex-shrink: 0;
+	margin-top: -27px;
+`;
+
+const FooterAnchor = styled.a`
+	text-decoration: none;
+	color: var(--black);
+`;
+
+export { FooterLink, FooterContainer, FooterAnchor };

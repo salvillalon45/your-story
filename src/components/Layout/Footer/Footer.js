@@ -18,28 +18,32 @@ import AppBar from '@material-ui/core/AppBar';
 // Styling
 import { NavigationToolbar } from '../../../styles/globalStyledComponents';
 
-import { FooterLink } from './FooterStyledComponents';
+import {
+	FooterLink,
+	FooterContainer,
+	FooterAnchor
+} from './FooterStyledComponents';
 // -----------------------------------------------
 
 function Footer() {
 	return (
-		<footer className='footerContainer'>
+		<FooterContainer>
 			<AppBar position='static'>
 				<NavigationToolbar>
 					<FooterLink>
-						<a href='https://www.linkedin.com/in/salvadorvillalon/'>
+						<FooterAnchor href='https://www.linkedin.com/in/salvadorvillalon/'>
 							By Salvador Villalon
-						</a>
+						</FooterAnchor>
 					</FooterLink>
 
 					<FooterLink>
-						<a href='https://www.linkedin.com/in/salvadorvillalon/'>
-							By Salvador Villalon
-						</a>
+						<FooterAnchor href='https://github.com/salvillalon45/your-story'>
+							Code
+						</FooterAnchor>
 					</FooterLink>
 				</NavigationToolbar>
 			</AppBar>
-		</footer>
+		</FooterContainer>
 	);
 }
 

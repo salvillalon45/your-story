@@ -19,6 +19,7 @@ import EditModal from './EditModal';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 // React Context
 import ThemeContext from '../../context/ThemeContext';
@@ -85,7 +86,7 @@ function EditPageContent(props) {
 					const reflectionId = reflectionArray[0];
 
 					return (
-						<>
+						<Paper>
 							<Grid container spacing={3}>
 								<Grid item xs>
 									<EditYear year={year} />
@@ -105,7 +106,7 @@ function EditPageContent(props) {
 									<Events events={events} />
 								</Grid>
 							</Grid>
-						</>
+						</Paper>
 					);
 				}
 			);
