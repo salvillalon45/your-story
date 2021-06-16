@@ -6,6 +6,7 @@
 
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
 
 const GameButton = styled.button`
 	background: var(--babyBlue);
@@ -35,10 +36,21 @@ const GreenButton = styled(Button)``;
 
 const RedButton = styled(Button)``;
 
+const NavigationToolbar = styled(Toolbar)`
+	${'' /* background-color: var(--white); */}
+	align-content: center;
+	justify-content: space-between;
+
+	&& {
+		align-items: baseline;
+	}
+`;
+
 export {
 	DashboardButtonContainer,
 	DashboardButton,
 	GreenButton,
 	ButtonContainer,
-	RedButton
+	RedButton,
+	NavigationToolbar
 };

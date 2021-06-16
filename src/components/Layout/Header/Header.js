@@ -13,7 +13,13 @@ import React from 'react';
 
 // Material UI
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import { makeStyles } from '@material-ui/core/styles';
+
+// Components
+import Sidebar from '../Sidebar';
+
+// Styling
+import { HeaderLogo, HeaderToolbar } from './HeaderStyledComponents';
 // -----------------------------------------------
 
 function Header() {
@@ -21,11 +27,11 @@ function Header() {
 		<header>
 			<nav>
 				<AppBar position='static'>
-					<Toolbar>
-						<div className='appInfoContainer'>
-							<h1>Your Story</h1>
-						</div>
-					</Toolbar>
+					<HeaderToolbar>
+						<HeaderLogo>Your Story</HeaderLogo>
+
+						<Sidebar />
+					</HeaderToolbar>
 				</AppBar>
 			</nav>
 		</header>

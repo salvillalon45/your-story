@@ -6,22 +6,25 @@
 
 // Fonts
 // -----------------------------------------------
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rufina:wght@700&family=Source+Sans+Pro&display=swap');
 
 // Color Variables
 // -----------------------------------------------
 :root {
-	--darkBlue: #0c2d48;
-	--babyBlue: #b1d4e0;
+	--turquoise: #80ccbc;
+	--black: #141720;
 	--white: #ffffff;
-	--black: black;
+	--orange: #f79e77;
+
+	--rufina: 'Rufina', serif;
+	--source: 'Source Sans Pro', sans-serif;
 }
 
 // Font Variables
 // -----------------------------------------------
-$lato: 'Lato', sans-serif;
+$rufina: 'Rufina', serif;
 
-$sec: 'Secular One', sans-serif;
+$source: 'Source Sans Pro', sans-serif;
 
 // Pages
 // -----------------------------------------------
@@ -39,7 +42,7 @@ body,
 	padding: 0;
 	box-sizing: border-box;
 	height: 100%;
-	font-family: $lato;
+	// font-family: $lato;
 }
 
 #gatsby-focus-wrapper,
