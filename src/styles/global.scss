@@ -15,6 +15,7 @@
 	--black: #141720;
 	--white: #ffffff;
 	--orange: #f79e77;
+	--grey: #1c1f2a;
 
 	--rufina: 'Rufina', serif;
 	--source: 'Source Sans Pro', sans-serif;
@@ -42,7 +43,7 @@ body,
 	padding: 0;
 	box-sizing: border-box;
 	height: 100%;
-	// font-family: $lato;
+	font-family: var(--source);
 	background-color: var(--black);
 }
 

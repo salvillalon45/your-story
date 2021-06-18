@@ -24,7 +24,7 @@ const FooterContainer = styled.footer`
 
 const FooterAnchor = styled.a`
 	text-decoration: none;
-	color: var(--black);
+	color: var(--turquoise);
 `;
 
 export { FooterLink, FooterContainer, FooterAnchor };

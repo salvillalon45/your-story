@@ -45,30 +45,28 @@ function DashboardPageContent() {
 				</Grid>
 
 				<Grid item xs={6}>
-					<DashboardPaper>
-						<Link
-							to='/edit'
-							state={{
-								reflections: contextValue.reflections
-							}}
-						>
-							Edit Your Story
-						</Link>
-					</DashboardPaper>
+					<Link
+						to='/edit'
+						state={{
+							reflections: contextValue.reflections
+						}}
+					>
+						<DashboardPaper>Edit Your Story</DashboardPaper>
+					</Link>
 				</Grid>
 			</Grid>
 
 			<Grid container spacing={3}>
 				<Grid item xs={6}>
-					<DashboardPaper>
-						<Link to='/view'>View You Story</Link>
-					</DashboardPaper>
+					<Link to='/view'>
+						<DashboardPaper>View You Story</DashboardPaper>
+					</Link>
 				</Grid>
 
 				<Grid item xs={6}>
-					<DashboardPaper>
-						<Link to='/share'>Share Your Story</Link>
-					</DashboardPaper>
+					<Link to='/share'>
+						<DashboardPaper>Share Your Story</DashboardPaper>
+					</Link>
 				</Grid>
 			</Grid>
 		</DashboardContentContainer>

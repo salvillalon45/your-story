@@ -37,7 +37,9 @@ const GreenButton = styled(Button)``;
 const RedButton = styled(Button)``;
 
 const NavigationToolbar = styled(Toolbar)`
-	background-color: var(--white);
+	${'' /* background-color: var(--white); */}
+	background-color: ${props =>
+		props.footer ? 'var(--grey)' : 'var(--white)'};
 	align-content: center;
 	justify-content: space-between;
 	padding-top: 19px;

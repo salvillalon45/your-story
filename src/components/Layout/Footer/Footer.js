@@ -13,7 +13,10 @@ import React from 'react';
 
 // Material UI
 import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
+import {
+	makeStyles,
+	unstable_createMuiStrictModeTheme
+} from '@material-ui/core/styles';
 
 // Styling
 import { NavigationToolbar } from '../../../styles/globalStyledComponents';
@@ -25,11 +28,19 @@ import {
 } from './FooterStyledComponents';
 // -----------------------------------------------
 
+const useStyles = makeStyles(theme => ({
+	appBar: {
+		'box-shadow': 'unset'
+	}
+}));
+
 function Footer() {
+	const classes = useStyles();
+
 	return (
 		<FooterContainer>
-			<AppBar position='static'>
-				<NavigationToolbar>
+			<AppBar position='static' className={classes.appBar}>
+				<NavigationToolbar footer>
 					<FooterLink>
 						<FooterAnchor href='https://www.linkedin.com/in/salvadorvillalon/'>
 							By Salvador Villalon

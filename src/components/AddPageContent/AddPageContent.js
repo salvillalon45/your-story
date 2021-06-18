@@ -13,6 +13,15 @@ import * as React from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import {
+	fade,
+	ThemeProvider,
+	withStyles,
+	makeStyles,
+	createMuiTheme
+} from '@material-ui/core/styles';
 
 // Styling
 import {
@@ -20,15 +29,35 @@ import {
 	ButtonContainer
 } from '../../styles/globalStyledComponents';
 import {
-	FormTextField,
+	// FormTextField,
 	FormTextArea,
 	FormContentContainer,
-	FormLabel
+	FormLabel,
+	AddPageContentContainer,
+	AddForm
 } from './AddPageContentStyledComponents';
 
 // Util
 import { insertNewReflection } from '../../util/firebaseUtil';
 // -----------------------------------------------
+
+const FormTextField = withStyles({
+	root: {
+		'& .MuiInputBase-root': {
+			color: 'white',
+			fontFamily: 'var(--source)'
+		},
+		'& label.Mui-focused': {
+			color: 'white'
+		},
+		'& .MuiInput-underline:after': {
+			borderBottomColor: 'white'
+		},
+		'& .MuiInput-underline:before': {
+			borderBottomColor: 'white'
+		}
+	}
+})(TextField);
 
 function AddPageContent() {
 	const [reflection, setReflection] = React.useState({
@@ -48,12 +77,25 @@ function AddPageContent() {
 	}
 
 	return (
-		<>
-			<Grid container spacing={3}>
+		<AddPageContentContainer>
+			<Grid container>
 				<Grid item xs>
-					<form onSubmit={event => handleOnSubmit(event)}>
+					<Paper>
+						<p>Here you can add to your story!</p>
+						<p>
+							Add the year and the events that happened in that
+							year.
+						</p>
+						<p>Write as much as you like</p>
+					</Paper>
+				</Grid>
+			</Grid>
+
+			<Grid container>
+				<Grid item xs>
+					<AddForm onSubmit={event => handleOnSubmit(event)}>
 						<FormContentContainer>
-							<FormLabel>Year</FormLabel>
+							<FormLabel year>Year</FormLabel>
 
 							<FormTextField
 								name='year'
@@ -69,16 +111,17 @@ function AddPageContent() {
 								onChange={event => {
 									handleOnChange(event);
 								}}
+								rowsMin={4}
 							/>
 
 							<ButtonContainer>
 								<GreenButton type='submit'>Submit</GreenButton>
 							</ButtonContainer>
 						</FormContentContainer>
-					</form>
+					</AddForm>
 				</Grid>
 			</Grid>
-		</>
+		</AddPageContentContainer>
 	);
 }
 
