@@ -11,12 +11,6 @@
 // React
 import * as React from 'react';
 
-// Components
-import EditYear from './EditYear';
-import Events from './Events';
-import EditActions from './EditActions';
-import EditModal from './EditModal';
-
 // Material UI
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -26,10 +20,18 @@ import ThemeContext from '../../context/ThemeContext';
 
 // Util
 import { deleteReflection, updateReflection } from '../../util/firebaseUtil';
-import { pp } from '../../util/mainUtil';
+
+// Styling
+import { Line } from '../../styles/globalStyledComponents';
+
+// Components
+import EditYear from './EditYear';
+import Events from './Events';
+import EditActions from './EditActions';
+import EditModal from './EditModal';
 // -----------------------------------------------
 
-function EditPageContent(props) {
+function EditPageContent() {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [currentReflection, setCurrentReflection] = React.useState({
 		year: '',
@@ -86,27 +88,31 @@ function EditPageContent(props) {
 					const reflectionId = reflectionArray[0];
 
 					return (
-						<Paper>
-							<Grid container spacing={3}>
-								<Grid item xs>
-									<EditYear year={year} />
+						<>
+							<Paper>
+								<Grid container spacing={3}>
+									<Grid item xs>
+										<EditYear year={year} />
+									</Grid>
+
+									<Grid item xs>
+										<EditActions
+											reflectionId={reflectionId}
+											handleOnDelete={handleOnDelete}
+											handleModalOpen={handleModalOpen}
+										/>
+									</Grid>
 								</Grid>
 
-								<Grid item xs>
-									<EditActions
-										reflectionId={reflectionId}
-										handleOnDelete={handleOnDelete}
-										handleModalOpen={handleModalOpen}
-									/>
+								<Grid container spacing={3}>
+									<Grid item xs>
+										<Events events={events} />
+									</Grid>
 								</Grid>
-							</Grid>
+							</Paper>
 
-							<Grid container spacing={3}>
-								<Grid item xs>
-									<Events events={events} />
-								</Grid>
-							</Grid>
-						</Paper>
+							<Line />
+						</>
 					);
 				}
 			);

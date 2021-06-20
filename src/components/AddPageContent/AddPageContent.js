@@ -13,7 +13,6 @@ import * as React from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import {
 	fade,
@@ -26,7 +25,9 @@ import {
 // Styling
 import {
 	GreenButton,
-	ButtonContainer
+	ButtonContainer,
+	IntroPaper,
+	IntroTitle
 } from '../../styles/globalStyledComponents';
 import {
 	// FormTextField,
@@ -80,14 +81,16 @@ function AddPageContent() {
 		<AddPageContentContainer>
 			<Grid container>
 				<Grid item xs>
-					<Paper>
-						<p>Here you can add to your story!</p>
+					<IntroPaper>
+						<IntroTitle>Add To Your Story</IntroTitle>
 						<p>
 							Add the year and the events that happened in that
 							year.
 						</p>
-						<p>Write as much as you like</p>
-					</Paper>
+						<p className='lastSentence'>
+							Write as much as you like!
+						</p>
+					</IntroPaper>
 				</Grid>
 			</Grid>
 
