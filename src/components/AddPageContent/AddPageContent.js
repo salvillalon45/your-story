@@ -26,11 +26,12 @@ import {
 import {
 	GreenButton,
 	ButtonContainer,
-	IntroPaper,
+	IntroContainer,
 	IntroTitle,
 	FormTextArea,
 	FormContentContainer,
-	FormLabel
+	FormLabel,
+	Line
 } from '../../styles/globalStyledComponents';
 import {
 	AddPageContentContainer,
@@ -80,7 +81,7 @@ function AddPageContent() {
 		<AddPageContentContainer>
 			<Grid container>
 				<Grid item xs>
-					<IntroPaper>
+					<IntroContainer>
 						<IntroTitle>Add To Your Story</IntroTitle>
 						<p>
 							Add a reflection by adding a year and the events
@@ -89,9 +90,11 @@ function AddPageContent() {
 						<p className='lastSentence'>
 							Write as much as you like!
 						</p>
-					</IntroPaper>
+					</IntroContainer>
 				</Grid>
 			</Grid>
+
+			<Line intro />
 
 			<Grid container>
 				<Grid item xs>

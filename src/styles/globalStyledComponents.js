@@ -46,19 +46,10 @@ const NavigationToolbar = styled(Toolbar)`
 	}
 `;
 
-const IntroPaper = styled(Paper)`
-	width: 33%;
-	margin: 0 auto;
+const IntroContainer = styled.div`
 	margin-top: 40px;
 	text-align: center;
-
-	&& {
-		background-color: transparent;
-		color: var(--white);
-		border-bottom-color: var(--white);
-		border-style: dotted;
-		padding: 20px;
-	}
+	color: var(--white);
 `;
 
 const IntroTitle = styled.h2`
@@ -67,11 +58,16 @@ const IntroTitle = styled.h2`
 
 const Line = styled(Divider)`
 	&& {
-		background-color: #f79e77;
+		background-color: var(--orange);
 		margin-top: 31px;
 		margin-bottom: 39px;
 
 		height: 5px;
+	}
+
+	width: ${props => (props.intro ? '50%' : 'revert')};
+	margin: ${props => (props.intro ? '0 auto' : 'revert')}
+    margin-top: ${props => (props.intro ? '18px' : 'revert')}
 	}
 `;
 
@@ -100,7 +96,7 @@ export {
 	ButtonContainer,
 	RedButton,
 	NavigationToolbar,
-	IntroPaper,
+	IntroContainer,
 	IntroTitle,
 	Line,
 	FormTextArea,

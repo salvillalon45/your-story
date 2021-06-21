@@ -25,7 +25,7 @@ import { deleteReflection, updateReflection } from '../../util/firebaseUtil';
 // Styling
 import {
 	Line,
-	IntroPaper,
+	IntroContainer,
 	IntroTitle
 } from '../../styles/globalStyledComponents';
 import {
@@ -148,18 +148,15 @@ function EditPageContent() {
 
 			<Grid container>
 				<Grid item xs>
-					<IntroPaper>
+					<IntroContainer>
 						<IntroTitle>Edit Your Story</IntroTitle>
 						<p>Edit or delete a reflection!</p>
-					</IntroPaper>
+					</IntroContainer>
 				</Grid>
 			</Grid>
 
-			<Line />
+			<Line intro={true} />
 
-			{/* width: 50%;
-    margin: 0 auto;
-			margin-top: 18px; */}
 			{createEditPageContent()}
 		</EditPageContentContainer>
 	);
