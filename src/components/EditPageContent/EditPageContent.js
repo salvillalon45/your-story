@@ -14,6 +14,7 @@ import * as React from 'react';
 // Material UI
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
 
 // React Context
 import ThemeContext from '../../context/ThemeContext';
@@ -22,7 +23,15 @@ import ThemeContext from '../../context/ThemeContext';
 import { deleteReflection, updateReflection } from '../../util/firebaseUtil';
 
 // Styling
-import { Line } from '../../styles/globalStyledComponents';
+import {
+	Line,
+	IntroPaper,
+	IntroTitle
+} from '../../styles/globalStyledComponents';
+import {
+	EditPageContentContainer,
+	EditReflectionContainer
+} from './EditPageContentStyledComponents';
 
 // Components
 import EditYear from './EditYear';
@@ -30,6 +39,12 @@ import Events from './Events';
 import EditActions from './EditActions';
 import EditModal from './EditModal';
 // -----------------------------------------------
+
+const useStyles = makeStyles(theme => ({
+	modal: {
+		alignItems: 'flex-end'
+	}
+}));
 
 function EditPageContent() {
 	const [isOpen, setIsOpen] = React.useState(false);
@@ -39,6 +54,7 @@ function EditPageContent() {
 		reflectionId: ''
 	});
 	const contextValue = React.useContext(ThemeContext);
+	const classes = useStyles();
 
 	function handleModalOpen(reflectionId) {
 		setIsOpen(!isOpen);
@@ -88,31 +104,29 @@ function EditPageContent() {
 					const reflectionId = reflectionArray[0];
 
 					return (
-						<>
-							<Paper>
-								<Grid container spacing={3}>
-									<Grid item xs>
-										<EditYear year={year} />
-									</Grid>
+						<EditReflectionContainer>
+							{/* <Paper> */}
+							<Grid
+								container
+								spacing={3}
+								className={classes.modal}
+							>
+								<EditYear year={year} />
 
-									<Grid item xs>
-										<EditActions
-											reflectionId={reflectionId}
-											handleOnDelete={handleOnDelete}
-											handleModalOpen={handleModalOpen}
-										/>
-									</Grid>
-								</Grid>
+								<EditActions
+									reflectionId={reflectionId}
+									handleOnDelete={handleOnDelete}
+									handleModalOpen={handleModalOpen}
+								/>
+							</Grid>
 
-								<Grid container spacing={3}>
-									<Grid item xs>
-										<Events events={events} />
-									</Grid>
-								</Grid>
-							</Paper>
+							<Grid container spacing={3}>
+								<Events events={events} />
+							</Grid>
+							{/* </Paper> */}
 
 							<Line />
-						</>
+						</EditReflectionContainer>
 					);
 				}
 			);
@@ -120,7 +134,7 @@ function EditPageContent() {
 	}
 
 	return (
-		<div className='editPageContentContainer'>
+		<EditPageContentContainer>
 			{isOpen && (
 				<EditModal
 					handleModalClose={handleModalClose}
@@ -132,8 +146,22 @@ function EditPageContent() {
 				/>
 			)}
 
+			<Grid container>
+				<Grid item xs>
+					<IntroPaper>
+						<IntroTitle>Edit Your Story</IntroTitle>
+						<p>Edit or delete a reflection!</p>
+					</IntroPaper>
+				</Grid>
+			</Grid>
+
+			<Line />
+
+			{/* width: 50%;
+    margin: 0 auto;
+			margin-top: 18px; */}
 			{createEditPageContent()}
-		</div>
+		</EditPageContentContainer>
 	);
 }
 

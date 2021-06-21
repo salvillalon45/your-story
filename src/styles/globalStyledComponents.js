@@ -9,28 +9,7 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
-
-const GameButton = styled.button`
-	background: var(--babyBlue);
-	border: none;
-	padding: 11px;
-	border-radius: 10px;
-	font-weight: bold;
-	cursor: pointer;
-	color: var(--darkBlue);
-`;
-
-const DashboardButtonContainer = styled.div`
-	background-color: orange;
-`;
-
-const DashboardButton = styled(Button)`
-	${'' /* && { */}
-	${'' /* color: white;
-	background-color: blue;
-	height: 80px; */}
-	${'' /* } */}
-`;
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const ButtonContainer = styled.div`
 	text-align: center;
@@ -87,21 +66,44 @@ const IntroTitle = styled.h2`
 `;
 
 const Line = styled(Divider)`
-	background-color: #f79e77;
-	margin-top: 31px;
-	margin-bottom: 39px;
+	&& {
+		background-color: #f79e77;
+		margin-top: 31px;
+		margin-bottom: 39px;
 
-	height: 5px;
+		height: 5px;
+	}
 `;
 
+const FormContentContainer = styled.div``;
+
+const FormLabel = styled.p`
+	margin-top: 40px;
+	margin-bottom: ${props => (props.year ? '15px' : '')};
+`;
+
+const FormTextArea = styled(TextareaAutosize)`
+	width: 400px;
+	background-color: transparent;
+	color: white;
+`;
+
+// const FormTextField = styled(TextField)`
+// 	&& {
+// 		color: 'green';
+// 		border-bottom-color: 'green';
+// 	}
+// `;
+
 export {
-	DashboardButtonContainer,
-	DashboardButton,
 	GreenButton,
 	ButtonContainer,
 	RedButton,
 	NavigationToolbar,
 	IntroPaper,
 	IntroTitle,
-	Line
+	Line,
+	FormTextArea,
+	FormContentContainer,
+	FormLabel
 };

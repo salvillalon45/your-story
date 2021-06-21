@@ -27,13 +27,12 @@ import {
 	GreenButton,
 	ButtonContainer,
 	IntroPaper,
-	IntroTitle
-} from '../../styles/globalStyledComponents';
-import {
-	// FormTextField,
+	IntroTitle,
 	FormTextArea,
 	FormContentContainer,
-	FormLabel,
+	FormLabel
+} from '../../styles/globalStyledComponents';
+import {
 	AddPageContentContainer,
 	AddForm
 } from './AddPageContentStyledComponents';
@@ -84,8 +83,8 @@ function AddPageContent() {
 					<IntroPaper>
 						<IntroTitle>Add To Your Story</IntroTitle>
 						<p>
-							Add the year and the events that happened in that
-							year.
+							Add a reflection by adding a year and the events
+							that happened
 						</p>
 						<p className='lastSentence'>
 							Write as much as you like!
