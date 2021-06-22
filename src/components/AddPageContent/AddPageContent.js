@@ -31,7 +31,7 @@ import {
 	FormTextArea,
 	FormContentContainer,
 	FormLabel,
-	Line
+	IntroLine
 } from '../../styles/globalStyledComponents';
 import {
 	AddPageContentContainer,
@@ -94,7 +94,7 @@ function AddPageContent() {
 				</Grid>
 			</Grid>
 
-			<Line intro />
+			<IntroLine />
 
 			<Grid container>
 				<Grid item xs>

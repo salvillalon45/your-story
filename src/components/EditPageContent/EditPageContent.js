@@ -24,9 +24,10 @@ import { deleteReflection, updateReflection } from '../../util/firebaseUtil';
 
 // Styling
 import {
-	Line,
 	IntroContainer,
-	IntroTitle
+	IntroTitle,
+	IntroLine,
+	Line
 } from '../../styles/globalStyledComponents';
 import {
 	EditPageContentContainer,
@@ -97,15 +98,16 @@ function EditPageContent() {
 		if (!contextValue.reflections) {
 			return null;
 		} else {
+			const totalReflections = Object.entries(contextValue.reflections)
+				.length;
 			return Object.entries(contextValue.reflections).map(
-				reflectionArray => {
+				(reflectionArray, index) => {
 					const events = reflectionArray[1].events;
 					const year = reflectionArray[1].year;
 					const reflectionId = reflectionArray[0];
 
 					return (
 						<EditReflectionContainer>
-							{/* <Paper> */}
 							<Grid
 								container
 								spacing={3}
@@ -123,9 +125,8 @@ function EditPageContent() {
 							<Grid container spacing={3}>
 								<Events events={events} />
 							</Grid>
-							{/* </Paper> */}
 
-							<Line />
+							{index + 1 === totalReflections ? null : <Line />}
 						</EditReflectionContainer>
 					);
 				}
@@ -151,11 +152,12 @@ function EditPageContent() {
 					<IntroContainer>
 						<IntroTitle>Edit Your Story</IntroTitle>
 						<p>Edit or delete a reflection!</p>
+						<p>Here look at all the reflections you submit</p>
 					</IntroContainer>
 				</Grid>
 			</Grid>
 
-			<Line intro={true} />
+			<IntroLine className={classes.editLine} edit={true} />
 
 			{createEditPageContent()}
 		</EditPageContentContainer>

@@ -15,17 +15,8 @@ import * as React from 'react';
 // Components
 import StoryTimeline from './StoryTimeline';
 
-// Material UI
-import Grid from '@material-ui/core/Grid';
-
-// React Context
-import ThemeContext from '../../context/ThemeContext';
-
 // Styling
 import { ViewPageContentContainer } from './ViewPageContentStyledComponents';
-
-// Util
-import { pp } from '../../util/mainUtil';
 // -----------------------------------------------
 
 function ViewPageContent() {

@@ -15,7 +15,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 // Material UI
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -42,8 +42,34 @@ const useStyles = makeStyles({
 	},
 	fullList: {
 		width: 'auto'
+	},
+	anchorTag: {
+		textDecoration: 'none'
+	},
+	listItemText: {
+		color: 'var(--turquoise)'
+	},
+	listItemIcon: {
+		color: 'var(--turquoise)'
 	}
 });
+
+const SidebarDrawer = withStyles({
+	root: {
+		'& .MuiPaper-root': {
+			backgroundColor: 'var(--grey)'
+		}
+		// '& label.Mui-focused': {
+		// 	color: 'white'
+		// },
+		// '& .MuiInput-underline:after': {
+		// 	borderBottomColor: 'white'
+		// },
+		// '& .MuiInput-underline:before': {
+		// 	borderBottomColor: 'white'
+		// }
+	}
+})(Drawer);
 
 function Sidebar() {
 	const classes = useStyles();
@@ -84,10 +110,15 @@ function Sidebar() {
 		].map((navArray, index) => {
 			return (
 				<ListItem button key={navArray[0]}>
-					<ListItemIcon>{createIcon(index)}</ListItemIcon>
+					<ListItemIcon className={classes.listItemIcon}>
+						{createIcon(index)}
+					</ListItemIcon>
 
-					<Link to={navArray[1]}>
-						<ListItemText primary={navArray[0]} />
+					<Link className={classes.anchorTag} to={navArray[1]}>
+						<ListItemText
+							className={classes.listItemText}
+							primary={navArray[0]}
+						/>
 					</Link>
 				</ListItem>
 			);
@@ -114,13 +145,13 @@ function Sidebar() {
 					Menu
 				</MenuButton>
 
-				<Drawer
+				<SidebarDrawer
 					anchor='right'
 					open={showMenu}
 					onClose={event => toggleDrawer(event)}
 				>
 					{createSidebarMenu()}
-				</Drawer>
+				</SidebarDrawer>
 			</SidebarContainer>
 		</SidebarContentContainer>
 	);

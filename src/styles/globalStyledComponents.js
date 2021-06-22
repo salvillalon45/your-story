@@ -61,13 +61,20 @@ const Line = styled(Divider)`
 		background-color: var(--orange);
 		margin-top: 31px;
 		margin-bottom: 39px;
-
 		height: 5px;
 	}
+`;
 
-	width: ${props => (props.intro ? '50%' : 'revert')};
-	margin: ${props => (props.intro ? '0 auto' : 'revert')}
-    margin-top: ${props => (props.intro ? '18px' : 'revert')}
+const IntroLine = styled(Divider)`
+	&& {
+		width: 50%;
+		margin: 0 auto;
+		margin-top: 18px;
+		height: 5px;
+		background-color: var(--orange);
+
+		margin-top: ${props => (props.edit ? '-9px' : '')};
+		margin-bottom: ${props => (props.edit ? '20px' : '')};
 	}
 `;
 
@@ -101,5 +108,6 @@ export {
 	Line,
 	FormTextArea,
 	FormContentContainer,
-	FormLabel
+	FormLabel,
+	IntroLine
 };

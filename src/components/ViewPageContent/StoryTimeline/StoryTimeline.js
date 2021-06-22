@@ -11,6 +11,9 @@
 // React
 import * as React from 'react';
 
+// React Context
+import ThemeContext from '../../../context/ThemeContext';
+
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Timeline from '@material-ui/lab/Timeline';
@@ -24,8 +27,13 @@ import GradeIcon from '@material-ui/icons/Grade';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-// React Context
-import ThemeContext from '../../../context/ThemeContext';
+// Styling
+import {
+	TimelineYear,
+	TimelineContentTitle,
+	TimelineContentDescription,
+	TimelineContentPaper
+} from '../ViewPageContentStyledComponents';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -34,6 +42,12 @@ const useStyles = makeStyles(theme => ({
 	},
 	secondaryTail: {
 		backgroundColor: theme.palette.secondary.main
+	},
+	timelineConnector: { backgroundColor: 'var(--turquoise)' },
+	icon: {
+		color: 'var(--turquoise)',
+		borderColor: 'var(--turquoise)',
+		backgroundColor: 'transparent'
 	}
 }));
 
@@ -52,38 +66,35 @@ function StoryTimeline() {
 					const reflectionId = reflectionArray[0];
 
 					return (
-						<>
-							<TimelineItem>
-								<TimelineOppositeContent>
-									<Typography
-										variant='body2'
-										color='textSecondary'
-									>
-										{year}
-									</Typography>
-								</TimelineOppositeContent>
+						<TimelineItem>
+							<TimelineOppositeContent>
+								<TimelineYear>{year}</TimelineYear>
+							</TimelineOppositeContent>
 
-								<TimelineSeparator>
-									<TimelineDot>
-										<GradeIcon />
-									</TimelineDot>
-									<TimelineConnector />
-								</TimelineSeparator>
+							<TimelineSeparator>
+								<TimelineDot className={classes.icon}>
+									<GradeIcon />
+								</TimelineDot>
+								<TimelineConnector
+									className={classes.timelineConnector}
+								/>
+							</TimelineSeparator>
 
-								<TimelineContent>
-									<Paper
-										elevation={3}
-										className={classes.paper}
-									>
-										<Typography variant='h6' component=''>
-											Events in {year}
-										</Typography>
+							<TimelineContent>
+								<TimelineContentPaper
+									elevation={3}
+									className={classes.paper}
+								>
+									<TimelineContentTitle>
+										Events in {year}
+									</TimelineContentTitle>
 
-										<Typography>{events}</Typography>
-									</Paper>
-								</TimelineContent>
-							</TimelineItem>
-						</>
+									<TimelineContentDescription>
+										{events}
+									</TimelineContentDescription>
+								</TimelineContentPaper>
+							</TimelineContent>
+						</TimelineItem>
 					);
 				}
 			);

@@ -13,10 +13,7 @@ import React from 'react';
 
 // Material UI
 import AppBar from '@material-ui/core/AppBar';
-import {
-	makeStyles,
-	unstable_createMuiStrictModeTheme
-} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Styling
 import { NavigationToolbar } from '../../../styles/globalStyledComponents';
