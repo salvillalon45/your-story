@@ -108,11 +108,7 @@ function EditPageContent() {
 
 					return (
 						<EditReflectionContainer>
-							<Grid
-								container
-								spacing={3}
-								className={classes.modal}
-							>
+							<Grid container className={classes.modal}>
 								<EditYear year={year} />
 
 								<EditActions
@@ -122,7 +118,7 @@ function EditPageContent() {
 								/>
 							</Grid>
 
-							<Grid container spacing={3}>
+							<Grid container>
 								<Events events={events} />
 							</Grid>
 
@@ -157,7 +153,7 @@ function EditPageContent() {
 				</Grid>
 			</Grid>
 
-			<IntroLine className={classes.editLine} edit={true} />
+			<IntroLine edit={true} />
 
 			{createEditPageContent()}
 		</EditPageContentContainer>

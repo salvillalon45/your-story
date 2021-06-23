@@ -12,17 +12,43 @@
 // React
 import * as React from 'react';
 
+// Material UI
+import Grid from '@material-ui/core/Grid';
+
 // Components
 import StoryTimeline from './StoryTimeline';
 
 // Styling
 import { ViewPageContentContainer } from './ViewPageContentStyledComponents';
+import {
+	IntroContainer,
+	IntroTitle,
+	IntroLine
+} from '../../styles/globalStyledComponents';
 // -----------------------------------------------
 
 function ViewPageContent() {
 	return (
 		<ViewPageContentContainer>
-			<StoryTimeline></StoryTimeline>
+			<Grid container>
+				<Grid item xs>
+					<IntroContainer>
+						<IntroTitle>View Your Story</IntroTitle>
+						<p>Take a look at your past events in your life!</p>
+						<p>
+							Use this as a way to realize all the things you have
+							done
+						</p>
+						<p>
+							<b>Be Proud</b> of how far you have come 😊
+						</p>
+					</IntroContainer>
+				</Grid>
+			</Grid>
+
+			<IntroLine edit={true} />
+
+			<StoryTimeline />
 		</ViewPageContentContainer>
 	);
 }

@@ -18,55 +18,106 @@ import ThemeContext from '../../context/ThemeContext';
 import { Link } from 'gatsby';
 
 // Material UI
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 // Styling
 import {
-	DashboardButtonContainer,
-	DashboardButton
+	IntroContainer,
+	IntroTitle,
+	IntroLine
 } from '../../styles/globalStyledComponents';
 
 import {
 	DashboardContentContainer,
-	DashboardPaper
+	DashboardPaper,
+	DashboardLink
 } from './DashboardStyledComponents';
 // -----------------------------------------------
+
+const useStyles = makeStyles(theme => ({
+	leftBoxes: {
+		marginRight: '20px'
+	}
+}));
 
 function DashboardPageContent() {
 	const contextValue = React.useContext(ThemeContext);
 
 	return (
 		<DashboardContentContainer>
-			<Grid container spacing={3}>
+			<Grid container>
+				<Grid item xs>
+					<IntroContainer>
+						<IntroTitle>Welcome To Your Story</IntroTitle>
+						<p>
+							Use this platform to reflect on all the things you
+							have done in your life!
+						</p>
+						<p>
+							The app allows you to view all your events in a
+							timeline to see how far you have come.
+						</p>
+						<p>
+							Click on About to learn more about why this was
+							created!
+						</p>
+					</IntroContainer>
+
+					{/* <Link to='/add'>
+						<DashboardPaper>About</DashboardPaper>
+					</Link> */}
+				</Grid>
+			</Grid>
+
+			<IntroLine edit={true} />
+
+			<Grid container>
+				<Grid item xs>
+					<DashboardLink to='/about'>
+						<DashboardPaper about={true}>About</DashboardPaper>
+					</DashboardLink>
+				</Grid>
+			</Grid>
+
+			<Grid container>
 				<Grid item xs={6}>
-					<Link to='/add'>
-						<DashboardPaper>Add To Story</DashboardPaper>
-					</Link>
+					<DashboardLink to='/add'>
+						<DashboardPaper leftBox={true}>
+							Add To Story
+						</DashboardPaper>
+					</DashboardLink>
 				</Grid>
 
 				<Grid item xs={6}>
-					<Link
+					<DashboardLink
 						to='/edit'
 						state={{
 							reflections: contextValue.reflections
 						}}
 					>
-						<DashboardPaper>Edit Your Story</DashboardPaper>
-					</Link>
+						<DashboardPaper rightBox={true}>
+							Edit Your Story
+						</DashboardPaper>
+					</DashboardLink>
 				</Grid>
 			</Grid>
 
-			<Grid container spacing={3}>
+			<Grid container>
 				<Grid item xs={6}>
-					<Link to='/view'>
-						<DashboardPaper>View You Story</DashboardPaper>
-					</Link>
+					<DashboardLink to='/view'>
+						<DashboardPaper leftBox={true}>
+							View You Story
+						</DashboardPaper>
+					</DashboardLink>
 				</Grid>
 
 				<Grid item xs={6}>
-					<Link to='/share'>
-						<DashboardPaper>Share Your Story</DashboardPaper>
-					</Link>
+					<DashboardLink to='/share'>
+						<DashboardPaper rightBox={true}>
+							Share Your Story
+						</DashboardPaper>
+					</DashboardLink>
 				</Grid>
 			</Grid>
 		</DashboardContentContainer>

@@ -102,7 +102,7 @@ function Sidebar() {
 
 	function createSidebarMenuItems() {
 		return [
-			['Home', '/'],
+			['Home', '/dashboard'],
 			['About', '/about'],
 			['Add To Your Story', '/add'],
 			['Edit Your Story', '/edit'],
