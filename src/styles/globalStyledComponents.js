@@ -88,7 +88,12 @@ const FormLabel = styled.p`
 const FormTextArea = styled(TextareaAutosize)`
 	width: 400px;
 	background-color: transparent;
-	color: white;
+	overflow: scroll !important;
+
+	&& {
+		height: ${props => (props.modal ? 'auto' : '')};
+		color: ${props => (props.modal ? 'var(--black)' : 'var(--white)')};
+	}
 `;
 
 // const FormTextField = styled(TextField)`

@@ -32,17 +32,17 @@ import {
 const FormTextField = withStyles({
 	root: {
 		'& .MuiInputBase-root': {
-			color: 'white',
+			color: 'var(--black)',
 			fontFamily: 'var(--source)'
 		},
 		'& label.Mui-focused': {
-			color: 'white'
+			color: 'var(--black)'
 		},
 		'& .MuiInput-underline:after': {
-			borderBottomColor: 'white'
+			borderBottomColor: 'var(--black)'
 		},
 		'& .MuiInput-underline:before': {
-			borderBottomColor: 'white'
+			borderBottomColor: 'var(--black)'
 		}
 	}
 })(TextField);
@@ -68,12 +68,11 @@ function EditModal(props) {
 	return (
 		<Modal
 			open={isOpen}
-			// onClose={handleClose}
 			className={classes.modal}
 			aria-labelledby='simple-modal-title'
 			aria-describedby='simple-modal-description'
 		>
-			<Paper>
+			<Paper className={classes.paper}>
 				<Grid container spacing={3}>
 					<Grid item xs>
 						<form onSubmit={event => props.handleEditSubmit(event)}>
@@ -93,6 +92,8 @@ function EditModal(props) {
 								<FormTextArea
 									name='events'
 									defaultValue={events}
+									modal={true}
+									rowsMin={4}
 									onChange={event => {
 										props.handleEditChange(event);
 									}}
