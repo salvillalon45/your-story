@@ -1,6 +1,6 @@
 // -----------------------------------------------
 //
-// EditPageContent -> EditModal.js
+// EditModal -> EditModal.js
 // Desc: Allows user to edit the field
 //
 // -----------------------------------------------
@@ -58,6 +58,9 @@ const useStyles = makeStyles(theme => ({
 		border: '2px solid #000',
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3)
+	},
+	separateButtons: {
+		'margin-left': '15px'
 	}
 }));
 
@@ -93,6 +96,7 @@ function EditModal(props) {
 									name='events'
 									defaultValue={events}
 									modal={true}
+									style={{ height: 'unset' }}
 									rowsMin={4}
 									onChange={event => {
 										props.handleEditChange(event);
@@ -105,6 +109,7 @@ function EditModal(props) {
 									</GreenButton>
 
 									<RedButton
+										className={classes.separateButtons}
 										onClick={() => props.handleModalClose()}
 									>
 										Close

@@ -22,6 +22,10 @@ const GreenButton = styled(Button)`
 		color: var(--white);
 		font-family: var(--source);
 		background-color: green;
+
+		&:hover {
+			color: green;
+		}
 	}
 `;
 
@@ -30,6 +34,10 @@ const RedButton = styled(Button)`
 		color: var(--white);
 		font-family: var(--source);
 		background-color: red;
+
+		&:hover {
+			color: red;
+		}
 	}
 `;
 

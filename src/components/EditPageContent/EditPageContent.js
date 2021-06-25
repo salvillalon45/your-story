@@ -11,13 +11,13 @@
 // React
 import * as React from 'react';
 
+// React Context
+import ThemeContext from '../../context/ThemeContext';
+
 // Material UI
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-
-// React Context
-import ThemeContext from '../../context/ThemeContext';
 
 // Util
 import { deleteReflection, updateReflection } from '../../util/firebaseUtil';

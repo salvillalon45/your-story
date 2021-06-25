@@ -11,6 +11,9 @@
 // React
 import * as React from 'react';
 
+// React Context
+import ThemeContext from '../../context/ThemeContext';
+
 // Material UI
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -21,6 +24,9 @@ import {
 	makeStyles,
 	createMuiTheme
 } from '@material-ui/core/styles';
+
+// Components
+import ConfirmationModal from './ConfirmationModal';
 
 // Styling
 import {
@@ -61,10 +67,16 @@ const FormTextField = withStyles({
 })(TextField);
 
 function AddPageContent() {
+	const [isOpen, setIsOpen] = React.useState(false);
 	const [reflection, setReflection] = React.useState({
 		year: '',
 		events: ''
 	});
+	const contextValue = React.useContext(ThemeContext);
+
+	function handleModalClose() {
+		setIsOpen(!isOpen);
+	}
 
 	function handleOnChange(event) {
 		setReflection(prevValues => {
@@ -74,11 +86,23 @@ function AddPageContent() {
 
 	function handleOnSubmit(event) {
 		event.preventDefault();
+		setIsOpen(!isOpen);
 		insertNewReflection(reflection, 1);
+		contextValue.handleIsChanged();
 	}
 
 	return (
 		<AddPageContentContainer>
+			{isOpen && (
+				<ConfirmationModal
+					handleModalClose={handleModalClose}
+					isOpen={isOpen}
+					text1={'Reflection Successfully Created'}
+					whichButton={'red'}
+					buttonText={'Close'}
+				/>
+			)}
+
 			<Grid container>
 				<Grid item xs>
 					<IntroContainer>
