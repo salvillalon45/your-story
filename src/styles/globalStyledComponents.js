@@ -41,6 +41,14 @@ const RedButton = styled(Button)`
 	}
 `;
 
+const DisabledButton = styled(Button)`
+	&& {
+		color: var(--white);
+		font-family: var(--source);
+		background-color: grey;
+	}
+`;
+
 const NavigationToolbar = styled(Toolbar)`
 	${'' /* background-color: var(--white); */}
 	background-color: ${props =>
@@ -122,5 +130,6 @@ export {
 	FormTextArea,
 	FormContentContainer,
 	FormLabel,
-	IntroLine
+	IntroLine,
+	DisabledButton
 };

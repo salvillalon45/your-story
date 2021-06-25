@@ -13,7 +13,7 @@ const DashboardLink = styled(Link)`
 	text-decoration: none;
 `;
 
-const DashboardContentContainer = styled.div`
+const DashboardPageContentContainer = styled.div`
 	margin-bottom: 40px;
 `;
 
@@ -34,4 +34,4 @@ const DashboardPaper = styled(Paper)`
 	}
 `;
 
-export { DashboardContentContainer, DashboardPaper, DashboardLink };
+export { DashboardPageContentContainer, DashboardPaper, DashboardLink };

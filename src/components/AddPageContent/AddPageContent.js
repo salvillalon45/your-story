@@ -31,6 +31,7 @@ import ConfirmationModal from './ConfirmationModal';
 // Styling
 import {
 	GreenButton,
+	DisabledButton,
 	ButtonContainer,
 	IntroContainer,
 	IntroTitle,
@@ -89,6 +90,18 @@ function AddPageContent() {
 		setIsOpen(!isOpen);
 		insertNewReflection(reflection, 1);
 		contextValue.handleIsChanged();
+		setReflection({
+			year: '',
+			events: ''
+		});
+	}
+
+	function createButton() {
+		if (!reflection.year && !reflection.events) {
+			return <DisabledButton disabled>Submit</DisabledButton>;
+		}
+
+		return <GreenButton type='submit'>Submit</GreenButton>;
 	}
 
 	return (
@@ -97,7 +110,7 @@ function AddPageContent() {
 				<ConfirmationModal
 					handleModalClose={handleModalClose}
 					isOpen={isOpen}
-					text1={'Reflection Successfully Created'}
+					text1={'Reflection Successfully Created!'}
 					whichButton={'red'}
 					buttonText={'Close'}
 				/>
@@ -128,6 +141,7 @@ function AddPageContent() {
 
 							<FormTextField
 								name='year'
+								value={reflection.year}
 								onChange={event => {
 									handleOnChange(event);
 								}}
@@ -137,15 +151,14 @@ function AddPageContent() {
 
 							<FormTextArea
 								name='events'
+								value={reflection.events}
 								onChange={event => {
 									handleOnChange(event);
 								}}
 								rowsMin={4}
 							/>
 
-							<ButtonContainer>
-								<GreenButton type='submit'>Submit</GreenButton>
-							</ButtonContainer>
+							<ButtonContainer>{createButton()}</ButtonContainer>
 						</FormContentContainer>
 					</AddForm>
 				</Grid>

@@ -29,7 +29,7 @@ import {
 } from '../../styles/globalStyledComponents';
 
 import {
-	DashboardContentContainer,
+	DashboardPageContentContainer,
 	DashboardPaper,
 	DashboardLink
 } from './DashboardStyledComponents';
@@ -45,7 +45,7 @@ function DashboardPageContent() {
 	const contextValue = React.useContext(ThemeContext);
 
 	return (
-		<DashboardContentContainer>
+		<DashboardPageContentContainer>
 			<Grid container>
 				<Grid item xs>
 					<IntroContainer>
@@ -63,10 +63,6 @@ function DashboardPageContent() {
 							created!
 						</p>
 					</IntroContainer>
-
-					{/* <Link to='/add'>
-						<DashboardPaper>About</DashboardPaper>
-					</Link> */}
 				</Grid>
 			</Grid>
 
@@ -120,7 +116,7 @@ function DashboardPageContent() {
 					</DashboardLink>
 				</Grid>
 			</Grid>
-		</DashboardContentContainer>
+		</DashboardPageContentContainer>
 	);
 }
 

@@ -28,9 +28,9 @@ function IndexPage() {
 			<section>
 				<SEO title='Your Story' />
 
-				<Link to='/dashboard'>Dashboard</Link>
+				{/* <Link to='/dashboard'>Dashboard</Link> */}
 
-				{/* <IndexPageContent /> */}
+				<IndexPageContent />
 			</section>
 		</Layout>
 	);
