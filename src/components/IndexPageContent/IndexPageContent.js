@@ -23,100 +23,61 @@ import Grid from '@material-ui/core/Grid';
 
 // Styling
 import {
-	IntroContainer,
-	IntroTitle,
-	IntroLine
+	ImageContainer,
+	ButtonContainer
 } from '../../styles/globalStyledComponents';
-
 import {
-	DashboardContentContainer,
-	DashboardPaper,
-	DashboardLink
-} from './DashboardStyledComponents';
+	LandingText,
+	LandingTitle,
+	LandingButton,
+	IndexPageContentContainer
+} from './IndexPageContentStyledComponents';
+
+// Images
+import Landing from '../../images/landing.svg';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
-	leftBoxes: {
-		marginRight: '20px'
+	firstText: {
+		marginTop: '45px'
+	},
+	container: {
+		alignItems: 'center'
 	}
 }));
 
 function IndexPageContent() {
-	const contextValue = React.useContext(ThemeContext);
+	const classes = useStyles();
 
 	return (
-		<IndexContentContainer>
-			<Grid container>
+		<IndexPageContentContainer>
+			<Grid container className={classes.container} id='gridContainer'>
 				<Grid item xs>
-					<IntroContainer>
-						<IntroTitle>Welcome To Your Story</IntroTitle>
-						<p>
-							Use this platform to reflect on all the things you
-							have done in your life!
-						</p>
-						<p>
-							The app allows you to view all your events in a
-							timeline to see how far you have come.
-						</p>
-						<p>
-							Click on About to learn more about why this was
-							created!
-						</p>
-					</IntroContainer>
+					<LandingTitle>Your Story</LandingTitle>
+
+					<LandingText className={classes.firstText}>
+						Your Story gives you the tools you need to create yearly
+						reflections and create a nice timeline to look back at
+						all the tings you did!
+					</LandingText>
+
+					<LandingText>
+						Create an account today! Need a quick run through? Click
+						on Demo Run.
+					</LandingText>
+
+					<ButtonContainer landing={true} id='landingButtonContainer'>
+						<LandingButton>Create Account</LandingButton>
+					</ButtonContainer>
 				</Grid>
-			</Grid>
 
-			<IntroLine edit={true} />
-
-			<Grid container>
 				<Grid item xs>
-					<DashboardLink to='/about'>
-						<DashboardPaper about={true}>About</DashboardPaper>
-					</DashboardLink>
+					<ImageContainer>
+						<img src={Landing} />
+					</ImageContainer>
 				</Grid>
 			</Grid>
-
-			<Grid container>
-				<Grid item xs={6}>
-					<DashboardLink to='/add'>
-						<DashboardPaper leftBox={true}>
-							Add To Story
-						</DashboardPaper>
-					</DashboardLink>
-				</Grid>
-
-				<Grid item xs={6}>
-					<DashboardLink
-						to='/edit'
-						state={{
-							reflections: contextValue.reflections
-						}}
-					>
-						<DashboardPaper rightBox={true}>
-							Edit Your Story
-						</DashboardPaper>
-					</DashboardLink>
-				</Grid>
-			</Grid>
-
-			<Grid container>
-				<Grid item xs={6}>
-					<DashboardLink to='/view'>
-						<DashboardPaper leftBox={true}>
-							View You Story
-						</DashboardPaper>
-					</DashboardLink>
-				</Grid>
-
-				<Grid item xs={6}>
-					<DashboardLink to='/share'>
-						<DashboardPaper rightBox={true}>
-							Share Your Story
-						</DashboardPaper>
-					</DashboardLink>
-				</Grid>
-			</Grid>
-		</IndexContentContainer>
+		</IndexPageContentContainer>
 	);
 }
 

@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Components -> Header.js
-// Desc: Header for web app
+// LandingHeader -> LandingHeader.js
+// Desc: Landing Header for landing page
 //
 // -----------------------------------------------
 
@@ -13,23 +13,26 @@ import React from 'react';
 
 // Material UI
 import AppBar from '@material-ui/core/AppBar';
-
-// Components
-import Sidebar from '../Sidebar';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Styling
-import { HeaderLogo, HeaderToolbar } from './HeaderStyledComponents';
+import { HeaderLogo, HeaderToolbar } from './LandingHeaderStyledComponents';
 // -----------------------------------------------
+const useStyles = makeStyles(theme => ({
+	appBar: {
+		'box-shadow': 'unset'
+	}
+}));
 
-function Header() {
+function LandingHeader() {
+	const classes = useStyles();
+
 	return (
 		<header>
 			<nav>
-				<AppBar position='static'>
+				<AppBar className={classes.appBar} position='static'>
 					<HeaderToolbar>
 						<HeaderLogo>Your Story</HeaderLogo>
-
-						<Sidebar />
 					</HeaderToolbar>
 				</AppBar>
 			</nav>
@@ -37,4 +40,4 @@ function Header() {
 	);
 }
 
-export default Header;
+export default LandingHeader;

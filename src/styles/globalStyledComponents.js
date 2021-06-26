@@ -7,12 +7,11 @@
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
-import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const ButtonContainer = styled.div`
-	text-align: center;
+	text-align: ${props => (props.landing ? 'left' : 'center')};
 	margin-top: 20px;
 	margin-bottom: 20px;
 `;
@@ -50,11 +49,23 @@ const DisabledButton = styled(Button)`
 `;
 
 const NavigationToolbar = styled(Toolbar)`
-	${'' /* background-color: var(--white); */}
-	background-color: ${props =>
-		props.footer ? 'var(--grey)' : 'var(--white)'};
+	background-color: ${props => {
+		if (props.footer) {
+			return 'var(--grey)';
+		} else if (props.landingFooter) {
+			return 'transparent';
+		} else {
+			return 'var(--white)';
+		}
+	}};
 	align-content: center;
-	justify-content: space-between;
+	justify-content: ${props => {
+		if (props.footer) {
+			return 'space-between';
+		} else if (props.landingFooter) {
+			return 'flex-end';
+		}
+	}};
 	padding-top: 19px;
 
 	&& {
@@ -119,6 +130,14 @@ const FormTextArea = styled(TextareaAutosize)`
 // 	}
 // `;
 
+const ImageContainer = styled.div`
+	@media only screen and (max-width: 426px) {
+		width: 50%;
+		margin: 0 auto;
+		padding-top: 28px;
+	}
+`;
+
 export {
 	GreenButton,
 	ButtonContainer,
@@ -131,5 +150,6 @@ export {
 	FormContentContainer,
 	FormLabel,
 	IntroLine,
-	DisabledButton
+	DisabledButton,
+	ImageContainer
 };
