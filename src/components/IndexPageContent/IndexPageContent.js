@@ -19,6 +19,7 @@ import { Link } from 'gatsby';
 
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 
 // Styling
@@ -43,15 +44,29 @@ const useStyles = makeStyles(theme => ({
 	},
 	container: {
 		alignItems: 'center'
+	},
+	gridContainer: {
+		flexDirection: 'column',
+		textAlign: 'center'
+	},
+	landingButton: {
+		textAlign: 'center'
 	}
 }));
 
 function IndexPageContent() {
 	const classes = useStyles();
+	const matches = useMediaQuery('(max-width:426px)');
 
 	return (
 		<IndexPageContentContainer>
-			<Grid container className={classes.container} id='gridContainer'>
+			<Grid
+				container
+				className={
+					classes.container && matches && classes.gridContainer
+				}
+				id='gridContainer'
+			>
 				<Grid item xs>
 					<LandingTitle>Your Story</LandingTitle>
 
@@ -66,7 +81,11 @@ function IndexPageContent() {
 						on Demo Run.
 					</LandingText>
 
-					<ButtonContainer landing={true} id='landingButtonContainer'>
+					<ButtonContainer
+						landing={true}
+						className={matches && classes.landingButton}
+						id='landingButtonContainer'
+					>
 						<LandingButton>Create Account</LandingButton>
 					</ButtonContainer>
 				</Grid>

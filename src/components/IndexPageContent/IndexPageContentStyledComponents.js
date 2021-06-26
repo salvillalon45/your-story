@@ -25,7 +25,6 @@ const IndexPageContentContainer = styled.div`
 	}
 
 	@media only screen and (max-width: 320px) {
-		padding-top: 46px;
 		padding-left: 1px;
 		padding-right: 1px;
 	}
