@@ -12,7 +12,7 @@
 import React from 'react';
 
 // Gatsby
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 
 // Material UI
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -27,6 +27,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 // Styling
 import {
@@ -34,6 +35,9 @@ import {
 	SidebarContentContainer,
 	SidebarContainer
 } from './SidebarStyledComponents';
+
+// Util
+import { logoutUser } from '../../../util/firebaseUtil';
 // -----------------------------------------------
 
 const useStyles = makeStyles({
@@ -125,6 +129,11 @@ function Sidebar() {
 		});
 	}
 
+	function handleLogout() {
+		logoutUser();
+		navigate('/');
+	}
+
 	function createSidebarMenu() {
 		return (
 			<div
@@ -133,7 +142,18 @@ function Sidebar() {
 				onClick={event => toggleDrawer(event)}
 				onKeyDown={event => toggleDrawer(event)}
 			>
-				<List>{createSidebarMenuItems()}</List>
+				<List>
+					{createSidebarMenuItems()}
+
+					<Divider />
+
+					<ListItem onClick={() => handleLogout()}>
+						<ListItemIcon>
+							<ExitToAppIcon />
+						</ListItemIcon>
+						<ListItemText>Log Out</ListItemText>
+					</ListItem>
+				</List>
 			</div>
 		);
 	}

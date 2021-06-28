@@ -15,12 +15,16 @@ import * as React from 'react';
 import ThemeContext from '../../context/ThemeContext';
 
 // Gatsby
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
+import { navigate } from 'gatsby';
 
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
+
+// Components
+import AuthModal from '../Reusable/AuthModal';
 
 // Styling
 import {
@@ -36,6 +40,9 @@ import {
 
 // Images
 import Landing from '../../images/landing.svg';
+
+// Util
+import { createNewUser } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -51,15 +58,55 @@ const useStyles = makeStyles(theme => ({
 	},
 	landingButton: {
 		textAlign: 'center'
+	},
+	loginButton: {
+		marginLeft: '15px'
 	}
 }));
 
 function IndexPageContent() {
 	const classes = useStyles();
 	const matches = useMediaQuery('(max-width:426px)');
+	const [isOpen, setIsOpen] = React.useState(false);
+	const [authType, setAuthType] = React.useState('');
+
+	function handleShowModal(type) {
+		setAuthType(type);
+		setIsOpen(!isOpen);
+	}
+
+	function handleAuthSubmit(event, authData) {
+		const { email, password } = authData;
+		event.preventDefault();
+		if (authType === 'create') {
+			createNewUser(email, password);
+		} else {
+		}
+
+		handleShowModal();
+		navigate('/dashboard');
+	}
+
+	function createActionButtonText() {
+		if (authType === 'create') {
+			return 'Sign Up!';
+		}
+
+		return 'Log In!';
+	}
 
 	return (
 		<IndexPageContentContainer>
+			{isOpen && (
+				<AuthModal
+					handleShowModal={handleShowModal}
+					handleAuthSubmit={handleAuthSubmit}
+					isOpen={isOpen}
+					actionText={createActionButtonText()}
+					cancelText={'Cancel'}
+				/>
+			)}
+
 			<Grid
 				container
 				className={
@@ -84,9 +131,19 @@ function IndexPageContent() {
 					<ButtonContainer
 						landing={true}
 						className={matches && classes.landingButton}
-						id='landingButtonContainer'
 					>
-						<LandingButton>Create Account</LandingButton>
+						<LandingButton
+							onClick={() => handleShowModal('create')}
+						>
+							Create Account
+						</LandingButton>
+
+						<LandingButton
+							onClick={() => handleShowModal('login')}
+							className={classes.loginButton}
+						>
+							Login
+						</LandingButton>
 					</ButtonContainer>
 				</Grid>
 

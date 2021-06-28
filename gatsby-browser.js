@@ -8,6 +8,7 @@
 
 // Firebase
 import 'firebase/database';
+import 'firebase/auth';
 
 // To use useContext API
 import * as React from 'react';

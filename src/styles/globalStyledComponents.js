@@ -24,6 +24,7 @@ const GreenButton = styled(Button)`
 
 		&:hover {
 			color: green;
+			background-color: transparent;
 		}
 	}
 `;
@@ -36,6 +37,7 @@ const RedButton = styled(Button)`
 
 		&:hover {
 			color: red;
+			background-color: transparent;
 		}
 	}
 `;
@@ -107,6 +109,8 @@ const IntroLine = styled(Divider)`
 
 const FormContentContainer = styled.div``;
 
+const ModalContentContainer = styled.div``;
+
 const FormLabel = styled.p`
 	margin-top: 40px;
 	margin-bottom: ${props => (props.year ? '15px' : '')};
@@ -151,5 +155,6 @@ export {
 	FormLabel,
 	IntroLine,
 	DisabledButton,
-	ImageContainer
+	ImageContainer,
+	ModalContentContainer
 };

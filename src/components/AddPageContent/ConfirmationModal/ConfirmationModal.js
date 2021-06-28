@@ -22,9 +22,9 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import {
 	GreenButton,
 	RedButton,
-	ButtonContainer
+	ButtonContainer,
+	ModalContentContainer
 } from '../../../styles/globalStyledComponents';
-import { ModalContentContainer } from './ConfirmationModalStyledComponents';
 // -----------------------------------------------
 const useStyles = makeStyles(theme => ({
 	modal: {

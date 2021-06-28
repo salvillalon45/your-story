@@ -47,6 +47,18 @@ function updateReflection(reflectionId, userId, updatedReflection) {
 	});
 }
 
+async function createNewUser(email, password) {
+	const result = firebase
+		.auth()
+		.createUserWithEmailAndPassword(email, password);
+
+	console.table(result);
+}
+
+async function logoutUser() {
+	firebase.auth().signOut();
+}
+
 // async function getUserResultsFromDB() {
 // 	const snapshot = await firebase.database().ref('userResults').once('value');
 
@@ -57,5 +69,7 @@ export {
 	updateReflection,
 	insertNewReflection,
 	getReflectionsFromDB,
-	deleteReflection
+	deleteReflection,
+	createNewUser,
+	logoutUser
 };
