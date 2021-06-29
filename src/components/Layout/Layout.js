@@ -19,6 +19,11 @@ import LandingHeader from './LandingHeader';
 
 // Styling
 import '../../styles/global.scss';
+
+// Util
+import { authStateListener } from '../../util/firebaseUtil';
+
+import PrivateRoute from '../PrivateRoute';
 // -----------------------------------------------
 
 function Layout(props) {
@@ -54,14 +59,35 @@ function Layout(props) {
 		return <Header />;
 	}
 
+	// function loginUserCheck() {
+	// 	if (authStateListener() === null) {
+	// 		return null;
+	// 	} else {
+	// 		return (
+	// 			<>
+	// 				{showHeader()}
+
+	// 				<main id={id}>{children}</main>
+
+	// 				{showFooter()}
+	// 			</>
+	// 		);
+	// 	}
+	// }
+
+	React.useEffect(() => {
+		authStateListener();
+	});
+
+	// return loginUserCheck();
 	return (
-		<>
+		<PrivateRoute path='/'>
 			{showHeader()}
 
 			<main id={id}>{children}</main>
 
 			{showFooter()}
-		</>
+		</PrivateRoute>
 	);
 }
 

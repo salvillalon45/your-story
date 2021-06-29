@@ -5,7 +5,11 @@
 //
 // -----------------------------------------------
 
+// Firebase
 import firebase from 'gatsby-plugin-firebase';
+
+// Gatsby
+import { navigate } from 'gatsby';
 
 import { orderYears } from './mainUtil';
 
@@ -48,15 +52,29 @@ function updateReflection(reflectionId, userId, updatedReflection) {
 }
 
 async function createNewUser(email, password) {
-	const result = firebase
-		.auth()
-		.createUserWithEmailAndPassword(email, password);
-
-	console.table(result);
+	firebase.auth().createUserWithEmailAndPassword(email, password);
 }
 
 async function logoutUser() {
 	firebase.auth().signOut();
+}
+
+async function loginUser(email, password) {
+	firebase.auth().signInWithEmailAndPassword(email, password);
+}
+
+function authStateListener() {
+	firebase.auth().onAuthStateChanged(user => {
+		if (user) {
+			console.log('User has logged in: ', user);
+			return true;
+		} else {
+			console.log('User logged out');
+			navigate('/');
+			// window.location.href = '/';
+			return null;
+		}
+	});
 }
 
 // async function getUserResultsFromDB() {
@@ -70,6 +88,8 @@ export {
 	insertNewReflection,
 	getReflectionsFromDB,
 	deleteReflection,
+	loginUser,
+	authStateListener,
 	createNewUser,
 	logoutUser
 };

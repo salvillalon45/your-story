@@ -42,7 +42,7 @@ import {
 import Landing from '../../images/landing.svg';
 
 // Util
-import { createNewUser } from '../../util/firebaseUtil';
+import { createNewUser, loginUser } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -78,9 +78,11 @@ function IndexPageContent() {
 	function handleAuthSubmit(event, authData) {
 		const { email, password } = authData;
 		event.preventDefault();
+
 		if (authType === 'create') {
 			createNewUser(email, password);
 		} else {
+			loginUser(email, password);
 		}
 
 		handleShowModal();

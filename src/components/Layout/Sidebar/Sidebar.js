@@ -18,7 +18,6 @@ import { Link, navigate } from 'gatsby';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -33,6 +32,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {
 	MenuButton,
 	SidebarContentContainer,
+	SidebarLine,
 	SidebarContainer
 } from './SidebarStyledComponents';
 
@@ -55,6 +55,16 @@ const useStyles = makeStyles({
 	},
 	listItemIcon: {
 		color: 'var(--turquoise)'
+	},
+	logoutlistItemText: {
+		color: 'var(--orange)',
+		fontFamily: 'var(--source)'
+	},
+	logoutListItemIcon: {
+		color: 'var(--orange)'
+	},
+	logoutListItem: {
+		cursor: 'pointer'
 	}
 });
 
@@ -62,16 +72,10 @@ const SidebarDrawer = withStyles({
 	root: {
 		'& .MuiPaper-root': {
 			backgroundColor: 'var(--grey)'
+		},
+		'& .MuiTypography-body1': {
+			fontFamily: 'var(--source)'
 		}
-		// '& label.Mui-focused': {
-		// 	color: 'white'
-		// },
-		// '& .MuiInput-underline:after': {
-		// 	borderBottomColor: 'white'
-		// },
-		// '& .MuiInput-underline:before': {
-		// 	borderBottomColor: 'white'
-		// }
 	}
 })(Drawer);
 
@@ -145,13 +149,18 @@ function Sidebar() {
 				<List>
 					{createSidebarMenuItems()}
 
-					<Divider />
+					<SidebarLine />
 
-					<ListItem onClick={() => handleLogout()}>
-						<ListItemIcon>
+					<ListItem
+						className={classes.logoutListItem}
+						onClick={() => handleLogout()}
+					>
+						<ListItemIcon className={classes.logoutListItemIcon}>
 							<ExitToAppIcon />
 						</ListItemIcon>
-						<ListItemText>Log Out</ListItemText>
+						<ListItemText className={classes.logoutlistItemText}>
+							Log Out
+						</ListItemText>
 					</ListItem>
 				</List>
 			</div>

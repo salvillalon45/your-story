@@ -27,12 +27,26 @@ function ThemeProvider(props) {
 		setIsChanged(!isChanged);
 	}
 
-	React.useEffect(async () => {
+	async function loadReflections() {
 		console.log('Inside UseEffect in ThemeProvider');
 		const userId = 1;
 		const reflections = await getReflectionsFromDB(userId);
 		setReflections(reflections);
 		console.table(reflections);
+	}
+
+	// async function loginUserCheck() {
+	// 	if (authStateListener() === null) {
+	// 		return null;
+	// 	} else {
+	// 		await loadReflections();
+	// 		// return { children };
+	// 	}
+	// }
+
+	React.useEffect(async () => {
+		await loadReflections();
+		// await loginUserCheck();
 	}, [isChanged]);
 
 	return (
@@ -43,6 +57,7 @@ function ThemeProvider(props) {
 			}}
 		>
 			{children}
+			{/* {loginUserCheck()} */}
 		</ThemeContext.Provider>
 	);
 }

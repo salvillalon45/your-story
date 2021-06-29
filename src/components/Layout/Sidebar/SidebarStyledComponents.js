@@ -6,6 +6,7 @@
 
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 
 const SidebarContentContainer = styled.div``;
 
@@ -22,4 +23,13 @@ const MenuButton = styled(Button)`
 	}
 `;
 
-export { SidebarContentContainer, SidebarContainer, MenuButton };
+const SidebarLine = styled(Divider)`
+	&& {
+		background-color: var(--white);
+		${'' /* margin-top: 31px;
+		margin-bottom: 39px; */}
+		height: 5px;
+	}
+`;
+
+export { SidebarContentContainer, SidebarContainer, MenuButton, SidebarLine };
