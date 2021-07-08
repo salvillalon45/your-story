@@ -10,7 +10,7 @@ import * as React from 'react';
 import { navigate } from 'gatsby';
 import { authStateListener } from '../util/firebaseUtil';
 
-const PrivateRoute = ({ children, path }) => {
+const PrivateRoute = ({ component: Component, location, ...rest }) => {
 	console.log('Inside PrivateRoute');
 	// if (authStateListener() === null) {
 	// 	console.log('GOing to navigate to index');
@@ -18,7 +18,7 @@ const PrivateRoute = ({ children, path }) => {
 	// 	return null;
 	// }
 
-	return <>{children}</>;
+	return <Component {...rest} />;
 };
 
 export default PrivateRoute;

@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> dashboard.js
-// Desc: Main Navigation Page
+// Pages -> about.js
+// Desc: About Page
 //
 // -----------------------------------------------
 
@@ -15,23 +15,23 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 
 // Components
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import DashboardPageContent from '../components/DashboardPageContent';
+import Layout from '../../components/Layout';
+import SEO from '../../components/seo';
+import AboutPageContent from '../../components/AboutPageContent';
 // -----------------------------------------------
 
-function DashboardPage() {
-	const id = 'dashboardPageContainer';
+function AboutPage() {
+	const id = 'aboutPageContainer';
 
 	return (
 		<Layout id={id}>
 			<section>
 				<SEO title='Your Story' />
 
-				<DashboardPageContent />
+				<AboutPageContent />
 			</section>
 		</Layout>
 	);
 }
 
-export default DashboardPage;
+export default AboutPage;

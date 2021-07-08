@@ -19,8 +19,8 @@ async function getReflectionsFromDB(userId) {
 		.ref(`reflections/${userId}`)
 		.once('value');
 
-	console.log('What is snapshot val');
-	console.log(snapshot.val());
+	// console.log('What is snapshot val');
+	// console.log(snapshot.val());
 	return snapshot.val();
 	// return orderYears(snapshot.val());
 }
@@ -64,17 +64,23 @@ async function loginUser(email, password) {
 }
 
 function authStateListener() {
+	let result = false;
+
 	firebase.auth().onAuthStateChanged(user => {
 		if (user) {
 			console.log('User has logged in: ', user);
-			return true;
+			result = true;
 		} else {
 			console.log('User logged out');
-			navigate('/');
+			result = false;
+			// navigate('/');
 			// window.location.href = '/';
-			return null;
+			// return null;
 		}
 	});
+	console.log('What is result');
+	console.log({ result });
+	return result;
 }
 
 // async function getUserResultsFromDB() {

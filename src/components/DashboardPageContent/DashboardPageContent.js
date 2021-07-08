@@ -43,6 +43,10 @@ const useStyles = makeStyles(theme => ({
 
 function DashboardPageContent() {
 	const contextValue = React.useContext(ThemeContext);
+	console.log('Inside DashboardPageContent() cp');
+	React.useEffect(() => {
+		console.log('Inside Use Effect in DashboardPageContent');
+	});
 
 	return (
 		<DashboardPageContentContainer>
@@ -70,7 +74,7 @@ function DashboardPageContent() {
 
 			<Grid container>
 				<Grid item xs>
-					<DashboardLink to='/about'>
+					<DashboardLink to='/dashboard/about'>
 						<DashboardPaper about={true}>About</DashboardPaper>
 					</DashboardLink>
 				</Grid>
@@ -78,7 +82,7 @@ function DashboardPageContent() {
 
 			<Grid container>
 				<Grid item xs={6}>
-					<DashboardLink to='/add'>
+					<DashboardLink to='/dashboard/add'>
 						<DashboardPaper leftBox={true}>
 							Add To Story
 						</DashboardPaper>
@@ -87,7 +91,7 @@ function DashboardPageContent() {
 
 				<Grid item xs={6}>
 					<DashboardLink
-						to='/edit'
+						to='/dashboard/edit'
 						state={{
 							reflections: contextValue.reflections
 						}}
@@ -101,7 +105,7 @@ function DashboardPageContent() {
 
 			<Grid container>
 				<Grid item xs={6}>
-					<DashboardLink to='/view'>
+					<DashboardLink to='/dashboard/view'>
 						<DashboardPaper leftBox={true}>
 							View You Story
 						</DashboardPaper>
@@ -109,7 +113,7 @@ function DashboardPageContent() {
 				</Grid>
 
 				<Grid item xs={6}>
-					<DashboardLink to='/share'>
+					<DashboardLink to='/dashboard/share'>
 						<DashboardPaper rightBox={true}>
 							Share Your Story
 						</DashboardPaper>

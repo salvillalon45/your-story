@@ -69,6 +69,7 @@ function IndexPageContent() {
 	const matches = useMediaQuery('(max-width:426px)');
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [authType, setAuthType] = React.useState('');
+	const contextValue = React.useContext(ThemeContext);
 
 	function handleShowModal(type) {
 		setAuthType(type);
@@ -99,6 +100,9 @@ function IndexPageContent() {
 
 	return (
 		<IndexPageContentContainer>
+			{contextValue.isLoggedIn && (
+				<h1 style={{ color: 'white', fontSize: '4rem' }}>HOLA HERE</h1>
+			)}
 			{isOpen && (
 				<AuthModal
 					handleShowModal={handleShowModal}

@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> add.js
-// Desc: Add Year Page
+// Pages -> edit.js
+// Desc: Edit Years Page
 //
 // -----------------------------------------------
 
@@ -15,23 +15,30 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 
 // Components
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import AddPageContent from '../components/AddPageContent';
+import Layout from '../../components/Layout';
+import SEO from '../../components/seo';
+import EditPageContent from '../../components/EditPageContent';
 // -----------------------------------------------
 
-function AddPage() {
-	const id = 'addPageContainer';
+function EditPage(props) {
+	const { state } = props.location;
+	const id = 'editPageContainer';
+
+	let result = {};
+
+	if (state) {
+		result = state.reflections;
+	}
 
 	return (
 		<Layout id={id}>
 			<section>
 				<SEO title='Your Story' />
 
-				<AddPageContent />
+				<EditPageContent reflections={result} />
 			</section>
 		</Layout>
 	);
 }
 
-export default AddPage;
+export default EditPage;

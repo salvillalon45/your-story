@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> edit.js
-// Desc: Edit Years Page
+// Pages -> share.js
+// Desc: Share Page
 //
 // -----------------------------------------------
 
@@ -15,30 +15,23 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 
 // Components
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import EditPageContent from '../components/EditPageContent';
+import Layout from '../../components/Layout';
+import SEO from '../../components/seo';
+import SharePageContent from '../../components/SharePageContent';
 // -----------------------------------------------
 
-function EditPage(props) {
-	const { state } = props.location;
-	const id = 'editPageContainer';
-
-	let result = {};
-
-	if (state) {
-		result = state.reflections;
-	}
+function SharePage() {
+	const id = 'sharePageContainer';
 
 	return (
 		<Layout id={id}>
 			<section>
 				<SEO title='Your Story' />
 
-				<EditPageContent reflections={result} />
+				<SharePageContent />
 			</section>
 		</Layout>
 	);
 }
 
-export default EditPage;
+export default SharePage;

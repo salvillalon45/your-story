@@ -10,8 +10,12 @@
 // Imports
 import * as React from 'react';
 
+// Firebase
+import firebase from 'gatsby-plugin-firebase';
+
 // Util
-import { getReflectionsFromDB } from '../util/firebaseUtil';
+import { getReflectionsFromDB, authStateListener } from '../util/firebaseUtil';
+import { pp } from '../util/mainUtil';
 
 // Set Up
 const defaultState = {};
@@ -22,6 +26,7 @@ function ThemeProvider(props) {
 	const { children } = props;
 	const [reflections, setReflections] = React.useState('');
 	const [isChanged, setIsChanged] = React.useState(false);
+	const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
 	function handleIsChanged() {
 		setIsChanged(!isChanged);
@@ -32,28 +37,52 @@ function ThemeProvider(props) {
 		const userId = 1;
 		const reflections = await getReflectionsFromDB(userId);
 		setReflections(reflections);
-		console.table(reflections);
+		// console.table(reflections);
 	}
 
-	// async function loginUserCheck() {
-	// 	if (authStateListener() === null) {
-	// 		return null;
-	// 	} else {
-	// 		await loadReflections();
-	// 		// return { children };
-	// 	}
-	// }
+	function loginUserCheck() {
+		console.log('Inside loginUserCheck()');
+		// if (authStateListener() === false) {
+		// 	console.log('Not Logged In');
+		// 	setIsLoggedIn(false);
+		// } else {
+		// 	console.log('Logged IN');
+		// 	setIsLoggedIn(true);
+		// }
+		// console.group('CUrrent User');
+		// console.log(firebase.auth().currentUser);
+		// console.groupEnd('CUrrent User');
+		firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				console.log('User has logged in: ', user);
+				// result = true;
+				setIsLoggedIn(true);
+			} else {
+				console.log('User logged out');
+				// result = false;
+				setIsLoggedIn(false);
+				// navigate('/');
+				// window.location.href = '/';
+				// return null;
+			}
+		});
+	}
 
 	React.useEffect(async () => {
 		await loadReflections();
-		// await loginUserCheck();
 	}, [isChanged]);
+
+	React.useEffect(() => {
+		pp('Use Effect for LoginUserCheck');
+		loginUserCheck();
+	}, [isLoggedIn]);
 
 	return (
 		<ThemeContext.Provider
 			value={{
 				reflections,
-				handleIsChanged: handleIsChanged
+				handleIsChanged: handleIsChanged,
+				isLoggedIn: isLoggedIn
 			}}
 		>
 			{children}

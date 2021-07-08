@@ -76,18 +76,21 @@ function Layout(props) {
 	// }
 
 	React.useEffect(() => {
-		authStateListener();
+		// console.log('Inside useEffect in Layout');
+		// authStateListener();
 	});
 
 	// return loginUserCheck();
 	return (
-		<PrivateRoute path='/'>
+		// <PrivateRoute path='/'>
+		<>
 			{showHeader()}
 
 			<main id={id}>{children}</main>
 
 			{showFooter()}
-		</PrivateRoute>
+		</>
+		// </PrivateRoute>
 	);
 }
 

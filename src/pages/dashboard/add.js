@@ -1,7 +1,7 @@
 // -----------------------------------------------
 //
-// Pages -> share.js
-// Desc: Share Page
+// Pages -> add.js
+// Desc: Add Year Page
 //
 // -----------------------------------------------
 
@@ -15,23 +15,23 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 
 // Components
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import SharePageContent from '../components/SharePageContent';
+import Layout from '../../components/Layout';
+import SEO from '../../components/seo';
+import AddPageContent from '../../components/AddPageContent';
 // -----------------------------------------------
 
-function SharePage() {
-	const id = 'sharePageContainer';
+function AddPage() {
+	const id = 'addPageContainer';
 
 	return (
 		<Layout id={id}>
 			<section>
 				<SEO title='Your Story' />
 
-				<SharePageContent />
+				<AddPageContent />
 			</section>
 		</Layout>
 	);
 }
 
-export default SharePage;
+export default AddPage;

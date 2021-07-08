@@ -111,10 +111,10 @@ function Sidebar() {
 	function createSidebarMenuItems() {
 		return [
 			['Home', '/dashboard'],
-			['About', '/about'],
-			['Add To Your Story', '/add'],
-			['Edit Your Story', '/edit'],
-			['View Your Story', '/view']
+			['About', '/dashboard/about'],
+			['Add To Your Story', '/dashboard/add'],
+			['Edit Your Story', '/dashboard/edit'],
+			['View Your Story', '/dashboard/view']
 		].map((navArray, index) => {
 			return (
 				<ListItem button key={navArray[0]}>
