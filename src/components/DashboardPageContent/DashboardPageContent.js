@@ -11,14 +11,7 @@
 // React
 import * as React from 'react';
 
-// React Context
-import ThemeContext from '../../context/ThemeContext';
-
-// Gatsby
-import { Link } from 'gatsby';
-
 // Material UI
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 // Styling
@@ -27,7 +20,6 @@ import {
 	IntroTitle,
 	IntroLine
 } from '../../styles/globalStyledComponents';
-
 import {
 	DashboardPageContentContainer,
 	DashboardPaper,
@@ -35,19 +27,7 @@ import {
 } from './DashboardStyledComponents';
 // -----------------------------------------------
 
-const useStyles = makeStyles(theme => ({
-	leftBoxes: {
-		marginRight: '20px'
-	}
-}));
-
 function DashboardPageContent() {
-	const contextValue = React.useContext(ThemeContext);
-	console.log('Inside DashboardPageContent() cp');
-	React.useEffect(() => {
-		console.log('Inside Use Effect in DashboardPageContent');
-	});
-
 	return (
 		<DashboardPageContentContainer>
 			<Grid container>
@@ -90,12 +70,7 @@ function DashboardPageContent() {
 				</Grid>
 
 				<Grid item xs={6}>
-					<DashboardLink
-						to='/dashboard/edit'
-						state={{
-							reflections: contextValue.reflections
-						}}
-					>
+					<DashboardLink to='/dashboard/edit'>
 						<DashboardPaper rightBox={true}>
 							Edit Your Story
 						</DashboardPaper>

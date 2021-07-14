@@ -24,8 +24,6 @@ import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
 import GradeIcon from '@material-ui/icons/Grade';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 
 // Styling
 import {
@@ -63,7 +61,6 @@ function StoryTimeline() {
 				reflectionArray => {
 					const events = reflectionArray[1].events;
 					const year = reflectionArray[1].year;
-					const reflectionId = reflectionArray[0];
 
 					return (
 						<TimelineItem>

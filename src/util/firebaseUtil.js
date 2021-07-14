@@ -63,25 +63,24 @@ async function loginUser(email, password) {
 	firebase.auth().signInWithEmailAndPassword(email, password);
 }
 
-function authStateListener() {
-	let result = false;
+// function authStateListener() {
+// 	let result = false;
 
-	firebase.auth().onAuthStateChanged(user => {
-		if (user) {
-			console.log('User has logged in: ', user);
-			result = true;
-		} else {
-			console.log('User logged out');
-			result = false;
-			// navigate('/');
-			// window.location.href = '/';
-			// return null;
-		}
-	});
-	console.log('What is result');
-	console.log({ result });
-	return result;
-}
+// 	firebase.auth().onAuthStateChanged(user => {
+// 		if (user) {
+// 			console.log('User has logged in: ', user);
+// 			result = true;
+// 		} else {
+// 			console.log('User logged out');
+// 			result = false;
+// 			navigate('/');
+// 			return null;
+// 		}
+// 	});
+// 	console.log('What is result');
+// 	console.log({ result });
+// 	return result;
+// }
 
 // async function getUserResultsFromDB() {
 // 	const snapshot = await firebase.database().ref('userResults').once('value');
@@ -95,7 +94,7 @@ export {
 	getReflectionsFromDB,
 	deleteReflection,
 	loginUser,
-	authStateListener,
+	// authStateListener,
 	createNewUser,
 	logoutUser
 };

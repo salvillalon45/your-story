@@ -17,13 +17,7 @@ import ThemeContext from '../../context/ThemeContext';
 // Material UI
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import {
-	fade,
-	ThemeProvider,
-	withStyles,
-	makeStyles,
-	createMuiTheme
-} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 // Components
 import ConfirmationModal from './ConfirmationModal';

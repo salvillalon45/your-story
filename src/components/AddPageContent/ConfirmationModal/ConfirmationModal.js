@@ -15,8 +15,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
-import { TextField } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Styling
 import {

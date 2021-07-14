@@ -155,7 +155,7 @@ function IndexPageContent() {
 
 				<Grid item xs>
 					<ImageContainer>
-						<img src={Landing} />
+						<img src={Landing} alt='Person looking at timeline' />
 					</ImageContainer>
 				</Grid>
 			</Grid>

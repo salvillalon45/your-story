@@ -11,6 +11,8 @@
 // React
 import * as React from 'react';
 
+import { navigate } from 'gatsby';
+
 // Components
 import Header from './Header';
 import Footer from './Footer';
@@ -20,10 +22,7 @@ import LandingHeader from './LandingHeader';
 // Styling
 import '../../styles/global.scss';
 
-// Util
-import { authStateListener } from '../../util/firebaseUtil';
-
-import PrivateRoute from '../PrivateRoute';
+import ThemeContext from '../../context/ThemeContext';
 // -----------------------------------------------
 
 function Layout(props) {
@@ -59,38 +58,40 @@ function Layout(props) {
 		return <Header />;
 	}
 
-	// function loginUserCheck() {
-	// 	if (authStateListener() === null) {
-	// 		return null;
-	// 	} else {
-	// 		return (
-	// 			<>
-	// 				{showHeader()}
+	const contextValue = React.useContext(ThemeContext);
 
-	// 				<main id={id}>{children}</main>
+	function test() {
+		pp('Inside test()');
+		console.log('What is contextValue.isLoggedIn');
+		console.log(contextValue.isLoggedIn);
 
-	// 				{showFooter()}
-	// 			</>
-	// 		);
-	// 	}
-	// }
+		if (contextValue.isLoggedIn === false && id !== 'indexPageContainer') {
+			console.log('In Layout:: Show null!');
+			navigate('/');
+			return null;
+		} else {
+			console.log('In Layout:: Show content');
+			return (
+				<>
+					{showHeader()}
 
-	React.useEffect(() => {
-		// console.log('Inside useEffect in Layout');
-		// authStateListener();
-	});
+					<main id={id}>{children}</main>
 
-	// return loginUserCheck();
+					{showFooter()}
+				</>
+			);
+		}
+	}
+
 	return (
-		// <PrivateRoute path='/'>
 		<>
-			{showHeader()}
+			{/* {showHeader()} */}
 
-			<main id={id}>{children}</main>
+			{/* <main id={id}>{children}</main> */}
+			{test()}
 
-			{showFooter()}
+			{/* {showFooter()} */}
 		</>
-		// </PrivateRoute>
 	);
 }
 

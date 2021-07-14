@@ -11,9 +11,6 @@
 // React
 import * as React from 'react';
 
-// Gatsby
-import { Link } from 'gatsby';
-
 // Material UI
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
@@ -25,14 +22,8 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import {
 	GreenButton,
 	RedButton,
-	DisabledButton,
 	ButtonContainer,
-	IntroContainer,
-	IntroTitle,
-	FormTextArea,
 	FormContentContainer,
-	FormLabel,
-	IntroLine,
 	ModalContentContainer
 } from '../../../styles/globalStyledComponents';
 // -----------------------------------------------
@@ -79,7 +70,7 @@ const FormTextField = withStyles({
 })(TextField);
 
 function AuthModal(props) {
-	const { actionText, cancelText, isOpen, whichButton } = props;
+	const { actionText, cancelText, isOpen } = props;
 	const classes = useStyles();
 	const [auth, setAuth] = React.useState({
 		email: '',

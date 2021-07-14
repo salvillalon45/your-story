@@ -11,9 +11,6 @@
 // React
 import * as React from 'react';
 
-// Gatsby
-import { Link } from 'gatsby';
-
 // Components
 import Layout from '../../components/Layout';
 import SEO from '../../components/seo';

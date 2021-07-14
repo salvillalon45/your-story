@@ -14,8 +14,7 @@ import * as React from 'react';
 import firebase from 'gatsby-plugin-firebase';
 
 // Util
-import { getReflectionsFromDB, authStateListener } from '../util/firebaseUtil';
-import { pp } from '../util/mainUtil';
+import { getReflectionsFromDB } from '../util/firebaseUtil';
 
 // Set Up
 const defaultState = {};
@@ -33,37 +32,21 @@ function ThemeProvider(props) {
 	}
 
 	async function loadReflections() {
-		console.log('Inside UseEffect in ThemeProvider');
 		const userId = 1;
 		const reflections = await getReflectionsFromDB(userId);
 		setReflections(reflections);
-		// console.table(reflections);
 	}
 
 	function loginUserCheck() {
 		console.log('Inside loginUserCheck()');
-		// if (authStateListener() === false) {
-		// 	console.log('Not Logged In');
-		// 	setIsLoggedIn(false);
-		// } else {
-		// 	console.log('Logged IN');
-		// 	setIsLoggedIn(true);
-		// }
-		// console.group('CUrrent User');
-		// console.log(firebase.auth().currentUser);
-		// console.groupEnd('CUrrent User');
+
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
-				console.log('User has logged in: ', user);
-				// result = true;
+				console.log('User has logged in: ');
 				setIsLoggedIn(true);
 			} else {
 				console.log('User logged out');
-				// result = false;
 				setIsLoggedIn(false);
-				// navigate('/');
-				// window.location.href = '/';
-				// return null;
 			}
 		});
 	}
@@ -73,7 +56,6 @@ function ThemeProvider(props) {
 	}, [isChanged]);
 
 	React.useEffect(() => {
-		pp('Use Effect for LoginUserCheck');
 		loginUserCheck();
 	}, [isLoggedIn]);
 
@@ -86,7 +68,6 @@ function ThemeProvider(props) {
 			}}
 		>
 			{children}
-			{/* {loginUserCheck()} */}
 		</ThemeContext.Provider>
 	);
 }

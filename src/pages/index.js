@@ -10,10 +10,6 @@
 
 // React
 import * as React from 'react';
-import { Router } from '@reach/router';
-
-// Gatsby
-import { Link } from 'gatsby';
 
 // Components
 import Layout from '../components/Layout';
@@ -26,13 +22,11 @@ function IndexPage() {
 
 	return (
 		<Layout id={id}>
-			{/* <Router> */}
 			<section>
 				<SEO title='Your Story' />
 
 				<IndexPageContent />
 			</section>
-			{/* </Router> */}
 		</Layout>
 	);
 }
