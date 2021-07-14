@@ -77,15 +77,18 @@ function IndexPageContent() {
 	}
 
 	function handleAuthSubmit(event, authData) {
+		console.group('Inside handleAuthSubmit()');
 		const { email, password } = authData;
 		event.preventDefault();
 
 		if (authType === 'create') {
 			createNewUser(email, password);
 		} else {
+			console.log('Going to attempt to login user');
 			loginUser(email, password);
 		}
-
+		console.log('Going to navigate to dashboard');
+		console.groupEnd('Inside handleAuthSubmit()');
 		handleShowModal();
 		navigate('/dashboard');
 	}
@@ -100,9 +103,9 @@ function IndexPageContent() {
 
 	return (
 		<IndexPageContentContainer>
-			{contextValue.isLoggedIn && (
+			{/* {contextValue.isLoggedIn && (
 				<h1 style={{ color: 'white', fontSize: '4rem' }}>HOLA HERE</h1>
-			)}
+			)} */}
 			{isOpen && (
 				<AuthModal
 					handleShowModal={handleShowModal}
@@ -129,10 +132,7 @@ function IndexPageContent() {
 						all the tings you did!
 					</LandingText>
 
-					<LandingText>
-						Create an account today! Need a quick run through? Click
-						on Demo Run.
-					</LandingText>
+					<LandingText>Create an account today!</LandingText>
 
 					<ButtonContainer
 						landing={true}

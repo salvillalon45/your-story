@@ -23,6 +23,8 @@ import LandingHeader from './LandingHeader';
 import '../../styles/global.scss';
 
 import ThemeContext from '../../context/ThemeContext';
+
+import { pp } from '../../util/mainUtil';
 // -----------------------------------------------
 
 function Layout(props) {
@@ -61,10 +63,12 @@ function Layout(props) {
 	const contextValue = React.useContext(ThemeContext);
 
 	function test() {
+		console.group('Inside test in layout');
 		pp('Inside test()');
 		console.log('What is contextValue.isLoggedIn');
 		console.log(contextValue.isLoggedIn);
-
+		console.log({ id });
+		console.groupEnd('Inside test in layout');
 		if (contextValue.isLoggedIn === false && id !== 'indexPageContainer') {
 			console.log('In Layout:: Show null!');
 			navigate('/');
@@ -83,16 +87,7 @@ function Layout(props) {
 		}
 	}
 
-	return (
-		<>
-			{/* {showHeader()} */}
-
-			{/* <main id={id}>{children}</main> */}
-			{test()}
-
-			{/* {showFooter()} */}
-		</>
-	);
+	return test();
 }
 
 export default Layout;
