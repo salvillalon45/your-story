@@ -8,9 +8,6 @@
 // Firebase
 import firebase from 'gatsby-plugin-firebase';
 
-// Gatsby
-import { navigate } from 'gatsby';
-
 import { orderYears } from './mainUtil';
 
 async function getReflectionsFromDB(userId) {
@@ -19,10 +16,7 @@ async function getReflectionsFromDB(userId) {
 		.ref(`reflections/${userId}`)
 		.once('value');
 
-	// console.log('What is snapshot val');
-	// console.log(snapshot.val());
-	return snapshot.val();
-	// return orderYears(snapshot.val());
+	return orderYears(snapshot.val());
 }
 
 function insertNewReflection(reflections, userId) {
@@ -52,7 +46,11 @@ function updateReflection(reflectionId, userId, updatedReflection) {
 }
 
 async function createNewUser(email, password) {
-	firebase.auth().createUserWithEmailAndPassword(email, password);
+	try {
+		await firebase.auth().createUserWithEmailAndPassword(email, password);
+	} catch (error) {
+		return error.message;
+	}
 }
 
 async function logoutUser() {
@@ -60,33 +58,12 @@ async function logoutUser() {
 }
 
 async function loginUser(email, password) {
-	firebase.auth().signInWithEmailAndPassword(email, password);
+	try {
+		await firebase.auth().signInWithEmailAndPassword(email, password);
+	} catch (error) {
+		return error.message;
+	}
 }
-
-// function authStateListener() {
-// 	let result = false;
-
-// 	firebase.auth().onAuthStateChanged(user => {
-// 		if (user) {
-// 			console.log('User has logged in: ', user);
-// 			result = true;
-// 		} else {
-// 			console.log('User logged out');
-// 			result = false;
-// 			navigate('/');
-// 			return null;
-// 		}
-// 	});
-// 	console.log('What is result');
-// 	console.log({ result });
-// 	return result;
-// }
-
-// async function getUserResultsFromDB() {
-// 	const snapshot = await firebase.database().ref('userResults').once('value');
-
-// 	return orderUserResults(Object.values(snapshot.val()));
-// }
 
 export {
 	updateReflection,
@@ -94,7 +71,6 @@ export {
 	getReflectionsFromDB,
 	deleteReflection,
 	loginUser,
-	// authStateListener,
 	createNewUser,
 	logoutUser
 };

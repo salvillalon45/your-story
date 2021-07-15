@@ -109,7 +109,9 @@ const IntroLine = styled(Divider)`
 
 const FormContentContainer = styled.div``;
 
-const ModalContentContainer = styled.div``;
+const ModalContentContainer = styled.div`
+	text-align: center;
+`;
 
 const FormLabel = styled.p`
 	margin-top: 40px;

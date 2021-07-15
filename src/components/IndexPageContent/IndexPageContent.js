@@ -43,6 +43,7 @@ import Landing from '../../images/landing.svg';
 
 // Util
 import { createNewUser, loginUser } from '../../util/firebaseUtil';
+import { pp } from '../../util/mainUtil';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -69,28 +70,57 @@ function IndexPageContent() {
 	const matches = useMediaQuery('(max-width:426px)');
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [authType, setAuthType] = React.useState('');
+	const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
+	const [createErrorMessage, setCreateErrorMessage] = React.useState('');
 	const contextValue = React.useContext(ThemeContext);
 
 	function handleShowModal(type) {
 		setAuthType(type);
 		setIsOpen(!isOpen);
+		setLoginErrorMessage('');
+		setCreateErrorMessage('');
 	}
 
-	function handleAuthSubmit(event, authData) {
-		console.group('Inside handleAuthSubmit()');
+	async function handleAuthSubmit(event, authData) {
 		const { email, password } = authData;
+		let errorFlag = false;
 		event.preventDefault();
 
 		if (authType === 'create') {
-			createNewUser(email, password);
+			const createResult = await createNewUser(email, password);
+			console.log('Create Time');
+			console.log({ createResult });
+
+			if (createResult) {
+				errorFlag = true;
+				setCreateErrorMessage(createResult);
+			}
 		} else {
-			console.log('Going to attempt to login user');
-			loginUser(email, password);
+			const loginResult = await loginUser(email, password);
+			console.log('Log Time');
+			console.log({ loginResult });
+
+			if (loginResult) {
+				errorFlag = true;
+				setLoginErrorMessage(loginResult);
+			}
 		}
-		console.log('Going to navigate to dashboard');
-		console.groupEnd('Inside handleAuthSubmit()');
-		handleShowModal();
-		navigate('/dashboard');
+		console.log('error flag');
+		console.log({ errorFlag });
+		if (errorFlag === false) {
+			console.log('Dashboard time');
+			handleShowModal();
+			contextValue.handleIsLoggedIn(true);
+			navigate('/dashboard');
+		}
+	}
+
+	function whichErrorMessage() {
+		if (loginErrorMessage) {
+			return loginErrorMessage;
+		} else {
+			return createErrorMessage;
+		}
 	}
 
 	function createActionButtonText() {
@@ -113,6 +143,7 @@ function IndexPageContent() {
 					isOpen={isOpen}
 					actionText={createActionButtonText()}
 					cancelText={'Cancel'}
+					errorMessage={whichErrorMessage()}
 				/>
 			)}
 

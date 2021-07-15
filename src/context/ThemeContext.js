@@ -31,6 +31,11 @@ function ThemeProvider(props) {
 		setIsChanged(!isChanged);
 	}
 
+	function handleIsLoggedIn(value) {
+		console.log('Inside handleIsLoggedIn');
+		setIsLoggedIn(value);
+	}
+
 	async function loadReflections() {
 		const userId = 1;
 		const reflections = await getReflectionsFromDB(userId);
@@ -39,16 +44,18 @@ function ThemeProvider(props) {
 
 	function loginUserCheck() {
 		console.log('Inside loginUserCheck()');
-
-		firebase.auth().onAuthStateChanged(user => {
-			if (user) {
-				console.log('User has logged in: ');
-				setIsLoggedIn(true);
-			} else {
-				console.log('User logged out');
-				setIsLoggedIn(false);
-			}
-		});
+		console.log({ isLoggedIn });
+		if (isLoggedIn === false) {
+			firebase.auth().onAuthStateChanged(user => {
+				if (user) {
+					console.log('User has logged in: ');
+					setIsLoggedIn(true);
+				} else {
+					console.log('User logged out');
+					setIsLoggedIn(false);
+				}
+			});
+		}
 	}
 
 	React.useEffect(async () => {
@@ -64,6 +71,7 @@ function ThemeProvider(props) {
 			value={{
 				reflections,
 				handleIsChanged: handleIsChanged,
+				handleIsLoggedIn: handleIsLoggedIn,
 				isLoggedIn: isLoggedIn
 			}}
 		>

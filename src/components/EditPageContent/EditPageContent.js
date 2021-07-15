@@ -97,35 +97,33 @@ function EditPageContent() {
 		if (!contextValue.reflections) {
 			return null;
 		} else {
-			const totalReflections = Object.entries(contextValue.reflections)
-				.length;
-			return Object.entries(contextValue.reflections).map(
-				(reflectionArray, index) => {
-					const events = reflectionArray[1].events;
-					const year = reflectionArray[1].year;
-					const reflectionId = reflectionArray[0];
+			const totalReflections = contextValue.reflections.length;
 
-					return (
-						<EditReflectionContainer>
-							<Grid container className={classes.modal}>
-								<EditYear year={year} />
+			return contextValue.reflections.map((reflectionArray, index) => {
+				const events = reflectionArray[1].events;
+				const year = reflectionArray[1].year;
+				const reflectionId = reflectionArray[0];
 
-								<EditActions
-									reflectionId={reflectionId}
-									handleOnDelete={handleOnDelete}
-									handleModalOpen={handleModalOpen}
-								/>
-							</Grid>
+				return (
+					<EditReflectionContainer>
+						<Grid container className={classes.modal}>
+							<EditYear year={year} />
 
-							<Grid container>
-								<Events events={events} />
-							</Grid>
+							<EditActions
+								reflectionId={reflectionId}
+								handleOnDelete={handleOnDelete}
+								handleModalOpen={handleModalOpen}
+							/>
+						</Grid>
 
-							{index + 1 === totalReflections ? null : <Line />}
-						</EditReflectionContainer>
-					);
-				}
-			);
+						<Grid container>
+							<Events events={events} />
+						</Grid>
+
+						{index + 1 === totalReflections ? null : <Line />}
+					</EditReflectionContainer>
+				);
+			});
 		}
 	}
 

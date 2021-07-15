@@ -26,6 +26,11 @@ import {
 	FormContentContainer,
 	ModalContentContainer
 } from '../../../styles/globalStyledComponents';
+
+import {
+	AuthErrorMessage,
+	AuthErrorContainer
+} from './AuthModalStyledComponents';
 // -----------------------------------------------
 const useStyles = makeStyles(theme => ({
 	modal: {
@@ -70,7 +75,7 @@ const FormTextField = withStyles({
 })(TextField);
 
 function AuthModal(props) {
-	const { actionText, cancelText, isOpen } = props;
+	const { actionText, cancelText, isOpen, errorMessage } = props;
 	const classes = useStyles();
 	const [auth, setAuth] = React.useState({
 		email: '',
@@ -140,6 +145,12 @@ function AuthModal(props) {
 											{cancelText}
 										</RedButton>
 									</ButtonContainer>
+
+									<AuthErrorContainer>
+										<AuthErrorMessage>
+											{errorMessage}
+										</AuthErrorMessage>
+									</AuthErrorContainer>
 								</ModalContentContainer>
 							</FormContentContainer>
 						</form>

@@ -57,44 +57,42 @@ function StoryTimeline() {
 		if (!contextValue.reflections) {
 			return null;
 		} else {
-			return Object.entries(contextValue.reflections).map(
-				reflectionArray => {
-					const events = reflectionArray[1].events;
-					const year = reflectionArray[1].year;
+			return contextValue.reflections.map(reflectionArray => {
+				const events = reflectionArray[1].events;
+				const year = reflectionArray[1].year;
 
-					return (
-						<TimelineItem>
-							<TimelineOppositeContent>
-								<TimelineYear>{year}</TimelineYear>
-							</TimelineOppositeContent>
+				return (
+					<TimelineItem>
+						<TimelineOppositeContent>
+							<TimelineYear>{year}</TimelineYear>
+						</TimelineOppositeContent>
 
-							<TimelineSeparator>
-								<TimelineDot className={classes.icon}>
-									<GradeIcon />
-								</TimelineDot>
-								<TimelineConnector
-									className={classes.timelineConnector}
-								/>
-							</TimelineSeparator>
+						<TimelineSeparator>
+							<TimelineDot className={classes.icon}>
+								<GradeIcon />
+							</TimelineDot>
+							<TimelineConnector
+								className={classes.timelineConnector}
+							/>
+						</TimelineSeparator>
 
-							<TimelineContent>
-								<TimelineContentPaper
-									elevation={3}
-									className={classes.paper}
-								>
-									<TimelineContentTitle>
-										Events in {year}
-									</TimelineContentTitle>
+						<TimelineContent>
+							<TimelineContentPaper
+								elevation={3}
+								className={classes.paper}
+							>
+								<TimelineContentTitle>
+									Events in {year}
+								</TimelineContentTitle>
 
-									<TimelineContentDescription>
-										{events}
-									</TimelineContentDescription>
-								</TimelineContentPaper>
-							</TimelineContent>
-						</TimelineItem>
-					);
-				}
-			);
+								<TimelineContentDescription>
+									{events}
+								</TimelineContentDescription>
+							</TimelineContentPaper>
+						</TimelineContent>
+					</TimelineItem>
+				);
+			});
 		}
 	}
 

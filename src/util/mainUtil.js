@@ -7,8 +7,10 @@
 
 function orderYears(reflections) {
 	// Help from https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
-	reflections = Object.entries(reflections)[1];
-	return reflections.sort((a, b) => (a.year > b.year ? 1 : -1));
+	const sortedReflections = Object.entries(reflections).sort((a, b) => {
+		return a[1].year < b[1].year ? 1 : -1;
+	});
+	return sortedReflections;
 }
 
 function pp(statement) {

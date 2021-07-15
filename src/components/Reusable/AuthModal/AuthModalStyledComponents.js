@@ -6,6 +6,13 @@
 
 import styled from 'styled-components';
 
-const ModalContentContainer = styled.div``;
+const AuthErrorContainer = styled.div`
+	margin-bottom: -15px;
+`;
 
-export { ModalContentContainer };
+const AuthErrorMessage = styled.p`
+	color: red;
+	text-decoration: underline;
+`;
+
+export { AuthErrorContainer, AuthErrorMessage };
