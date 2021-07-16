@@ -11,6 +11,8 @@ import firebase from 'gatsby-plugin-firebase';
 import { orderYears } from './mainUtil';
 
 async function getReflectionsFromDB(userId) {
+	console.log('Inside getReflectionsFromDB()');
+	console.log({ userId });
 	const snapshot = await firebase
 		.database()
 		.ref(`reflections/${userId}`)
@@ -65,6 +67,12 @@ async function loginUser(email, password) {
 	}
 }
 
+function getUserId() {
+	console.log('Who is the current logged in user');
+	console.log('IT IS:: ', firebase.auth().currentUser.uid);
+	return firebase.auth().currentUser.uid;
+}
+
 export {
 	updateReflection,
 	insertNewReflection,
@@ -72,5 +80,6 @@ export {
 	deleteReflection,
 	loginUser,
 	createNewUser,
-	logoutUser
+	logoutUser,
+	getUserId
 };

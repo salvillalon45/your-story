@@ -63,18 +63,18 @@ function Layout(props) {
 	const contextValue = React.useContext(ThemeContext);
 
 	function test() {
-		console.group('Inside test in layout');
-		pp('Inside test()');
-		console.log('What is contextValue.isLoggedIn');
-		console.log(contextValue.isLoggedIn);
-		console.log({ id });
-		console.groupEnd('Inside test in layout');
+		// console.group('Inside test in layout');
+		// pp('Inside test()');
+		// console.log('What is contextValue.isLoggedIn');
+		// console.log(contextValue.isLoggedIn);
+		// console.log({ id });
+		// console.groupEnd('Inside test in layout');
 		if (contextValue.isLoggedIn === false && id !== 'indexPageContainer') {
-			console.log('In Layout:: Show null!');
+			// console.log('In Layout:: Show null!');
 			navigate('/');
 			return null;
 		} else {
-			console.log('In Layout:: Show content');
+			// console.log('In Layout:: Show content');
 			return (
 				<>
 					{showHeader()}

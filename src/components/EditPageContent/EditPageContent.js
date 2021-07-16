@@ -38,6 +38,9 @@ import EditYear from './EditYear';
 import Events from './Events';
 import EditActions from './EditActions';
 import EditModal from './EditModal';
+
+// Util
+import { getUserId } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -58,6 +61,7 @@ function EditPageContent() {
 
 	function handleModalOpen(reflectionId) {
 		setIsOpen(!isOpen);
+		console.log(contextValue.reflections[0]);
 		const reflection = contextValue.reflections[reflectionId];
 
 		setCurrentReflection(prevValues => {
@@ -82,7 +86,11 @@ function EditPageContent() {
 
 	function handleEditSubmit(event) {
 		event.preventDefault();
-		updateReflection(currentReflection.reflectionId, 1, currentReflection);
+		updateReflection(
+			currentReflection.reflectionId,
+			getUserId(),
+			currentReflection
+		);
 		contextValue.handleIsChanged();
 		handleModalClose();
 	}
@@ -97,14 +105,15 @@ function EditPageContent() {
 		if (!contextValue.reflections) {
 			return null;
 		} else {
-			const totalReflections = contextValue.reflections.length;
+			const totalReflections = contextValue.reflections.size;
+			let index = 0;
+			let editReflectionContainerArray = [];
 
-			return contextValue.reflections.map((reflectionArray, index) => {
-				const events = reflectionArray[1].events;
-				const year = reflectionArray[1].year;
-				const reflectionId = reflectionArray[0];
+			for (let [reflectionId, reflection] of contextValue.reflections) {
+				const events = reflection.events;
+				const year = reflection.year;
 
-				return (
+				editReflectionContainerArray.push(
 					<EditReflectionContainer>
 						<Grid container className={classes.modal}>
 							<EditYear year={year} />
@@ -123,7 +132,10 @@ function EditPageContent() {
 						{index + 1 === totalReflections ? null : <Line />}
 					</EditReflectionContainer>
 				);
-			});
+				index += 1;
+
+				return editReflectionContainerArray;
+			}
 		}
 	}
 

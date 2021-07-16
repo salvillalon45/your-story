@@ -40,7 +40,7 @@ import {
 } from './AddPageContentStyledComponents';
 
 // Util
-import { insertNewReflection } from '../../util/firebaseUtil';
+import { insertNewReflection, getUserId } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 const FormTextField = withStyles({
@@ -82,7 +82,7 @@ function AddPageContent() {
 	function handleOnSubmit(event) {
 		event.preventDefault();
 		setIsOpen(!isOpen);
-		insertNewReflection(reflection, 1);
+		insertNewReflection(reflection, getUserId());
 		contextValue.handleIsChanged();
 		setReflection({
 			year: '',
