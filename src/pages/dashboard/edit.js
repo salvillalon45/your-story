@@ -23,7 +23,7 @@ function EditPage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='Your Story' />
+				<SEO title='Edit Your	 Story' />
 
 				<EditPageContent />
 			</section>

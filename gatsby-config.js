@@ -1,8 +1,8 @@
 module.exports = {
 	siteMetadata: {
-		title: `Gatsby Default Starter`,
-		description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-		author: `@gatsbyjs`
+		title: `Your Story`,
+		description: `Take control of your story and guide it!`,
+		author: `@salvillalon45`
 	},
 	plugins: [
 		`gatsby-plugin-sass`,
@@ -46,10 +46,6 @@ module.exports = {
 				}
 			}
 		},
-		// {
-		// 	resolve: `gatsby-plugin-create-client-paths`,
-		// 	options: { prefixes: [`/dashboard/*`] }
-		// },
 		`gatsby-plugin-gatsby-cloud`
 		// this (optional) plugin enables Progressive Web App + Offline functionality
 		// To learn more, visit: https://gatsby.dev/offline

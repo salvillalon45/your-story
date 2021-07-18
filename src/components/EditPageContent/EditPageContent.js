@@ -61,8 +61,7 @@ function EditPageContent() {
 
 	function handleModalOpen(reflectionId) {
 		setIsOpen(!isOpen);
-		console.log(contextValue.reflections[0]);
-		const reflection = contextValue.reflections[reflectionId];
+		const reflection = contextValue.reflections.get(reflectionId);
 
 		setCurrentReflection(prevValues => {
 			return {
@@ -107,13 +106,13 @@ function EditPageContent() {
 		} else {
 			const totalReflections = contextValue.reflections.size;
 			let index = 0;
-			let editReflectionContainerArray = [];
+			let reflectionContainerArray = [];
 
 			for (let [reflectionId, reflection] of contextValue.reflections) {
 				const events = reflection.events;
 				const year = reflection.year;
 
-				editReflectionContainerArray.push(
+				reflectionContainerArray.push(
 					<EditReflectionContainer>
 						<Grid container className={classes.modal}>
 							<EditYear year={year} />
@@ -133,9 +132,9 @@ function EditPageContent() {
 					</EditReflectionContainer>
 				);
 				index += 1;
-
-				return editReflectionContainerArray;
 			}
+
+			return reflectionContainerArray;
 		}
 	}
 

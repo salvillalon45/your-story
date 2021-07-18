@@ -23,7 +23,7 @@ function ViewPage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='Your Story' />
+				<SEO title='View Your Story' />
 
 				<ViewPageContent />
 			</section>

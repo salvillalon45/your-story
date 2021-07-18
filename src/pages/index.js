@@ -23,7 +23,7 @@ function IndexPage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='Your Story' />
+				<SEO title='Landing' />
 
 				<IndexPageContent />
 			</section>

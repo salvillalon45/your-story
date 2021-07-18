@@ -23,7 +23,7 @@ function AddPage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='Your Story' />
+				<SEO title='Add To Story' />
 
 				<AddPageContent />
 			</section>

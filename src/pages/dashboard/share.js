@@ -23,7 +23,7 @@ function SharePage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='Your Story' />
+				<SEO title='Share Your Story' />
 
 				<SharePageContent />
 			</section>

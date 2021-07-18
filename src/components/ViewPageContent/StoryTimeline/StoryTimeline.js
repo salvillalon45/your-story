@@ -57,11 +57,13 @@ function StoryTimeline() {
 		if (!contextValue.reflections) {
 			return null;
 		} else {
-			return contextValue.reflections.map(reflectionArray => {
-				const events = reflectionArray[1].events;
-				const year = reflectionArray[1].year;
+			let reflectionContainerArray = [];
 
-				return (
+			for (let [reflectionId, reflection] of contextValue.reflections) {
+				const events = reflection.events;
+				const year = reflection.year;
+
+				reflectionContainerArray.push(
 					<TimelineItem>
 						<TimelineOppositeContent>
 							<TimelineYear>{year}</TimelineYear>
@@ -92,7 +94,9 @@ function StoryTimeline() {
 						</TimelineContent>
 					</TimelineItem>
 				);
-			});
+			}
+
+			return reflectionContainerArray;
 		}
 	}
 

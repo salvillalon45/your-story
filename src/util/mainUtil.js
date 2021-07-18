@@ -11,14 +11,13 @@ function orderYears(reflections) {
 		return a[1].year < b[1].year ? 1 : -1;
 	});
 	const sortedReflectionsMap = new Map();
-
 	sortedReflections.map(reflectionArray => {
 		const events = reflectionArray[1].events;
 		const year = reflectionArray[1].year;
 		const reflectionId = reflectionArray[0];
 		sortedReflectionsMap.set(reflectionId, { events, year });
 	});
-	console.log(sortedReflectionsMap);
+
 	return sortedReflectionsMap;
 }
 
