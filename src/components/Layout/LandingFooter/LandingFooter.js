@@ -11,40 +11,33 @@
 // React
 import React from 'react';
 
-// Material UI
-import AppBar from '@material-ui/core/AppBar';
-import { makeStyles } from '@material-ui/core/styles';
-
 // Styling
-import { NavigationToolbar } from '../../../styles/globalStyledComponents';
-
 import {
 	FooterLink,
 	FooterContainer,
 	FooterAnchor
-} from './LandingFooterStyledComponents';
+} from '../FooterStyledComponents';
+import {
+	NavigationToolbar,
+	NavigationAppBar
+} from '../../../styles/globalStyledComponents';
 // -----------------------------------------------
 
-const useStyles = makeStyles(theme => ({
-	appBar: {
-		'box-shadow': 'unset'
-	}
-}));
-
 function LandingFooter() {
-	const classes = useStyles();
-
 	return (
 		<FooterContainer>
-			<AppBar position='static' className={classes.appBar}>
+			<NavigationAppBar landing={true} boxShadow={true} position='static'>
 				<NavigationToolbar landingFooter={true}>
-					<FooterLink>
-						<FooterAnchor href='https://www.linkedin.com/in/salvadorvillalon/'>
+					<FooterLink landing={true}>
+						<FooterAnchor
+							landing={true}
+							href='https://www.linkedin.com/in/salvadorvillalon/'
+						>
 							Made By Salvador Villalon
 						</FooterAnchor>
 					</FooterLink>
 				</NavigationToolbar>
-			</AppBar>
+			</NavigationAppBar>
 		</FooterContainer>
 	);
 }

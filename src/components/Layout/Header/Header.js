@@ -11,29 +11,35 @@
 // React
 import React from 'react';
 
-// Material UI
-import AppBar from '@material-ui/core/AppBar';
-
 // Components
 import Sidebar from '../Sidebar';
 
 // Styling
-import { HeaderLogo, HeaderToolbar } from './HeaderStyledComponents';
+import {
+	HeaderLogo,
+	HeaderToolbar,
+	HeaderContainer
+} from '../HeaderStyledComponents';
+import { NavigationAppBar } from '../../../styles/globalStyledComponents';
 // -----------------------------------------------
 
 function Header() {
 	return (
-		<header>
-			<nav>
-				<AppBar position='static'>
-					<HeaderToolbar>
-						<HeaderLogo>Your Story</HeaderLogo>
+		<HeaderContainer>
+			<NavigationAppBar
+				landing={false}
+				boxShadow={true}
+				position='static'
+			>
+				<nav>
+					<HeaderToolbar landing={false}>
+						<HeaderLogo landing={false}>Your Story</HeaderLogo>
 
 						<Sidebar />
 					</HeaderToolbar>
-				</AppBar>
-			</nav>
-		</header>
+				</nav>
+			</NavigationAppBar>
+		</HeaderContainer>
 	);
 }
 

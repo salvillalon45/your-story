@@ -26,8 +26,6 @@ const MenuButton = styled(Button)`
 const SidebarLine = styled(Divider)`
 	&& {
 		background-color: var(--white);
-		${'' /* margin-top: 31px;
-		margin-bottom: 39px; */}
 		height: 5px;
 	}
 `;

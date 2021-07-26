@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Divider from '@material-ui/core/Divider';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import AppBar from '@material-ui/core/AppBar';
 
 const ButtonContainer = styled.div`
 	text-align: ${props => (props.landing ? 'left' : 'center')};
@@ -47,6 +48,14 @@ const DisabledButton = styled(Button)`
 		color: var(--white);
 		font-family: var(--source);
 		background-color: grey;
+	}
+`;
+
+const NavigationAppBar = styled(AppBar)`
+	&& {
+		background-color: ${props =>
+			props.landing ? 'transparent' : 'var(--white)'};
+		box-shadow: ${props => (props.boxShadow ? 'unset' : '')};
 	}
 `;
 
@@ -148,6 +157,7 @@ export {
 	GreenButton,
 	ButtonContainer,
 	RedButton,
+	NavigationAppBar,
 	NavigationToolbar,
 	IntroContainer,
 	IntroTitle,

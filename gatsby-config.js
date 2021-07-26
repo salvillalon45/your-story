@@ -1,7 +1,7 @@
 module.exports = {
 	siteMetadata: {
 		title: `Your Story`,
-		description: `Take control of your story and guide it!`,
+		description: `Your Story: Take control of your story and guide it!`,
 		author: `@salvillalon45`
 	},
 	plugins: [

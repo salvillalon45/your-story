@@ -11,32 +11,26 @@
 // React
 import React from 'react';
 
-// Material UI
-import AppBar from '@material-ui/core/AppBar';
-import { makeStyles } from '@material-ui/core/styles';
-
 // Styling
-import { HeaderLogo, HeaderToolbar } from './LandingHeaderStyledComponents';
+import {
+	HeaderLogo,
+	HeaderToolbar,
+	HeaderContainer
+} from '../HeaderStyledComponents';
+import { NavigationAppBar } from '../../../styles/globalStyledComponents';
 // -----------------------------------------------
-const useStyles = makeStyles(theme => ({
-	appBar: {
-		'box-shadow': 'unset'
-	}
-}));
 
 function LandingHeader() {
-	const classes = useStyles();
-
 	return (
-		<header>
-			<nav>
-				<AppBar className={classes.appBar} position='static'>
-					<HeaderToolbar>
-						<HeaderLogo>Your Story</HeaderLogo>
+		<HeaderContainer>
+			<NavigationAppBar landing={true} boxShadow={true} position='static'>
+				<nav>
+					<HeaderToolbar landing={true}>
+						<HeaderLogo landing={true}>Your Story</HeaderLogo>
 					</HeaderToolbar>
-				</AppBar>
-			</nav>
-		</header>
+				</nav>
+			</NavigationAppBar>
+		</HeaderContainer>
 	);
 }
 

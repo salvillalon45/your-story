@@ -8,11 +8,13 @@ import styled from 'styled-components';
 
 const FooterLink = styled.p`
 	&& {
+		font-size: ${props => (props.landing ? '0.9rem' : '1.1rem')};
+		color: ${props => (props.landing ? 'var(--white)' : 'var(--black)')};
+		text-transform: ${props => (props.landing ? 'unset' : 'uppercase')};
+		font-style: ${props => (props.landing ? 'italic' : 'unset')};
+
 		font-family: var(--source);
-		font-size: 1.1rem;
-		color: var(--black);
 		letter-spacing: 1.45px;
-		text-transform: uppercase;
 		margin-bottom: 5px;
 	}
 `;
@@ -24,7 +26,7 @@ const FooterContainer = styled.footer`
 
 const FooterAnchor = styled.a`
 	text-decoration: none;
-	color: var(--turquoise);
+	color: ${props => (props.landing ? 'var(--white)' : 'var(--turquoise)')};
 `;
 
 export { FooterLink, FooterContainer, FooterAnchor };

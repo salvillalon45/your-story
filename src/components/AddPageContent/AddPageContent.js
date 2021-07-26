@@ -36,30 +36,31 @@ import {
 } from '../../styles/globalStyledComponents';
 import {
 	AddPageContentContainer,
-	AddForm
+	AddForm,
+	FormTextField
 } from './AddPageContentStyledComponents';
 
 // Util
 import { insertNewReflection, getUserId } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
-const FormTextField = withStyles({
-	root: {
-		'& .MuiInputBase-root': {
-			color: 'white',
-			fontFamily: 'var(--source)'
-		},
-		'& label.Mui-focused': {
-			color: 'white'
-		},
-		'& .MuiInput-underline:after': {
-			borderBottomColor: 'white'
-		},
-		'& .MuiInput-underline:before': {
-			borderBottomColor: 'white'
-		}
-	}
-})(TextField);
+// const FormTextField = withStyles({
+// 	root: {
+// 		'& .MuiInputBase-root': {
+// 			color: 'white',
+// 			fontFamily: 'var(--source)'
+// 		},
+// 		'& label.Mui-focused': {
+// 			color: 'white'
+// 		},
+// 		'& .MuiInput-underline:after': {
+// 			borderBottomColor: 'white'
+// 		},
+// 		'& .MuiInput-underline:before': {
+// 			borderBottomColor: 'white'
+// 		}
+// 	}
+// })(TextField);
 
 function AddPageContent() {
 	const [isOpen, setIsOpen] = React.useState(false);

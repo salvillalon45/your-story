@@ -7,18 +7,23 @@
 import styled from 'styled-components';
 import Toolbar from '@material-ui/core/Toolbar';
 
+const HeaderContainer = styled.header``;
+
 const HeaderLogo = styled.h1`
-	color: var(--white);
+	color: ${props => (props.landing ? 'var(--white)' : 'var(--black)')};
+	font-size: ${props => (props.landing ? '1rem' : '2rem')};
+	font-weight: ${props => (props.landing ? '100' : 'unset')};
+
 	font-family: var(--rufina);
-	font-size: 1rem;
 	letter-spacing: 1.45px;
 	padding-top: 12px;
 	margin-bottom: 18px;
-	font-weight: 100;
 `;
 
 const HeaderToolbar = styled(Toolbar)`
 	&& {
+		background-color: ${props =>
+			props.landing ? 'transparent' : 'var(--white)'};
 		align-items: baseline;
 		background-color: transparent;
 		align-content: center;
@@ -26,4 +31,4 @@ const HeaderToolbar = styled(Toolbar)`
 	}
 `;
 
-export { HeaderLogo, HeaderToolbar };
+export { HeaderLogo, HeaderToolbar, HeaderContainer };

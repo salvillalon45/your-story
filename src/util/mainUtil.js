@@ -7,18 +7,22 @@
 
 function orderYears(reflections) {
 	// Help from https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
-	const sortedReflections = Object.entries(reflections).sort((a, b) => {
-		return a[1].year < b[1].year ? 1 : -1;
-	});
-	const sortedReflectionsMap = new Map();
-	sortedReflections.map(reflectionArray => {
-		const events = reflectionArray[1].events;
-		const year = reflectionArray[1].year;
-		const reflectionId = reflectionArray[0];
-		sortedReflectionsMap.set(reflectionId, { events, year });
-	});
+	if (reflections === null) {
+		return null;
+	} else {
+		const sortedReflections = Object.entries(reflections).sort((a, b) => {
+			return a[1].year < b[1].year ? 1 : -1;
+		});
+		const sortedReflectionsMap = new Map();
+		sortedReflections.map(reflectionArray => {
+			const events = reflectionArray[1].events;
+			const year = reflectionArray[1].year;
+			const reflectionId = reflectionArray[0];
+			sortedReflectionsMap.set(reflectionId, { events, year });
+		});
 
-	return sortedReflectionsMap;
+		return sortedReflectionsMap;
+	}
 }
 
 function pp(statement) {

@@ -39,7 +39,7 @@ function ThemeProvider(props) {
 
 	async function loadReflections(passedUserId = userId) {
 		// const userId = 1;
-		console.log('Inside loadReflections');
+		// console.log('Inside loadReflections');
 		// getUserId();
 		console.log({ passedUserId });
 		if (passedUserId) {
@@ -80,8 +80,11 @@ function ThemeProvider(props) {
 	}, [isChanged]);
 
 	React.useEffect(async () => {
+		console.log('Inside useEffect() for loginUserCheck');
+		console.log(getUserId());
 		await loginUserCheck();
 	}, [isLoggedIn]);
+	// }, [getUserId()]);
 
 	return (
 		<ThemeContext.Provider

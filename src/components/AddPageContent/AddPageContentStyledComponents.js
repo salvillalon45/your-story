@@ -5,6 +5,7 @@
 // -----------------------------------------------
 
 import styled from 'styled-components';
+import TextField from '@material-ui/core/TextField';
 
 // const FormContentContainer = styled.div``;
 
@@ -19,12 +20,12 @@ import styled from 'styled-components';
 // 	color: white;
 // `;
 
-// // const FormTextField = styled(TextField)`
-// // 	&& {
-// // 		color: 'green';
-// // 		border-bottom-color: 'green';
-// // 	}
-// // `;
+const FormTextField = styled(TextField)`
+	&& {
+		color: 'green';
+		border-bottom-color: 'green';
+	}
+`;
 
 const AddPageContentContainer = styled.div``;
 
@@ -35,7 +36,7 @@ const AddForm = styled.form`
 `;
 
 export {
-	// FormTextField,
+	FormTextField,
 	// FormTextArea,
 	// FormContentContainer,
 	// FormLabel,
