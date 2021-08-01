@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
 	siteMetadata: {
 		title: `Your Story`,
@@ -34,15 +36,14 @@ module.exports = {
 			resolve: 'gatsby-plugin-firebase',
 			options: {
 				credentials: {
-					apiKey: 'AIzaSyC_rdwT0ERogDr-WcG4sVyQC9sVQBIycoQ',
-					authDomain: 'theodinproject-finalproject.firebaseapp.com',
-					databaseURL:
-						'https://theodinproject-finalproject-default-rtdb.firebaseio.com',
-					projectId: 'theodinproject-finalproject',
-					storageBucket: 'theodinproject-finalproject.appspot.com',
-					messagingSenderId: '231363532637',
-					appId: '1:231363532637:web:5d0e2afd24c9e2a2433ab4',
-					measurementId: 'G-MKR51TYM43'
+					apiKey: process.env.apiKey,
+					authDomain: process.env.authDomain,
+					databaseURL: process.env.databaseURL,
+					projectId: process.env.projectId,
+					storageBucket: process.env.storingBucket,
+					messagingSenderId: process.env.messagingSenderId,
+					appId: process.env.appId,
+					measurementId: process.env.measurementId
 				}
 			}
 		},

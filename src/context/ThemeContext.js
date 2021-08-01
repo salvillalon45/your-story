@@ -27,6 +27,7 @@ function ThemeProvider(props) {
 	const [isChanged, setIsChanged] = React.useState(false);
 	const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 	const [userId, setUserId] = React.useState('');
+	const [user, setUser] = React.useState();
 
 	function handleIsChanged() {
 		setIsChanged(!isChanged);
@@ -86,6 +87,10 @@ function ThemeProvider(props) {
 	}, [isLoggedIn]);
 	// }, [getUserId()]);
 
+	React.useEffect(() => {
+		firebase.auth.onAuthStateChanged(user => setUser(user));
+	}, []);
+
 	return (
 		<ThemeContext.Provider
 			value={{
@@ -93,7 +98,9 @@ function ThemeProvider(props) {
 				handleIsChanged: handleIsChanged,
 				handleIsLoggedIn: handleIsLoggedIn,
 				isLoggedIn: isLoggedIn,
-				userId: userId
+				userId: userId,
+				user: user,
+				setUser: setUser
 			}}
 		>
 			{children}

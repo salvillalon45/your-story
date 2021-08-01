@@ -82,9 +82,10 @@ function Layout(props) {
 
 		// if (contextValue.isLoggedIn === false && id !== 'indexPageContainer') {
 		if (contextValue.userId === '' && id !== 'indexPageContainer') {
-			// if (getUserId() === null && id !== 'indexPageContainer') {
+			// User has not logged in and is trying to access page without logging
+			// If this happens then return null and redirect to landing
 			console.log('In Layout:: Show null!');
-			// navigate('/');
+			navigate('/');
 			return null;
 		} else if (
 			contextValue.userId &&
@@ -117,50 +118,26 @@ function Layout(props) {
 		} else {
 			return null;
 		}
-		// } else {
-		// 	console.log('In Layout:: Show content');
-		// 	return (
-		// 		<>
-		// 			{showHeader()}
-
-		// 			<main id={id}>{children}</main>
-
-		// 			{showFooter()}
-		// 		</>
-		// 	);
-		// }
 	}
 
-	// React.useEffect(() => {
-	// 	if (contextValue.userId === '' && id !== 'indexPageContainer') {
-	// 		setShow(false);
-	// 	} else if (
-	// 		contextValue.userId &&
-	// 		getUserId() !== null &&
-	// 		contextValue.isLoggedIn
-	// 	) {
-	// 		setShow(true);
+	return showLayoutContent();
+	// function test() {
+	// 	if (show) {
+	// 		return (
+	// 			<>
+	// 				{showHeader()}
+
+	// 				<main id={id}>{children}</main>
+
+	// 				{showFooter()}
+	// 			</>
+	// 		);
+	// 	} else if (show === false) {
+	// 		// navigate('/');
+	// 		return null;
 	// 	}
-	// }, []);
-
-	// return showLayoutContent();
-	function test() {
-		if (show) {
-			return (
-				<>
-					{showHeader()}
-
-					<main id={id}>{children}</main>
-
-					{showFooter()}
-				</>
-			);
-		} else if (show === false) {
-			// navigate('/');
-			return null;
-		}
-	}
-	return test();
+	// }
+	// return test();
 }
 
 export default Layout;

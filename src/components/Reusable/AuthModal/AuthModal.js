@@ -15,8 +15,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
-import { TextField } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Styling
 import {
@@ -24,7 +23,8 @@ import {
 	RedButton,
 	ButtonContainer,
 	FormContentContainer,
-	ModalContentContainer
+	ModalContentContainer,
+	FormTextField
 } from '../../../styles/globalStyledComponents';
 
 import {
@@ -55,24 +55,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	muiFormControlRoot: { display: 'block' }
 }));
-
-const FormTextField = withStyles({
-	root: {
-		'& .MuiInputBase-root': {
-			color: 'white',
-			fontFamily: 'var(--source)'
-		},
-		'& label.Mui-focused': {
-			color: 'white'
-		},
-		'& .MuiInput-underline:after': {
-			borderBottomColor: 'white'
-		},
-		'& .MuiInput-underline:before': {
-			borderBottomColor: 'white'
-		}
-	}
-})(TextField);
 
 function AuthModal(props) {
 	const { actionText, cancelText, isOpen, errorMessage } = props;
@@ -111,6 +93,7 @@ function AuthModal(props) {
 											' ' +
 											classes.formTextFieldFirst
 										}
+										white={true}
 										name='email'
 										placeholder='Enter Email'
 										value={auth.email}
@@ -121,6 +104,7 @@ function AuthModal(props) {
 
 									<FormTextField
 										className={classes.muiFormControlRoot}
+										white={true}
 										name='password'
 										placeholder='Enter Password'
 										value={auth.password}

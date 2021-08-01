@@ -15,8 +15,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
-import { TextField } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Styling
 import {
@@ -25,27 +24,10 @@ import {
 	ButtonContainer,
 	FormTextArea,
 	FormContentContainer,
-	FormLabel
+	FormLabel,
+	FormTextField
 } from '../../../styles/globalStyledComponents';
 // -----------------------------------------------
-
-const FormTextField = withStyles({
-	root: {
-		'& .MuiInputBase-root': {
-			color: 'var(--black)',
-			fontFamily: 'var(--source)'
-		},
-		'& label.Mui-focused': {
-			color: 'var(--black)'
-		},
-		'& .MuiInput-underline:after': {
-			borderBottomColor: 'var(--black)'
-		},
-		'& .MuiInput-underline:before': {
-			borderBottomColor: 'var(--black)'
-		}
-	}
-})(TextField);
 
 const useStyles = makeStyles(theme => ({
 	modal: {
@@ -84,6 +66,7 @@ function EditModal(props) {
 
 								<FormTextField
 									name='year'
+									white={false}
 									defaultValue={year}
 									onChange={event => {
 										props.handleEditChange(event);

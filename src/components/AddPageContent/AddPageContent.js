@@ -16,8 +16,6 @@ import ThemeContext from '../../context/ThemeContext';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
 
 // Components
 import ConfirmationModal from './ConfirmationModal';
@@ -32,35 +30,17 @@ import {
 	FormTextArea,
 	FormContentContainer,
 	FormLabel,
+	FormTextField,
 	IntroLine
 } from '../../styles/globalStyledComponents';
 import {
 	AddPageContentContainer,
-	AddForm,
-	FormTextField
+	AddForm
 } from './AddPageContentStyledComponents';
 
 // Util
 import { insertNewReflection, getUserId } from '../../util/firebaseUtil';
 // -----------------------------------------------
-
-// const FormTextField = withStyles({
-// 	root: {
-// 		'& .MuiInputBase-root': {
-// 			color: 'white',
-// 			fontFamily: 'var(--source)'
-// 		},
-// 		'& label.Mui-focused': {
-// 			color: 'white'
-// 		},
-// 		'& .MuiInput-underline:after': {
-// 			borderBottomColor: 'white'
-// 		},
-// 		'& .MuiInput-underline:before': {
-// 			borderBottomColor: 'white'
-// 		}
-// 	}
-// })(TextField);
 
 function AddPageContent() {
 	const [isOpen, setIsOpen] = React.useState(false);
@@ -136,6 +116,7 @@ function AddPageContent() {
 
 							<FormTextField
 								name='year'
+								white={true}
 								value={reflection.year}
 								onChange={event => {
 									handleOnChange(event);

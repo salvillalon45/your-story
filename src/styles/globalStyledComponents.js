@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Divider from '@material-ui/core/Divider';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
 
 const ButtonContainer = styled.div`
@@ -48,6 +49,27 @@ const DisabledButton = styled(Button)`
 		color: var(--white);
 		font-family: var(--source);
 		background-color: grey;
+	}
+`;
+
+const FormTextField = styled(TextField)`
+	.MuiInputBase-root {
+		color: ${props => (props.white ? 'var(--white)' : 'var(--black)')};
+		font-family: var(--source);
+	}
+
+	label.mui-focused: {
+		color: ${props => (props.white ? 'var(--white)' : 'var(--black)')};
+	}
+
+	.MuiInput-underline:after {
+		border-bottom-color: ${props =>
+			props.white ? 'var(--white)' : 'var(--black)'};
+	}
+
+	.MuiInput-underline:before {
+		border-bottom-color: ${props =>
+			props.white ? 'var(--white)' : 'var(--black)'};
 	}
 `;
 
@@ -138,13 +160,6 @@ const FormTextArea = styled(TextareaAutosize)`
 	}
 `;
 
-// const FormTextField = styled(TextField)`
-// 	&& {
-// 		color: 'green';
-// 		border-bottom-color: 'green';
-// 	}
-// `;
-
 const ImageContainer = styled.div`
 	@media only screen and (max-width: 426px) {
 		width: 50%;
@@ -168,5 +183,6 @@ export {
 	IntroLine,
 	DisabledButton,
 	ImageContainer,
-	ModalContentContainer
+	ModalContentContainer,
+	FormTextField
 };
