@@ -9,6 +9,11 @@ import Paper from '@material-ui/core/Paper';
 // Gatsby
 import { Link } from 'gatsby';
 
+const DashboardIntroTitle = styled.p`
+	font-size: x-large;
+	text-decoration: underline;
+`;
+
 const DashboardLink = styled(Link)`
 	text-decoration: none;
 `;
@@ -34,4 +39,9 @@ const DashboardPaper = styled(Paper)`
 	}
 `;
 
-export { DashboardPageContentContainer, DashboardPaper, DashboardLink };
+export {
+	DashboardIntroTitle,
+	DashboardPageContentContainer,
+	DashboardPaper,
+	DashboardLink
+};

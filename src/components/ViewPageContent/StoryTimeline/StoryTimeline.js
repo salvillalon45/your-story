@@ -32,6 +32,8 @@ import {
 	TimelineContentDescription,
 	TimelineContentPaper
 } from '../ViewPageContentStyledComponents';
+
+import GenericPdfDownloader from '../../GenericPdfDownloader';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -100,7 +102,18 @@ function StoryTimeline() {
 		}
 	}
 
-	return <Timeline align='alternate'>{createTimelineContent()}</Timeline>;
+	return (
+		<>
+			<GenericPdfDownloader
+				downloadFileName='CustomPdf'
+				rootElementId='testId'
+			/>
+
+			<Timeline id='testId' align='alternate'>
+				{createTimelineContent()}
+			</Timeline>
+		</>
+	);
 }
 
 export default StoryTimeline;

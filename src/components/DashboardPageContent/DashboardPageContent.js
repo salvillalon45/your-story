@@ -21,6 +21,7 @@ import {
 	IntroLine
 } from '../../styles/globalStyledComponents';
 import {
+	DashboardIntroTitle,
 	DashboardPageContentContainer,
 	DashboardPaper,
 	DashboardLink
@@ -35,13 +36,16 @@ function DashboardPageContent() {
 					<IntroContainer>
 						<IntroTitle>Welcome To Your Story</IntroTitle>
 						<p>
-							Use this platform to reflect on all the things you
-							have done in your life!
+							Your Story lets you reflect on your life by letting
+							you add and edit yearly reflections. <br />
+							Then you can see all your reflections in a nice
+							timeline view.
 						</p>
-						<p>
-							The app allows you to view all your events in a
-							timeline to see how far you have come.
-						</p>
+						<b>
+							<DashboardIntroTitle>
+								Take Control and Guide Your Life!
+							</DashboardIntroTitle>
+						</b>
 						<p>
 							Click on About to learn more about why this was
 							created!
