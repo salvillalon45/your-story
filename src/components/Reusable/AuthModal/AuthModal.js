@@ -106,6 +106,7 @@ function AuthModal(props) {
 										className={classes.muiFormControlRoot}
 										white={true}
 										name='password'
+										type='password'
 										placeholder='Enter Password'
 										value={auth.password}
 										onChange={event => {
