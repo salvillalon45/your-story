@@ -39,7 +39,7 @@ import {
 } from './AddPageContentStyledComponents';
 
 // Util
-import { insertNewReflection, getUserId } from '../../util/firebaseUtil';
+import { insertNewReflection } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 function AddPageContent() {
@@ -63,7 +63,7 @@ function AddPageContent() {
 	function handleOnSubmit(event) {
 		event.preventDefault();
 		setIsOpen(!isOpen);
-		insertNewReflection(reflection, getUserId());
+		insertNewReflection(reflection, contextValue.userId);
 		contextValue.handleIsChanged();
 		setReflection({
 			year: '',

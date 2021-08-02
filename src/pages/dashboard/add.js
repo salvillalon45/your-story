@@ -13,7 +13,7 @@ import * as React from 'react';
 
 // Components
 import Layout from '../../components/Layout';
-import SEO from '../../components/seo';
+import Seo from '../../components/seo';
 import AddPageContent from '../../components/AddPageContent';
 // -----------------------------------------------
 
@@ -23,7 +23,7 @@ function AddPage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='Add To Story' />
+				<Seo title='Add To Story' />
 
 				<AddPageContent />
 			</section>

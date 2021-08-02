@@ -15,7 +15,6 @@ import * as React from 'react';
 import ThemeContext from '../../context/ThemeContext';
 
 // Gatsby
-// import { Link } from 'gatsby';
 import { navigate } from 'gatsby';
 
 // Material UI
@@ -43,7 +42,6 @@ import Landing from '../../images/landing.svg';
 
 // Util
 import { createNewUser, loginUser } from '../../util/firebaseUtil';
-import { pp } from '../../util/mainUtil';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -88,8 +86,6 @@ function IndexPageContent() {
 
 		if (authType === 'create') {
 			const createResult = await createNewUser(email, password);
-			console.log('Create Time');
-			console.log({ createResult });
 
 			if (createResult) {
 				errorFlag = true;
@@ -97,18 +93,14 @@ function IndexPageContent() {
 			}
 		} else {
 			const loginResult = await loginUser(email, password);
-			console.log('Log Time');
-			console.log({ loginResult });
 
 			if (loginResult) {
 				errorFlag = true;
 				setLoginErrorMessage(loginResult);
 			}
 		}
-		console.log('error flag');
-		console.log({ errorFlag });
+
 		if (errorFlag === false) {
-			console.log('Dashboard time');
 			handleShowModal();
 			contextValue.handleIsLoggedIn(true);
 			navigate('/dashboard');
@@ -133,9 +125,6 @@ function IndexPageContent() {
 
 	return (
 		<IndexPageContentContainer>
-			{/* {contextValue.isLoggedIn && (
-				<h1 style={{ color: 'white', fontSize: '4rem' }}>HOLA HERE</h1>
-			)} */}
 			{isOpen && (
 				<AuthModal
 					handleShowModal={handleShowModal}

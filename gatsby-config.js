@@ -2,9 +2,12 @@ require('dotenv').config();
 
 module.exports = {
 	siteMetadata: {
-		title: `Your Story`,
-		description: `Your Story: Take control of your story and guide it!`,
-		author: `@salvillalon45`
+		title: 'Your Story',
+		titleTemplate: '%s · Your Story',
+		description: 'Your Story: Take control of your story and guide it!',
+		url: 'https://www.doe.com', // No trailing slash allowed!
+		image: '/images/logo.jpg', // Path to your image you placed in the 'static' folder,
+		twitterUsername: '@salvillalon45'
 	},
 	plugins: [
 		`gatsby-plugin-sass`,

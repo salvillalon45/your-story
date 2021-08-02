@@ -38,9 +38,6 @@ import EditYear from './EditYear';
 import Events from './Events';
 import EditActions from './EditActions';
 import EditModal from './EditModal';
-
-// Util
-import { getUserId } from '../../util/firebaseUtil';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -87,7 +84,7 @@ function EditPageContent() {
 		event.preventDefault();
 		updateReflection(
 			currentReflection.reflectionId,
-			getUserId(),
+			contextValue.userId,
 			currentReflection
 		);
 		contextValue.handleIsChanged();

@@ -13,7 +13,7 @@ import * as React from 'react';
 
 // Components
 import Layout from '../../components/Layout';
-import SEO from '../../components/seo';
+import Seo from '../../components/seo';
 import EditPageContent from '../../components/EditPageContent';
 // -----------------------------------------------
 
@@ -23,7 +23,7 @@ function EditPage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='Edit Your	 Story' />
+				<Seo title='Edit Your Story' />
 
 				<EditPageContent />
 			</section>

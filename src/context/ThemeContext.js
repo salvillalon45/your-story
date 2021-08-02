@@ -14,7 +14,7 @@ import * as React from 'react';
 import firebase from 'gatsby-plugin-firebase';
 
 // Util
-import { getReflectionsFromDB, getUserId } from '../util/firebaseUtil';
+import { getReflectionsFromDB } from '../util/firebaseUtil';
 
 // Set Up
 const defaultState = {};
@@ -27,69 +27,46 @@ function ThemeProvider(props) {
 	const [isChanged, setIsChanged] = React.useState(false);
 	const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 	const [userId, setUserId] = React.useState('');
-	const [user, setUser] = React.useState();
+	const [isLoaded, setIsLoaded] = React.useState(false);
 
 	function handleIsChanged() {
 		setIsChanged(!isChanged);
 	}
 
 	function handleIsLoggedIn(value) {
-		console.log('Inside handleIsLoggedIn');
 		setIsLoggedIn(value);
 	}
 
 	async function loadReflections(passedUserId = userId) {
-		// const userId = 1;
-		// console.log('Inside loadReflections');
-		// getUserId();
-		console.log({ passedUserId });
 		if (passedUserId) {
 			const reflections = await getReflectionsFromDB(passedUserId);
-			console.table(reflections);
 			setReflections(reflections);
 		}
 	}
 
 	async function loginUserCheck() {
-		console.group('Inside loginUserCheck()');
-		console.log({ isLoggedIn });
 		if (isLoggedIn === false) {
 			firebase.auth().onAuthStateChanged(user => {
 				if (user) {
-					console.log('User has logged in: ');
-					console.log('uid');
-					console.log(user.uid);
-					setUserId(getUserId());
+					setUserId(user.uid);
 					setIsLoggedIn(true);
 					loadReflections(user.uid);
+					setIsLoaded(true);
 				} else {
-					console.log('User logged out');
 					setIsLoggedIn(false);
+					setIsLoaded(true);
 				}
 			});
 		}
-		console.log('User Id Check');
-		console.log({ userId });
-
-		console.groupEnd('Inside loginUserCheck()');
 	}
 
 	React.useEffect(async () => {
-		console.log('Inside useEffect() for loadReflections');
-		console.log({ userId });
 		await loadReflections();
 	}, [isChanged]);
 
 	React.useEffect(async () => {
-		console.log('Inside useEffect() for loginUserCheck');
-		console.log(getUserId());
 		await loginUserCheck();
 	}, [isLoggedIn]);
-	// }, [getUserId()]);
-
-	React.useEffect(() => {
-		firebase.auth.onAuthStateChanged(user => setUser(user));
-	}, []);
 
 	return (
 		<ThemeContext.Provider
@@ -99,8 +76,7 @@ function ThemeProvider(props) {
 				handleIsLoggedIn: handleIsLoggedIn,
 				isLoggedIn: isLoggedIn,
 				userId: userId,
-				user: user,
-				setUser: setUser
+				isLoaded: isLoaded
 			}}
 		>
 			{children}

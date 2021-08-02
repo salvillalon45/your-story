@@ -13,7 +13,7 @@ import * as React from 'react';
 
 // Components
 import Layout from '../../components/Layout';
-import SEO from '../../components/seo';
+import Seo from '../../components/seo';
 import SharePageContent from '../../components/SharePageContent';
 // -----------------------------------------------
 
@@ -23,7 +23,7 @@ function SharePage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='Share Your Story' />
+				<Seo title='Share Your Story' />
 
 				<SharePageContent />
 			</section>

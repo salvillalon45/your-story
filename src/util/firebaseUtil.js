@@ -11,13 +11,11 @@ import firebase from 'gatsby-plugin-firebase';
 import { orderYears } from './mainUtil';
 
 async function getReflectionsFromDB(userId) {
-	console.log('What is userId');
-	console.log({ userId });
 	const snapshot = await firebase
 		.database()
 		.ref(`reflections/${userId}`)
 		.once('value');
-	console.table(snapshot.val());
+
 	return orderYears(snapshot.val());
 }
 
@@ -71,8 +69,6 @@ function getUserId() {
 	try {
 		return firebase.auth().currentUser.uid;
 	} catch (error) {
-		console.log('Error is getUserId');
-		console.log(error);
 		return null;
 	}
 }

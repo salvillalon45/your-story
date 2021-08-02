@@ -13,7 +13,7 @@ import * as React from 'react';
 
 // Components
 import Layout from '../../components/Layout';
-import SEO from '../../components/seo';
+import Seo from '../../components/seo';
 import AboutPageContent from '../../components/AboutPageContent';
 // -----------------------------------------------
 
@@ -23,7 +23,7 @@ function AboutPage() {
 	return (
 		<Layout id={id}>
 			<section>
-				<SEO title='About' />
+				<Seo title='About' />
 
 				<AboutPageContent />
 			</section>
