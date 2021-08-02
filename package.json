@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "your-story",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Your Story: Take control of your story and guide it!",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Salvador Villalon <salvadorvillalon54@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
@@ -50,9 +50,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/salvillalon45/your-story"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/salvillalon45/your-story/issues"
   }
 }

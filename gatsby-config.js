@@ -6,7 +6,7 @@ module.exports = {
 		titleTemplate: '%s · Your Story',
 		description: 'Your Story: Take control of your story and guide it!',
 		url: 'https://www.doe.com', // No trailing slash allowed!
-		image: '/images/logo.jpg', // Path to your image you placed in the 'static' folder,
+		image: '/images/static/your_story_logo_1.png', // Path to your image you placed in the 'static' folder,
 		twitterUsername: '@salvillalon45'
 	},
 	plugins: [
@@ -26,13 +26,13 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-manifest`,
 			options: {
-				name: `gatsby-starter-default`,
-				short_name: `starter`,
+				name: `your-story`,
+				short_name: `your-story`,
 				start_url: `/`,
-				background_color: `#663399`,
-				theme_color: `#663399`,
+				background_color: `#141720`,
+				theme_color: `#141720`,
 				display: `minimal-ui`,
-				icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
+				icon: `src/images/static/your_story_logo_1.png` // This path is relative to the root of the site.
 			}
 		},
 		{
