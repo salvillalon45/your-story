@@ -38,8 +38,7 @@ function Layout(props) {
 			id === 'addPageContainer' ||
 			id === 'editPageContainer' ||
 			id === 'aboutPageContainer' ||
-			id === 'viewPageContainer' ||
-			id === 'sharePageContainer'
+			id === 'viewPageContainer'
 		) {
 			return null;
 		} else {

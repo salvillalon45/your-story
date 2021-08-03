@@ -36,8 +36,8 @@ function ViewPageContent() {
 						<IntroTitle>View Your Story</IntroTitle>
 						<p>Take a look at your past events in your life!</p>
 						<p>
-							Use this as a way to realize all the things you have
-							done
+							See all the things you have done. Then feel free to
+							print this out and share with others!
 						</p>
 						<p>
 							<b>Be Proud</b> of how far you have come 😊

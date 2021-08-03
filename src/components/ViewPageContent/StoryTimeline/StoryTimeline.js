@@ -11,6 +11,9 @@
 // React
 import * as React from 'react';
 
+// Print
+import ReactToPrint from 'react-to-print';
+
 // React Context
 import ThemeContext from '../../../context/ThemeContext';
 
@@ -32,8 +35,10 @@ import {
 	TimelineContentDescription,
 	TimelineContentPaper
 } from '../ViewPageContentStyledComponents';
-
-import GenericPdfDownloader from '../../GenericPdfDownloader';
+import {
+	GreenButton,
+	ButtonContainer
+} from '../../../styles/globalStyledComponents';
 // -----------------------------------------------
 
 const useStyles = makeStyles(theme => ({
@@ -51,8 +56,27 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
+const pageStyle = `
+	@page {
+		size: 20mm 10mm;
+	}
+
+	@media all {
+		.pagebreak {
+			display: none;
+		}
+	}
+
+	@media print {
+		.pagebreak {
+		page-break-before: always;
+		}
+	}
+`;
+
 function StoryTimeline() {
 	const classes = useStyles();
+	const componentRef = React.useRef();
 	const contextValue = React.useContext(ThemeContext);
 
 	function createTimelineContent() {
@@ -104,12 +128,19 @@ function StoryTimeline() {
 
 	return (
 		<>
-			<GenericPdfDownloader
-				downloadFileName='CustomPdf'
-				rootElementId='testId'
+			<ReactToPrint
+				pageStyle={pageStyle}
+				trigger={() => (
+					<ButtonContainer>
+						<GreenButton type='submit'>
+							Print Your Story
+						</GreenButton>
+					</ButtonContainer>
+				)}
+				content={() => componentRef.current}
 			/>
 
-			<Timeline id='testId' align='alternate'>
+			<Timeline ref={componentRef} align='alternate'>
 				{createTimelineContent()}
 			</Timeline>
 		</>

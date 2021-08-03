@@ -39,7 +39,9 @@ function DashboardPageContent() {
 							Your Story lets you reflect on your life by letting
 							you add and edit yearly reflections. <br />
 							Then you can see all your reflections in a nice
-							timeline view.
+							timeline view. <br />
+							Then feel free to print this out and share with
+							others!
 						</p>
 						<b>
 							<DashboardIntroTitle>
@@ -55,14 +57,6 @@ function DashboardPageContent() {
 			</Grid>
 
 			<IntroLine edit={true} />
-
-			<Grid container>
-				<Grid item xs>
-					<DashboardLink to='/dashboard/about'>
-						<DashboardPaper about={true}>About</DashboardPaper>
-					</DashboardLink>
-				</Grid>
-			</Grid>
 
 			<Grid container>
 				<Grid item xs={6}>
@@ -92,9 +86,9 @@ function DashboardPageContent() {
 				</Grid>
 
 				<Grid item xs={6}>
-					<DashboardLink to='/dashboard/share'>
-						<DashboardPaper rightBox={true}>
-							Share Your Story
+					<DashboardLink to='/dashboard/about'>
+						<DashboardPaper about={false} rightBox={true}>
+							About
 						</DashboardPaper>
 					</DashboardLink>
 				</Grid>
