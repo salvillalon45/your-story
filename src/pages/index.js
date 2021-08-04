@@ -13,7 +13,7 @@ import * as React from 'react';
 
 // Components
 import Layout from '../components/Layout';
-import Seo from '../components/seo';
+import Seo from '../components/Seo';
 import IndexPageContent from '../components/IndexPageContent';
 // -----------------------------------------------
 
