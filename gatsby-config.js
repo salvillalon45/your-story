@@ -5,7 +5,7 @@ module.exports = {
 		title: 'Your Story',
 		titleTemplate: '%s · Your Story',
 		description: 'Your Story: Take control of your story and guide it!',
-		url: 'https://www.doe.com', // No trailing slash allowed!
+		url: 'https://your-story-sv.web.app/', // No trailing slash allowed!
 		image: '/images/static/your_story_logo_1.png', // Path to your image you placed in the 'static' folder,
 		twitterUsername: '@salvillalon45'
 	},
