@@ -1,106 +1,131 @@
+# [The Odin Project: Javascript] - Project: Final Project
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://your-story-sv.web.app/">
+    <img alt="Your Story" src="./src/images/static/your_story_logo_1_cropped.png" width="300" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby's default starter
+  Your Story
 </h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+## Intro
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+-   This was the final project for the Odin Project Frontend module. I challenged myself to create something new, something that could help people. As I was thinking, I realized that something that I value and has helped me a lot is the power of reflection. Reflecting allows people to stop and thnk on what they are doing. Helps clarify what are the next steps you want to create and take. I wanted to create a tool that people can use to reflect. **This is how Your Story was born!** I create this logo above.
+-   You can find more on the project here: [The Odin Project - Final Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/final-project)
 
-## 🚀 Quick start
+### 📗 Fonts used
 
-1.  **Create a Gatsby site.**
+-   [Rufina by Martin Sommaruga](https://fonts.google.com/specimen/Rufina?query=rufina#about)
+-   [Source Sans Pro by Paul D. Hunt](https://fonts.google.com/specimen/Source+Sans+Pro?query=sour#about)
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+### 🎨 Color Reference
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+|  Color            |  Hex                                                                 |
+| ----------------- | -------------------------------------------------------------------- |
+|  Turquoise        |  ![#80ccbc](https://via.placeholder.com/10/0c2d48?text=+) `#80ccbc`  |
+|  Black            |  ![#141720](https://via.placeholder.com/10/b1d4e0?text=+) `#141720`  |
+|  White            |  ![#fff](https://via.placeholder.com/10/fff?text=+) `#fff`           |
+|  Grey             |  ![#1c1f2a](https://via.placeholder.com/10/fff?text=+) `#1c1f2a`     |
+|  Orange           |  ![#f79e77](https://via.placeholder.com/10/000?text=+) `#f79e77`     |
 
-1.  **Start developing.**
+## Overall
 
-    Navigate into your new site’s directory and start it up.
+-   In this project I challenged myself to not use SASS. Instead, I practice using css-in-js and Styled Components
+-   I also tried to deploy my app to Netlify but I learned that it only works for static websites
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+## Design
 
-1.  **Open the source code and start editing!**
+-   Design Inspiration Came From [Amie Chen](<[https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs](https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs)>). From this design I got the colors. I really like the style choice Amie picked
+-   Design Inspiration Came From [Rron Berisha](<[https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media](https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media)>). From this design I got the idea for the landing page
 
-    Your site is now running at `http://localhost:8000`!
+## Styling
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+1. Learned how to use makeStyles to create custom css-in-js classes
+2. Learned how to use withStyles to override Material UI Components
+3. Learned how to override Material UI Components and use props to make styling appear based on props
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+```jsx
+const FormTextField = styled(TextField)`
+	.MuiInputBase-root {
+		color: ${props => (props.white ? 'var(--white)' : 'var(--black)')};
+		font-family: var(--source);
+	}
 
-## 🚀 Quick start (Gatsby Cloud)
+	label.mui-focused: {
+		color: ${props => (props.white ? 'var(--white)' : 'var(--black)')};
+	}
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+	.MuiInput-underline:after {
+		border-bottom-color: ${props =>
+			props.white ? 'var(--white)' : 'var(--black)'};
+	}
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-default)
+	.MuiInput-underline:before {
+		border-bottom-color: ${props =>
+			props.white ? 'var(--white)' : 'var(--black)'};
+	}
+`;
+```
 
-## 🧐 What's inside?
+2. I learned how to use if and else statements in Styled Components
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+```jsx
+const NavigationToolbar = styled(Toolbar)`
+	background-color: ${props => {
+		if (props.footer) {
+			return 'var(--grey)';
+		} else if (props.landingFooter) {
+			return 'transparent';
+		} else {
+			return 'var(--white)';
+		}
+	}};
+	align-content: center;
+	justify-content: ${props => {
+		if (props.footer) {
+			return 'space-between';
+		} else if (props.landingFooter) {
+			return 'flex-end';
+		}
+	}};
+	padding-top: 19px;
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+	&& {
+		align-items: baseline;
+	}
+`;
+```
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+## Development
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+-   Learned how to use React Context
+    -   I came across React Context during my search for an alternative to Redux. In past applications, setting up Redux took time and this was going to be a small personal app that did not need the entire Redux setup. Also, when working with Gastby there is no such thing as Parent Component. So passing down props was going to be challenging
+    -   Everything changed when I came across this article by [Yingqi Chen](<[https://medium.com/swlh/gatsbys-global-state-management-with-react-s-context-5f8064e93351](https://medium.com/swlh/gatsbys-global-state-management-with-react-s-context-5f8064e93351)>) where she answered all my questions!
+    -   Thanks to this article as well from [Muhammad Muhsin](<[https://blog.openreplay.com/using-react-context-api-with-gatsby](https://blog.openreplay.com/using-react-context-api-with-gatsby)>) for helping me understand
+-   I really liked how we wrote everything down first! I made a plan of all the things that were going to be involved. This is how I identified the problem of having a parent component
+-   Learned how to create a shallow db to make it easier to retrieve data instead of nesting a lot things into it
+-   Learned how to use Firebase Authentication to create, login, and logout users
+-   Also, I wanted to become a better full stack developer and that means learning about the tools that we use everyday. One tool that I use everyday is `console.log()` I came across this article by [Harsha Vardhan](<[https://javascript.plainenglish.io/stop-using-console-log-in-javascript-d29d6c24dc26](https://javascript.plainenglish.io/stop-using-console-log-in-javascript-d29d6c24dc26)>) where it showed other functions of console!
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+    -   I tried many such as
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+        -   `console.group() and console.groupEnd()`
+        -   Styling your logs
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+        ```jsx
+        const spacing = '10px';
+        const styles = `padding: ${spacing}; background-color: white; color: red; font-style: italic; border: 1px solid black; font-size: 2em;`;
+        console.log('%cI am a styled log', styles);
+        console.log('%cI am a styled log', styles);
+        ```
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+## Technologies:
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
-
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
-# your-story
+-   React
+-   Material UI
+-   Dribble
+-   Styled Components
+-   Firebase for Authentication and Hosting
+-   Gatsby

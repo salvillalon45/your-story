@@ -147,9 +147,9 @@ function IndexPageContent() {
 					<LandingTitle>Your Story</LandingTitle>
 
 					<LandingText className={classes.firstText}>
-						Your Story gives you the tools you need to create yearly
-						reflections and create a nice timeline to look back at
-						all the tings you did!
+						Your Story gives you the tools to take control and guide
+						your life goals! This is Your Story. Take control and
+						guide it.
 					</LandingText>
 
 					<LandingText>Create an account today!</LandingText>
