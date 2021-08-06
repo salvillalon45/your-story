@@ -1,4 +1,6 @@
-# [The Odin Project: Javascript] - Project: Final Project
+<h1 align="center">
+[The Odin Project: Javascript] - Project: Final Project
+</h1>
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
@@ -6,9 +8,6 @@
     <img alt="Your Story" src="./src/images/static/your_story_logo_1_cropped.png" width="300" />
   </a>
 </p>
-<h1 align="center">
-  Your Story
-</h1>
 
 ## Intro
 
