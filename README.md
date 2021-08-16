@@ -42,8 +42,8 @@
 
 ## Design
 
--   Design Inspiration Came From [Amie Chen](https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs](https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs). From this design I got the colors. I really like the style choice Amie picked
--   Design Inspiration Came From [Rron Berisha](https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media](https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media). From this design I got the idea for the landing page
+-   Design Inspiration Came From [Amie Chen](https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs). From this design I got the colors. I really like the style choice Amie picked
+-   Design Inspiration Came From [Rron Berisha](https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media). From this design I got the idea for the landing page
 
 ## Styling
 
