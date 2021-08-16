@@ -33,11 +33,17 @@
 
 -   In this project I challenged myself to not use SASS. Instead, I practice using css-in-js and Styled Components
 -   I also tried to deploy my app to Netlify but I learned that it only works for static websites
+-   I challenged myself to think of a way to share their created timeline. I thought of many different ways such as:
+	-   Share similar to how you share a tweet, but I was not able to figure it out
+	-   Share a url to this rendered component
+	-   Export to HTML
+	-   Print the rendered component as a PDF
+	- I went with printing it using the package react-to-print! 
 
 ## Design
 
--   Design Inspiration Came From [Amie Chen](<[https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs](https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs)>). From this design I got the colors. I really like the style choice Amie picked
--   Design Inspiration Came From [Rron Berisha](<[https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media](https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media)>). From this design I got the idea for the landing page
+-   Design Inspiration Came From [Amie Chen](https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs](https://dribbble.com/shots/4265881-Dropcast-HTML-Template-for-Podcasts-Audio-Blogs). From this design I got the colors. I really like the style choice Amie picked
+-   Design Inspiration Came From [Rron Berisha](https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media](https://dribbble.com/shots/4425712-REFLECTION/attachments/4425712-REFLECTION?mode=media). From this design I got the idea for the landing page
 
 ## Styling
 
@@ -104,6 +110,7 @@ const NavigationToolbar = styled(Toolbar)`
     -   Everything changed when I came across this article by [Yingqi Chen](<[https://medium.com/swlh/gatsbys-global-state-management-with-react-s-context-5f8064e93351](https://medium.com/swlh/gatsbys-global-state-management-with-react-s-context-5f8064e93351)>) where she answered all my questions!
     -   Thanks to this article as well from [Muhammad Muhsin](<[https://blog.openreplay.com/using-react-context-api-with-gatsby](https://blog.openreplay.com/using-react-context-api-with-gatsby)>) for helping me understand
 -   I really liked how we wrote everything down first! I made a plan of all the things that were going to be involved. This is how I identified the problem of having a parent component
+-   Learned how to use react-to-print to get print to pdf a render component!
 -   Learned how to create a shallow db to make it easier to retrieve data instead of nesting a lot things into it
 -   Learned how to use Firebase Authentication to create, login, and logout users
 -   Also, I wanted to become a better full stack developer and that means learning about the tools that we use everyday. One tool that I use everyday is `console.log()` I came across this article by [Harsha Vardhan](<[https://javascript.plainenglish.io/stop-using-console-log-in-javascript-d29d6c24dc26](https://javascript.plainenglish.io/stop-using-console-log-in-javascript-d29d6c24dc26)>) where it showed other functions of console!
