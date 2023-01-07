@@ -12,7 +12,7 @@
 ## Intro
 
 -   This was the final project for the Odin Project Frontend module. I challenged myself to create something new, something that could help people. As I was thinking, I realized that something that I value and has helped me a lot is the power of reflection. Reflecting allows people to stop and thnk on what they are doing. Helps clarify what are the next steps you want to create and take. I wanted to create a tool that people can use to reflect. **This is how Your Story was born!** I create this logo above.
--   You can find more on the project here: [The Odin Project - Final Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/final-project)
+-   You can find more on the project here: [The Odin Project - Final Project](https://www.theodinproject.com/lessons/node-path-javascript-javascript-final-project)
 
 ### 📗 Fonts used
 
@@ -23,11 +23,11 @@
 
 |  Color            |  Hex                                                                 |
 | ----------------- | -------------------------------------------------------------------- |
-|  Turquoise        |  ![#80ccbc](https://via.placeholder.com/10/0c2d48?text=+) `#80ccbc`  |
-|  Black            |  ![#141720](https://via.placeholder.com/10/b1d4e0?text=+) `#141720`  |
-|  White            |  ![#fff](https://via.placeholder.com/10/fff?text=+) `#fff`           |
-|  Grey             |  ![#1c1f2a](https://via.placeholder.com/10/fff?text=+) `#1c1f2a`     |
-|  Orange           |  ![#f79e77](https://via.placeholder.com/10/000?text=+) `#f79e77`     |
+|  Turquoise        |  ![#80ccbc](https://placehold.co/15x15/80ccbc/80ccbc.png) `#80ccbc`  |
+|  Black            |  ![#141720](https://placehold.co/15x15/141720/141720.png) `#141720`  |
+|  White            |  ![#fff](https://placehold.co/15x15/fff/fff.png)          `#fff`     |
+|  Grey             |  ![#1c1f2a](https://placehold.co/15x15/1c1f2a/1c1f2a.png) `#1c1f2a`  |
+|  Orange           |  ![#f79e77](https://placehold.co/15x15/f79e77/f79e77.png) `#f79e77`  |
 
 ## Overall
 
