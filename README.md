@@ -1,6 +1,5 @@
-<h1 align="center">
+# Your Story
 [The Odin Project: Javascript] - Project: Final Project
-</h1>
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
