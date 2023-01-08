@@ -11,7 +11,8 @@
 ## Intro
 
 -   This was the final project for the Odin Project Frontend module. I challenged myself to create something new, something that could help people. As I was thinking, I realized that something that I value and has helped me a lot is the power of reflection. Reflecting allows people to stop and thnk on what they are doing. Helps clarify what are the next steps you want to create and take. I wanted to create a tool that people can use to reflect. **This is how Your Story was born!** I create this logo above.
--   You can find more on the project here: [The Odin Project - Final Project](https://www.theodinproject.com/lessons/node-path-javascript-javascript-final-project)
+- Project Task: [The Odin Project - Final Project](https://www.theodinproject.com/lessons/node-path-javascript-javascript-final-project)
+- View Project: https://your-story-sv.web.app/
 
 ### 📗 Fonts used
 
